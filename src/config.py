@@ -4,7 +4,7 @@ gpt_modes = ["eager", "lazy"]
 
 # For safety, we hide the OpenAI keys
 # If you want to run DAInfer, please specify the keys
-global_openai_key = "***REMOVED***"
+global_openai_key = "XXXXXXXXX"
 
 
 # The parameters for self-consistency
