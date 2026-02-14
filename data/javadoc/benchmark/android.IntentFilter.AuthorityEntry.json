@@ -1,0 +1,14 @@
+{
+    "class": "IntentFilter.AuthorityEntry",
+    "category": "class",
+    "methods": {
+        "boolean equals(Object obj)": "Indicates whether some other object is \"equal to\" this one.",
+        "String getHost()": "String getHost()",
+        "int getPort()": "int getPort()",
+        "int match(Uri data)": "Determine whether this AuthorityEntry matches the given data Uri."
+    },
+    "super class": [
+        "Object",
+        "IntentFilter.AuthorityEntry"
+    ]
+}

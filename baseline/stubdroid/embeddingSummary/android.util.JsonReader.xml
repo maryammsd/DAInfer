@@ -1,0 +1,69 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="int nextInt()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.util.JsonReader"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String nextName()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.util.JsonReader"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="long nextLong()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.util.JsonReader"/>
+                    <to sourceSinkType="Return" BaseType="long" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="boolean nextBoolean()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.util.JsonReader"/>
+                    <to sourceSinkType="Return" BaseType="boolean" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.util.JsonToken peek()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.util.JsonReader"/>
+                    <to sourceSinkType="Return" BaseType="android.util.JsonToken" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String toString()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.util.JsonReader"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="double nextDouble()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.util.JsonReader"/>
+                    <to sourceSinkType="Return" BaseType="double" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String nextString()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.util.JsonReader"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+    </methods>
+</summary>

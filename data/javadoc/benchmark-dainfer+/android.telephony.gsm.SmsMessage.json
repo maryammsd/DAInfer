@@ -1,0 +1,40 @@
+{
+    "class": "SmsMessage",
+    "category": "class",
+    "methods": {
+        "int[] calculateLength(CharSequence messageBody, boolean use7bitOnly)": "This method was deprecated in API level 4. Use android.telephony.SmsMessage.",
+        "int[] calculateLength(String messageBody, boolean use7bitOnly)": "This method is deprecated. Use android.telephony.SmsMessage.",
+        "SmsMessage createFromPdu(byte[] pdu)": "This method is deprecated. Use android.telephony.SmsMessage.",
+        "String getDisplayMessageBody()": "This method is deprecated. Use android.telephony.SmsMessage.",
+        "String getDisplayOriginatingAddress()": "This method is deprecated. Use android.telephony.SmsMessage.",
+        "String getEmailBody()": "This method is deprecated. Use android.telephony.SmsMessage.",
+        "String getEmailFrom()": "This method is deprecated. Use android.telephony.SmsMessage.",
+        "int getIndexOnSim()": "This method is deprecated. Use android.telephony.SmsMessage and getIndexOnIcc instead.",
+        "String getMessageBody()": "This method is deprecated. Use android.telephony.SmsMessage.",
+        "SmsMessage.MessageClass getMessageClass()": "This method is deprecated. Use android.telephony.SmsMessage.",
+        "String getOriginatingAddress()": "This method is deprecated. Use android.telephony.SmsMessage.",
+        "byte[] getPdu()": "This method is deprecated. Use android.telephony.SmsMessage.",
+        "int getProtocolIdentifier()": "This method is deprecated. Use android.telephony.SmsMessage.",
+        "String getPseudoSubject()": "This method is deprecated. Use android.telephony.SmsMessage.",
+        "String getServiceCenterAddress()": "This method is deprecated. Use android.telephony.SmsMessage.",
+        "int getStatus()": "This method is deprecated. Use android.telephony.SmsMessage.",
+        "int getStatusOnSim()": "This method is deprecated. Use android.telephony.SmsMessage and getStatusOnIcc instead.",
+        "SmsMessage.SubmitPdu getSubmitPdu(String scAddress, String destinationAddress, String message, boolean statusReportRequested)": "This method is deprecated. Use android.telephony.SmsMessage.",
+        "SmsMessage.SubmitPdu getSubmitPdu(String scAddress, String destinationAddress, short destinationPort, byte[] data, boolean statusReportRequested)": "This method is deprecated. Use android.telephony.SmsMessage.",
+        "int getTPLayerLengthForPDU(String pdu)": "This method is deprecated. Use android.telephony.SmsMessage.",
+        "long getTimestampMillis()": "This method is deprecated. Use android.telephony.SmsMessage.",
+        "byte[] getUserData()": "This method is deprecated. Use android.telephony.SmsMessage.",
+        "boolean isCphsMwiMessage()": "This method is deprecated. Use android.telephony.SmsMessage.",
+        "boolean isEmail()": "This method is deprecated. Use android.telephony.SmsMessage.",
+        "boolean isMWIClearMessage()": "This method is deprecated. Use android.telephony.SmsMessage.",
+        "boolean isMWISetMessage()": "This method is deprecated. Use android.telephony.SmsMessage.",
+        "boolean isMwiDontStore()": "This method is deprecated. Use android.telephony.SmsMessage.",
+        "boolean isReplace()": "This method is deprecated. Use android.telephony.SmsMessage.",
+        "boolean isReplyPathPresent()": "This method is deprecated. Use android.telephony.SmsMessage.",
+        "boolean isStatusReportMessage()": "This method is deprecated. Use android.telephony.SmsMessage."
+    },
+    "super class": [
+        "Object",
+        "SmsMessage"
+    ]
+}

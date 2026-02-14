@@ -1,0 +1,10 @@
+{
+    "class": "Appendable",
+    "category": "Interface",
+    "methods": {
+        "Appendable append(char\u00a0c)": "Appends the specified character to thisAppendable.",
+        "Appendable append(CharSequencecsq)": "Appends the specified character sequence to thisAppendable.",
+        "Appendable append(CharSequencecsq,\n      int\u00a0start,\n      int\u00a0end)": "Appends a subsequence of the specified character sequence to thisAppendable."
+    },
+    "super class": []
+}

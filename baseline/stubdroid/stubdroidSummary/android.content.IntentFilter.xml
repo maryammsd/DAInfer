@@ -1,0 +1,807 @@
+<?xml version="1.0"?>
+<summary fileFormatVersion="103">
+    <hierarchy superClass="java.lang.Object">
+        <interface name="android.os.Parcelable"></interface>
+    </hierarchy>
+    <methods>
+        <method id="void dumpDebug(android.util.proto.ProtoOutputStream,long)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: android.util.proto.EncodedBuffer mBuffer&gt;, &lt;android.util.proto.EncodedBuffer: java.util.ArrayList mBuffers&gt;, &lt;java.util.Collection: java.lang.Object[] innerArray&gt;]"
+                        AccessPathTypes="[android.util.proto.EncodedBuffer, java.util.ArrayList, java.lang.Object[]]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: android.util.proto.EncodedBuffer mBuffer&gt;, &lt;android.util.proto.EncodedBuffer: byte[] mWriteBuffer&gt;]"
+                        AccessPathTypes="[android.util.proto.EncodedBuffer, byte[]]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: android.util.proto.EncodedBuffer mBuffer&gt;, &lt;android.util.proto.EncodedBuffer: int mWriteIndex&gt;]"
+                        AccessPathTypes="[android.util.proto.EncodedBuffer, int]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: android.util.proto.EncodedBuffer mBuffer&gt;, &lt;android.util.proto.EncodedBuffer: int mWriteBufIndex&gt;]"
+                        AccessPathTypes="[android.util.proto.EncodedBuffer, int]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: int mNextObjectId&gt;]"
+                        AccessPathTypes="[int]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: android.util.proto.EncodedBuffer mBuffer&gt;, &lt;android.util.proto.EncodedBuffer: int mWriteBufIndex&gt;]"
+                        AccessPathTypes="[android.util.proto.EncodedBuffer, int]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: int mDepth&gt;]"
+                        AccessPathTypes="[int]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: long mExpectedObjectToken&gt;]"
+                        AccessPathTypes="[long]" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: android.util.proto.EncodedBuffer mBuffer&gt;, &lt;android.util.proto.EncodedBuffer: int mWriteIndex&gt;]"
+                        AccessPathTypes="[android.util.proto.EncodedBuffer, int]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: long mExpectedObjectToken&gt;]"
+                        AccessPathTypes="[long]" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: android.util.proto.EncodedBuffer mBuffer&gt;, &lt;android.util.proto.EncodedBuffer: int mChunkSize&gt;]"
+                        AccessPathTypes="[android.util.proto.EncodedBuffer, int]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: android.util.proto.EncodedBuffer mBuffer&gt;, &lt;android.util.proto.EncodedBuffer: int mWriteBufIndex&gt;]"
+                        AccessPathTypes="[android.util.proto.EncodedBuffer, int]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: int mDepth&gt;]"
+                        AccessPathTypes="[int]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: android.util.proto.EncodedBuffer mBuffer&gt;, &lt;android.util.proto.EncodedBuffer: int mWriteBufIndex&gt;]"
+                        AccessPathTypes="[android.util.proto.EncodedBuffer, int]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: android.util.proto.EncodedBuffer mBuffer&gt;, &lt;android.util.proto.EncodedBuffer: int mChunkSize&gt;]"
+                        AccessPathTypes="[android.util.proto.EncodedBuffer, int]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: long mExpectedObjectToken&gt;]"
+                        AccessPathTypes="[long]" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: android.util.proto.EncodedBuffer mBuffer&gt;, &lt;android.util.proto.EncodedBuffer: int mWriteBufIndex&gt;]"
+                        AccessPathTypes="[android.util.proto.EncodedBuffer, int]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: android.util.proto.EncodedBuffer mBuffer&gt;, &lt;android.util.proto.EncodedBuffer: int mWriteIndex&gt;]"
+                        AccessPathTypes="[android.util.proto.EncodedBuffer, int]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: int mNextObjectId&gt;]"
+                        AccessPathTypes="[int]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: long mExpectedObjectToken&gt;]"
+                        AccessPathTypes="[long]" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: int mNextObjectId&gt;]"
+                        AccessPathTypes="[int]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: android.util.proto.EncodedBuffer mBuffer&gt;, &lt;android.util.proto.EncodedBuffer: int mWriteIndex&gt;]"
+                        AccessPathTypes="[android.util.proto.EncodedBuffer, int]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: android.util.proto.EncodedBuffer mBuffer&gt;, &lt;android.util.proto.EncodedBuffer: java.util.ArrayList mBuffers&gt;, &lt;java.util.Collection: java.lang.Object[] innerArray&gt;]"
+                        AccessPathTypes="[android.util.proto.EncodedBuffer, java.util.ArrayList, java.lang.Object[]]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: long mExpectedObjectToken&gt;]"
+                        AccessPathTypes="[long]" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: android.util.proto.EncodedBuffer mBuffer&gt;, &lt;android.util.proto.EncodedBuffer: int mWriteBufIndex&gt;]"
+                        AccessPathTypes="[android.util.proto.EncodedBuffer, int]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: long mExpectedObjectToken&gt;]"
+                        AccessPathTypes="[long]" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: int mDepth&gt;]"
+                        AccessPathTypes="[int]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: android.util.proto.EncodedBuffer mBuffer&gt;, &lt;android.util.proto.EncodedBuffer: int mWriteIndex&gt;]"
+                        AccessPathTypes="[android.util.proto.EncodedBuffer, int]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: android.util.proto.EncodedBuffer mBuffer&gt;, &lt;android.util.proto.EncodedBuffer: int mChunkSize&gt;]"
+                        AccessPathTypes="[android.util.proto.EncodedBuffer, int]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: android.util.proto.EncodedBuffer mBuffer&gt;, &lt;android.util.proto.EncodedBuffer: int mWriteIndex&gt;]"
+                        AccessPathTypes="[android.util.proto.EncodedBuffer, int]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"
+                        AccessPath="[&lt;android.content.IntentFilter: int mPriority&gt;]"
+                        AccessPathTypes="[int]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="android.util.proto.ProtoOutputStream"
+                        AccessPath="[&lt;android.util.proto.ProtoOutputStream: android.util.proto.EncodedBuffer mBuffer&gt;, &lt;android.util.proto.EncodedBuffer: byte[] mWriteBuffer&gt;]"
+                        AccessPathTypes="[android.util.proto.EncodedBuffer, byte[]]"
+                        taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String getAction(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"
+                        AccessPath="[&lt;android.content.IntentFilter: java.util.ArrayList mActions&gt;, &lt;java.util.Collection: java.lang.Object[] innerArray&gt;]"
+                        AccessPathTypes="[java.util.ArrayList, java.lang.Object[]]"></from>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String getCategory(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"
+                        AccessPath="[&lt;android.content.IntentFilter: java.util.ArrayList mCategories&gt;, &lt;java.util.Collection: java.lang.Object[] innerArray&gt;]"
+                        AccessPathTypes="[java.util.ArrayList, java.lang.Object[]]"></from>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.content.IntentFilter$AuthorityEntry getDataAuthority(int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"
+                        AccessPath="[&lt;android.content.IntentFilter: java.util.ArrayList mDataAuthorities&gt;, &lt;java.util.Collection: java.lang.Object[] innerArray&gt;]"
+                        AccessPathTypes="[java.util.ArrayList, java.lang.Object[]]"></from>
+                    <to sourceSinkType="Return"
+                        BaseType="android.content.IntentFilter$AuthorityEntry" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.os.PatternMatcher getDataPath(int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"
+                        AccessPath="[&lt;android.content.IntentFilter: java.util.ArrayList mDataPaths&gt;, &lt;java.util.Collection: java.lang.Object[] innerArray&gt;]"
+                        AccessPathTypes="[java.util.ArrayList, java.lang.Object[]]"></from>
+                    <to sourceSinkType="Return" BaseType="android.os.PatternMatcher"
+                        taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String getDataScheme(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"
+                        AccessPath="[&lt;android.content.IntentFilter: java.util.ArrayList mDataSchemes&gt;, &lt;java.util.Collection: java.lang.Object[] innerArray&gt;]"
+                        AccessPathTypes="[java.util.ArrayList, java.lang.Object[]]"></from>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.os.PatternMatcher getDataSchemeSpecificPart(int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"
+                        AccessPath="[&lt;android.content.IntentFilter: java.util.ArrayList mDataSchemeSpecificParts&gt;, &lt;java.util.Collection: java.lang.Object[] innerArray&gt;]"
+                        AccessPathTypes="[java.util.ArrayList, java.lang.Object[]]"></from>
+                    <to sourceSinkType="Return" BaseType="android.os.PatternMatcher"
+                        taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String getDataType(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"
+                        AccessPath="[&lt;android.content.IntentFilter: java.util.ArrayList mDataTypes&gt;, &lt;java.util.Collection: java.lang.Object[] innerArray&gt;]"
+                        AccessPathTypes="[java.util.ArrayList, java.lang.Object[]]"></from>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String getMimeGroup(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"
+                        AccessPath="[&lt;android.content.IntentFilter: java.util.ArrayList mMimeGroups&gt;, &lt;java.util.Collection: java.lang.Object[] innerArray&gt;]"
+                        AccessPathTypes="[java.util.ArrayList, java.lang.Object[]]"></from>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="int getOrder()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"
+                        AccessPath="[&lt;android.content.IntentFilter: int mOrder&gt;]"
+                        AccessPathTypes="[int]"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="int getPriority()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"
+                        AccessPath="[&lt;android.content.IntentFilter: int mPriority&gt;]"
+                        AccessPathTypes="[int]"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="int getVisibilityToInstantApp()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"
+                        AccessPath="[&lt;android.content.IntentFilter: int mInstantAppVisibility&gt;]"
+                        AccessPathTypes="[int]"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="boolean handlesWebUris(boolean)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="boolean"></from>
+                    <to sourceSinkType="Return" BaseType="boolean" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method
+            id="int match(android.content.ContentResolver,android.content.Intent,boolean,java.lang.String)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="android.net.Uri"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="1"
+                        BaseType="android.content.Intent"
+                        AccessPath="[&lt;android.content.Intent: android.net.Uri mData&gt;]"
+                        AccessPathTypes="[android.net.Uri]" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1"
+                        BaseType="android.content.Intent"
+                        AccessPath="[&lt;java.lang.Object: java.lang.String[] categories&gt;]"
+                        AccessPathTypes="[java.lang.String[]]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="1"
+                        BaseType="android.content.Intent"
+                        AccessPath="[&lt;android.content.Intent: android.util.ArraySet mCategories&gt;]"
+                        AccessPathTypes="[android.util.ArraySet]" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String matchCategories(java.util.Set)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.util.Set"
+                        AccessPath="[&lt;java.util.Collection: java.lang.Object[] innerArray&gt;]"
+                        AccessPathTypes="[java.lang.Object[]]"></from>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="void readFromXml(org.xmlpull.v1.XmlPullParser)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="4"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="6"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="19"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="2"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="16"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="10"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="4"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="13"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="17"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="2"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="4"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="16"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="20"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="22"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="20"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="10"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="23"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="2"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="1"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="2"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="8"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="2"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="3"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="org.xmlpull.v1.XmlPullParser" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="19"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="21"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="0"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="1"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="21"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="2"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="4"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="10"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="11"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="2"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="7"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="10"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="13"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="2"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="9"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="10"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="4"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="2"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="4"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="9"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="15"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="2"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="6"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="2"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="11"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="10"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="22"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="10"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="15"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="19"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="22"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="23"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="15"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="10"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="20"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="2"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="4"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="11"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="13"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="10"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="14"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="17"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="4"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="8"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="org.xmlpull.v1.XmlPullParser"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="0"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="16"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="20"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="19"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="10"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="22"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="2"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="17"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="10"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="3"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="4"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="9"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="2"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="4"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="5"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="10"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="12"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="2"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="org.xmlpull.v1.XmlPullParser" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="6"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="10"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="5"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="10"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="12"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="18"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="8"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="10"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="13"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="15"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="4"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="7"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="21"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="10"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="7"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="2"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="2"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="3"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="16"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="2"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="5"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="2"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="23"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="10"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="org.xmlpull.v1.XmlPullParser" gap="4"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="org.xmlpull.v1.XmlPullParser"
+                        gap="14"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setOrder(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"></from>
+                    <to sourceSinkType="Field" BaseType="android.content.IntentFilter"
+                        AccessPath="[&lt;android.content.IntentFilter: int mOrder&gt;]"
+                        AccessPathTypes="[int]" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setPriority(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"></from>
+                    <to sourceSinkType="Field" BaseType="android.content.IntentFilter"
+                        AccessPath="[&lt;android.content.IntentFilter: int mPriority&gt;]"
+                        AccessPathTypes="[int]" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setVisibilityToInstantApp(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"></from>
+                    <to sourceSinkType="Field" BaseType="android.content.IntentFilter"
+                        AccessPath="[&lt;android.content.IntentFilter: int mInstantAppVisibility&gt;]"
+                        AccessPathTypes="[int]" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeToParcel(android.os.Parcel,int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"
+                        AccessPath="[&lt;android.content.IntentFilter: java.util.ArrayList mDataSchemeSpecificParts&gt;, &lt;java.util.Collection: java.lang.Object[] innerArray&gt;]"
+                        AccessPathTypes="[java.util.ArrayList, java.lang.Object[]]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="android.os.Parcel"
+                        taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeToXml(org.xmlpull.v1.XmlSerializer)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"
+                        AccessPath="[&lt;android.content.IntentFilter: java.util.ArrayList mCategories&gt;, &lt;java.util.Collection: java.lang.Object[] innerArray&gt;]"
+                        AccessPathTypes="[java.util.ArrayList, java.lang.Object[]]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="org.xmlpull.v1.XmlSerializer"
+                        AccessPath="[&lt;org.xmlpull.v1.XmlSerializer: java.io.OutputStream outputStream&gt;, &lt;java.io.OutputStream: byte[] innerArray&gt;]"
+                        AccessPathTypes="[java.io.OutputStream, byte[]]" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"
+                        AccessPath="[&lt;android.content.IntentFilter: java.util.ArrayList mDataAuthorities&gt;, &lt;java.util.Collection: java.lang.Object[] innerArray&gt;]"
+                        AccessPathTypes="[java.util.ArrayList, java.lang.Object[]]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="org.xmlpull.v1.XmlSerializer"
+                        AccessPath="[&lt;org.xmlpull.v1.XmlSerializer: java.io.OutputStream outputStream&gt;, &lt;java.io.OutputStream: byte[] innerArray&gt;]"
+                        AccessPathTypes="[java.io.OutputStream, byte[]]" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"
+                        AccessPath="[&lt;android.content.IntentFilter: java.util.ArrayList mActions&gt;, &lt;java.util.Collection: java.lang.Object[] innerArray&gt;]"
+                        AccessPathTypes="[java.util.ArrayList, java.lang.Object[]]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="org.xmlpull.v1.XmlSerializer"
+                        AccessPath="[&lt;org.xmlpull.v1.XmlSerializer: java.io.Writer writer&gt;, &lt;java.io.Writer: java.io.OutputStream innerStream&gt;, &lt;java.io.OutputStream: byte[] innerArray&gt;]"
+                        AccessPathTypes="[java.io.Writer, java.io.OutputStream, byte[]]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"
+                        AccessPath="[&lt;android.content.IntentFilter: java.util.ArrayList mCategories&gt;, &lt;java.util.Collection: java.lang.Object[] innerArray&gt;]"
+                        AccessPathTypes="[java.util.ArrayList, java.lang.Object[]]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="org.xmlpull.v1.XmlSerializer"
+                        AccessPath="[&lt;org.xmlpull.v1.XmlSerializer: java.io.Writer writer&gt;, &lt;java.io.Writer: java.io.OutputStream innerStream&gt;, &lt;java.io.OutputStream: byte[] innerArray&gt;]"
+                        AccessPathTypes="[java.io.Writer, java.io.OutputStream, byte[]]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"
+                        AccessPath="[&lt;android.content.IntentFilter: java.util.ArrayList mMimeGroups&gt;, &lt;java.util.Collection: java.lang.Object[] innerArray&gt;]"
+                        AccessPathTypes="[java.util.ArrayList, java.lang.Object[]]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="org.xmlpull.v1.XmlSerializer"
+                        AccessPath="[&lt;org.xmlpull.v1.XmlSerializer: java.io.OutputStream outputStream&gt;, &lt;java.io.OutputStream: byte[] innerArray&gt;]"
+                        AccessPathTypes="[java.io.OutputStream, byte[]]" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"
+                        AccessPath="[&lt;android.content.IntentFilter: java.util.ArrayList mDataAuthorities&gt;, &lt;java.util.Collection: java.lang.Object[] innerArray&gt;]"
+                        AccessPathTypes="[java.util.ArrayList, java.lang.Object[]]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="org.xmlpull.v1.XmlSerializer"
+                        AccessPath="[&lt;org.xmlpull.v1.XmlSerializer: java.io.Writer writer&gt;, &lt;java.io.Writer: java.io.OutputStream innerStream&gt;, &lt;java.io.OutputStream: byte[] innerArray&gt;]"
+                        AccessPathTypes="[java.io.Writer, java.io.OutputStream, byte[]]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"
+                        AccessPath="[&lt;android.content.IntentFilter: java.util.ArrayList mDataSchemes&gt;, &lt;java.util.Collection: java.lang.Object[] innerArray&gt;]"
+                        AccessPathTypes="[java.util.ArrayList, java.lang.Object[]]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="org.xmlpull.v1.XmlSerializer"
+                        AccessPath="[&lt;org.xmlpull.v1.XmlSerializer: java.io.Writer writer&gt;, &lt;java.io.Writer: java.io.OutputStream innerStream&gt;, &lt;java.io.OutputStream: byte[] innerArray&gt;]"
+                        AccessPathTypes="[java.io.Writer, java.io.OutputStream, byte[]]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"
+                        AccessPath="[&lt;android.content.IntentFilter: java.util.ArrayList mDataSchemes&gt;, &lt;java.util.Collection: java.lang.Object[] innerArray&gt;]"
+                        AccessPathTypes="[java.util.ArrayList, java.lang.Object[]]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="org.xmlpull.v1.XmlSerializer"
+                        AccessPath="[&lt;org.xmlpull.v1.XmlSerializer: java.io.OutputStream outputStream&gt;, &lt;java.io.OutputStream: byte[] innerArray&gt;]"
+                        AccessPathTypes="[java.io.OutputStream, byte[]]" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"
+                        AccessPath="[&lt;android.content.IntentFilter: java.util.ArrayList mActions&gt;, &lt;java.util.Collection: java.lang.Object[] innerArray&gt;]"
+                        AccessPathTypes="[java.util.ArrayList, java.lang.Object[]]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="org.xmlpull.v1.XmlSerializer"
+                        AccessPath="[&lt;org.xmlpull.v1.XmlSerializer: java.io.OutputStream outputStream&gt;, &lt;java.io.OutputStream: byte[] innerArray&gt;]"
+                        AccessPathTypes="[java.io.OutputStream, byte[]]" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"
+                        AccessPath="[&lt;android.content.IntentFilter: java.util.ArrayList mMimeGroups&gt;, &lt;java.util.Collection: java.lang.Object[] innerArray&gt;]"
+                        AccessPathTypes="[java.util.ArrayList, java.lang.Object[]]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="org.xmlpull.v1.XmlSerializer"
+                        AccessPath="[&lt;org.xmlpull.v1.XmlSerializer: java.io.Writer writer&gt;, &lt;java.io.Writer: java.io.OutputStream innerStream&gt;, &lt;java.io.OutputStream: byte[] innerArray&gt;]"
+                        AccessPathTypes="[java.io.Writer, java.io.OutputStream, byte[]]"
+                        taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+    </methods>
+    <gaps>
+        <gap num="0"
+            id="&lt;org.xmlpull.v1.XmlPullParser: java.lang.String getAttributeValue(java.lang.String,java.lang.String)&gt;"></gap>
+        <gap num="1" id="&lt;org.xmlpull.v1.XmlPullParser: int getDepth()&gt;"></gap>
+        <gap num="2" id="&lt;org.xmlpull.v1.XmlPullParser: int next()&gt;"></gap>
+        <gap num="3" id="&lt;org.xmlpull.v1.XmlPullParser: int getDepth()&gt;"></gap>
+        <gap num="4" id="&lt;org.xmlpull.v1.XmlPullParser: java.lang.String getName()&gt;"></gap>
+        <gap num="5"
+            id="&lt;org.xmlpull.v1.XmlPullParser: java.lang.String getAttributeValue(java.lang.String,java.lang.String)&gt;"></gap>
+        <gap num="6"
+            id="&lt;org.xmlpull.v1.XmlPullParser: java.lang.String getAttributeValue(java.lang.String,java.lang.String)&gt;"></gap>
+        <gap num="7"
+            id="&lt;org.xmlpull.v1.XmlPullParser: java.lang.String getAttributeValue(java.lang.String,java.lang.String)&gt;"></gap>
+        <gap num="8"
+            id="&lt;org.xmlpull.v1.XmlPullParser: java.lang.String getAttributeValue(java.lang.String,java.lang.String)&gt;"></gap>
+        <gap num="9"
+            id="&lt;org.xmlpull.v1.XmlPullParser: java.lang.String getAttributeValue(java.lang.String,java.lang.String)&gt;"></gap>
+        <gap num="10" id="&lt;org.xmlpull.v1.XmlPullParser: int getDepth()&gt;"></gap>
+        <gap num="11"
+            id="&lt;org.xmlpull.v1.XmlPullParser: java.lang.String getAttributeValue(java.lang.String,java.lang.String)&gt;"></gap>
+        <gap num="12" id="&lt;org.xmlpull.v1.XmlPullParser: int next()&gt;"></gap>
+        <gap num="13"
+            id="&lt;org.xmlpull.v1.XmlPullParser: java.lang.String getAttributeValue(java.lang.String,java.lang.String)&gt;"></gap>
+        <gap num="14"
+            id="&lt;org.xmlpull.v1.XmlPullParser: java.lang.String getAttributeValue(java.lang.String,java.lang.String)&gt;"></gap>
+        <gap num="15"
+            id="&lt;org.xmlpull.v1.XmlPullParser: java.lang.String getAttributeValue(java.lang.String,java.lang.String)&gt;"></gap>
+        <gap num="16"
+            id="&lt;org.xmlpull.v1.XmlPullParser: java.lang.String getAttributeValue(java.lang.String,java.lang.String)&gt;"></gap>
+        <gap num="17"
+            id="&lt;org.xmlpull.v1.XmlPullParser: java.lang.String getAttributeValue(java.lang.String,java.lang.String)&gt;"></gap>
+        <gap num="18" id="&lt;org.xmlpull.v1.XmlPullParser: int getDepth()&gt;"></gap>
+        <gap num="19"
+            id="&lt;org.xmlpull.v1.XmlPullParser: java.lang.String getAttributeValue(java.lang.String,java.lang.String)&gt;"></gap>
+        <gap num="20"
+            id="&lt;org.xmlpull.v1.XmlPullParser: java.lang.String getAttributeValue(java.lang.String,java.lang.String)&gt;"></gap>
+        <gap num="21"
+            id="&lt;org.xmlpull.v1.XmlPullParser: java.lang.String getAttributeValue(java.lang.String,java.lang.String)&gt;"></gap>
+        <gap num="22"
+            id="&lt;org.xmlpull.v1.XmlPullParser: java.lang.String getAttributeValue(java.lang.String,java.lang.String)&gt;"></gap>
+        <gap num="23"
+            id="&lt;org.xmlpull.v1.XmlPullParser: java.lang.String getAttributeValue(java.lang.String,java.lang.String)&gt;"></gap>
+    </gaps>
+</summary>

@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="int getDuration()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.widget.Toast"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setDuration(int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.widget.Toast" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setText(java.lang.CharSequence)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.CharSequence"/>
+                    <to sourceSinkType="Field" BaseType="android.widget.Toast" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+    </methods>
+</summary>

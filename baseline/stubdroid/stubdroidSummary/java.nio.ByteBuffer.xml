@@ -1,0 +1,1484 @@
+<?xml version="1.0"?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="java.nio.CharBuffer append(java.lang.CharSequence)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="java.nio.CharBuffer"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="693"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="java.lang.String"
+                        AccessPath="[&lt;java.lang.String: char[] value&gt;]"
+                        AccessPathTypes="[char[]]" gap="694"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="char" gap="697"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="693"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="695"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="698"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="695"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="694"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="698"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="697"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="697"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="696"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="695"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="1" BaseType="int" gap="694"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="693"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="int" gap="694"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="696"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="698"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="697"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.CharBuffer append(java.lang.CharSequence,int,int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="java.lang.CharSequence"
+                        AccessPath="[&lt;java.lang.String: char[] value&gt;]"
+                        AccessPathTypes="[char[]]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="char" gap="715"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="715"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="713"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="714"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="714"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="714"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="715"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="715"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="713"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.CharBuffer append(char)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="char"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="char" gap="699"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="699"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Return" BaseType="java.nio.CharBuffer" gap="699"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="char[] array()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer"
+                        AccessPath="[&lt;java.nio.CharBuffer: char[] hb&gt;]"
+                        AccessPathTypes="[char[]]"></from>
+                    <to sourceSinkType="Return" BaseType="char[]" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="int arrayOffset()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer"
+                        AccessPath="[&lt;java.nio.CharBuffer: int offset&gt;]"
+                        AccessPathTypes="[int]"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.CharBuffer asReadOnlyBuffer()">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="709"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="709"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="710"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="710"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="711"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="711"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="712"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="712"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="int capacity()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.Buffer"
+                        AccessPath="[&lt;java.nio.Buffer: int capacity&gt;]" AccessPathTypes="[int]"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="char charAt(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="int" gap="706"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="char" gap="707"></from>
+                    <to sourceSinkType="Return" BaseType="char" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="706"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="int" gap="707"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="707"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="705"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="int" gap="707"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="706"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="707"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="705"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="705"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="706"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.util.stream.IntStream chars()">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer"></from>
+                    <to sourceSinkType="Return" BaseType="java.util.stream.IntPipeline$Head"
+                        AccessPath="[&lt;java.util.stream.AbstractPipeline: java.util.function.Supplier sourceSupplier&gt;, &lt;java.nio.CharBuffer$lambda_chars_0__1: java.nio.CharBuffer cap0&gt;]"
+                        AccessPathTypes="[java.nio.CharBuffer$lambda_chars_0__1, java.nio.CharBuffer]"
+                        taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.Buffer clear()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.Buffer"
+                        AccessPath="[&lt;java.nio.Buffer: int capacity&gt;]" AccessPathTypes="[int]"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.Buffer"
+                        AccessPath="[&lt;java.nio.Buffer: int limit&gt;]" AccessPathTypes="[int]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.Buffer"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.Buffer" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.util.stream.IntStream codePoints()">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.lang.CharSequence"></from>
+                    <to sourceSinkType="Return" BaseType="java.util.stream.IntPipeline$Head"
+                        AccessPath="[&lt;java.util.stream.AbstractPipeline: java.util.function.Supplier sourceSupplier&gt;, &lt;java.lang.CharSequence$lambda_codePoints_1__1: java.lang.CharSequence cap0&gt;]"
+                        AccessPathTypes="[java.lang.CharSequence$lambda_codePoints_1__1, java.lang.CharSequence]"
+                        taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.CharBuffer compact()">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBuffer" gap="677"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        AccessPath="[&lt;java.nio.ByteBufferAsCharBufferL: java.nio.ByteBuffer bb&gt;]"
+                        AccessPathTypes="[java.nio.ByteBuffer]" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="686"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="676"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBuffer" gap="681"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBuffer" gap="685"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        AccessPath="[&lt;java.nio.ByteBufferAsCharBufferL: int offset&gt;]"
+                        AccessPathTypes="[int]" gap="676"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="int" gap="681"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Return" BaseType="java.nio.ByteBuffer" gap="677"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBuffer" gap="678"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="675"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="675"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="676"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="682"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="int" gap="684"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        AccessPath="[&lt;java.nio.ByteBufferAsCharBufferL: java.nio.ByteBuffer bb&gt;]"
+                        AccessPathTypes="[java.nio.ByteBuffer]" gap="676"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBuffer" gap="677"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Return" BaseType="java.nio.ByteBuffer" gap="685"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBuffer" gap="680"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="676"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="int" gap="678"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="676"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="int" gap="679"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="682"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="684"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        AccessPath="[&lt;java.nio.ByteBufferAsCharBufferL: int offset&gt;]"
+                        AccessPathTypes="[int]" gap="676"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="int" gap="678"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="675"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="int" gap="679"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="676"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="679"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="684"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="686"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="679"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="682"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBuffer" gap="680"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBuffer" gap="683"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="686"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBuffer" gap="678"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBuffer" gap="681"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="675"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="int" gap="680"
+                        taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="int compareTo(java.lang.Object)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.Object"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="688"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="687"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="689"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="687"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="int" gap="692"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="688"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="int" gap="691"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="char" gap="691"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="689"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="692"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="687"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="688"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="690"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="687"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="689"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="char" gap="692"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="688"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="690"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="690"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="691"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="689"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="692"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="int compareTo(java.nio.CharBuffer)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="java.nio.CharBuffer"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="638"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="638"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="640"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="637"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="int" gap="641"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="639"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="637"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="641"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="637"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="639"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="639"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="char" gap="641"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="639"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="641"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="637"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="640"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="638"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="642"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.nio.CharBuffer"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="638"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="int" gap="642"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="640"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.nio.CharBuffer"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="640"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="642"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="char" gap="642"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.CharBuffer duplicate()">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="701"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="702"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        AccessPath="[&lt;java.nio.ByteBufferAsCharBufferL: java.nio.ByteBuffer bb&gt;]"
+                        AccessPathTypes="[java.nio.ByteBuffer]"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        AccessPath="[&lt;java.nio.ByteBufferAsCharBufferL: java.nio.ByteBuffer bb&gt;]"
+                        AccessPathTypes="[java.nio.ByteBuffer]" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="701"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="702"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="703"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="704"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="703"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="704"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        AccessPath="[&lt;java.nio.ByteBufferAsCharBufferL: int offset&gt;]"
+                        AccessPathTypes="[int]" gap="704"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        AccessPath="[&lt;java.nio.ByteBufferAsCharBufferL: int offset&gt;]"
+                        AccessPathTypes="[int]" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.Buffer flip()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.Buffer"
+                        AccessPath="[&lt;java.nio.Buffer: int position&gt;]" AccessPathTypes="[int]"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.Buffer"
+                        AccessPath="[&lt;java.nio.Buffer: int limit&gt;]" AccessPathTypes="[int]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.Buffer"
+                        AccessPath="[&lt;java.nio.Buffer: int position&gt;]" AccessPathTypes="[int]"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.Buffer"
+                        AccessPath="[&lt;java.nio.Buffer: int limit&gt;]" AccessPathTypes="[int]"
+                        taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="char get()">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="674"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.CharBuffer get(char[])">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="636"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="635"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="636"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="635"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="636"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="635"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="char get(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="int" gap="729"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="729"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.CharBuffer get(char[],int,int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="673"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="672"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="672"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="673"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="char" gap="673"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="char[]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="672"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="673"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="boolean isDirect()">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        AccessPath="[&lt;java.nio.ByteBufferAsCharBufferL: java.nio.ByteBuffer bb&gt;]"
+                        AccessPathTypes="[java.nio.ByteBuffer]"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBuffer" gap="723"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="boolean" gap="723"></from>
+                    <to sourceSinkType="Return" BaseType="boolean" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="int ix(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        AccessPath="[&lt;java.nio.ByteBufferAsCharBufferL: int offset&gt;]"
+                        AccessPathTypes="[int]"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="int length()">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="708"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="708"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="int limit()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.Buffer"
+                        AccessPath="[&lt;java.nio.Buffer: int limit&gt;]" AccessPathTypes="[int]"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.Buffer limit(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.Buffer"
+                        AccessPath="[&lt;java.nio.Buffer: int limit&gt;]" AccessPathTypes="[int]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.Buffer"
+                        AccessPath="[&lt;java.nio.Buffer: int position&gt;]" AccessPathTypes="[int]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.Buffer"
+                        AccessPath="[&lt;java.nio.Buffer: int position&gt;]" AccessPathTypes="[int]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.Buffer"
+                        AccessPath="[&lt;java.nio.Buffer: int limit&gt;]" AccessPathTypes="[int]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.Buffer"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.Buffer" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.Buffer mark()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.Buffer"
+                        AccessPath="[&lt;java.nio.Buffer: int position&gt;]" AccessPathTypes="[int]"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.Buffer"
+                        AccessPath="[&lt;java.nio.Buffer: int mark&gt;]" AccessPathTypes="[int]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.Buffer"
+                        AccessPath="[&lt;java.nio.Buffer: int position&gt;]" AccessPathTypes="[int]"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.Buffer"
+                        AccessPath="[&lt;java.nio.Buffer: int mark&gt;]" AccessPathTypes="[int]"
+                        taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="int position()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.Buffer"
+                        AccessPath="[&lt;java.nio.Buffer: int position&gt;]" AccessPathTypes="[int]"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.Buffer position(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.Buffer"
+                        AccessPath="[&lt;java.nio.Buffer: int position&gt;]" AccessPathTypes="[int]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.Buffer"
+                        AccessPath="[&lt;java.nio.Buffer: int position&gt;]" AccessPathTypes="[int]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.Buffer"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.Buffer" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.CharBuffer put(char[],int,int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="char[]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="char" gap="719"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="719"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="718"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="719"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="718"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="718"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="719"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.CharBuffer put(char[])">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="char[]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="char" gap="717"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="716"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="717"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="716"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="717"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="716"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="717"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.CharBuffer put(java.lang.String,int,int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"
+                        AccessPath="[&lt;java.lang.String: char[] value&gt;]"
+                        AccessPathTypes="[char[]]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="char" gap="646"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="646"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="647"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="646"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="647"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="645"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="647"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="645"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="647"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="646"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.CharBuffer put(char)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="643"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="643"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.CharBuffer put(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"
+                        AccessPath="[&lt;java.lang.String: char[] value&gt;]"
+                        AccessPathTypes="[char[]]"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="char" gap="722"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="722"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="720"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="721"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="721"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="720"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="722"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="721"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="722"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="721"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.CharBuffer put(int,char)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="int" gap="644"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="644"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="644"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.CharBuffer put(java.nio.CharBuffer)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="java.nio.CharBuffer"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="725"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="725"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="727"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="726"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="728"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="727"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.nio.CharBuffer"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="726"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="728"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="726"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="728"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="724"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="726"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="724"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="char" gap="727"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="char" gap="728"
+                        taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="int read(java.nio.CharBuffer)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="java.nio.CharBuffer"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="664"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="java.nio.CharBuffer" gap="667"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="668"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="java.nio.CharBuffer" gap="667"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="670"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="671"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="668"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="664"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="667"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="665"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="664"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="671"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.nio.CharBuffer"
+                        gap="667" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="666"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.nio.CharBuffer"
+                        gap="667" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="671"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="670"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="666"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="670"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="666"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="665"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="666"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="669"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="int" gap="671"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="665"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="int" gap="671"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="666"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="666"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="int" gap="671"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="665"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="int" gap="668"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="664"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="int" gap="671"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="667"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.nio.CharBuffer"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="669"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="671"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="668"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="665"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="int" gap="670"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="666"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="668"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="670"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="665"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="666"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="669"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="int remaining()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.Buffer"
+                        AccessPath="[&lt;java.nio.Buffer: int limit&gt;]" AccessPathTypes="[int]"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.Buffer"
+                        AccessPath="[&lt;java.nio.Buffer: int position&gt;]" AccessPathTypes="[int]"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.Buffer reset()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.Buffer"
+                        AccessPath="[&lt;java.nio.Buffer: int mark&gt;]" AccessPathTypes="[int]"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.Buffer"
+                        AccessPath="[&lt;java.nio.Buffer: int position&gt;]" AccessPathTypes="[int]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.Buffer"
+                        AccessPath="[&lt;java.nio.Buffer: int mark&gt;]" AccessPathTypes="[int]"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.Buffer"
+                        AccessPath="[&lt;java.nio.Buffer: int position&gt;]" AccessPathTypes="[int]"
+                        taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.Buffer rewind()">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.Buffer"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.Buffer" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.CharBuffer slice()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="648"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        AccessPath="[&lt;java.nio.ByteBufferAsCharBufferL: int offset&gt;]"
+                        AccessPathTypes="[int]" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        AccessPath="[&lt;java.nio.ByteBufferAsCharBufferL: int offset&gt;]"
+                        AccessPathTypes="[int]" gap="649"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        AccessPath="[&lt;java.nio.ByteBufferAsCharBufferL: int offset&gt;]"
+                        AccessPathTypes="[int]" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="649"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="648"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="648"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="649"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        AccessPath="[&lt;java.nio.ByteBufferAsCharBufferL: java.nio.ByteBuffer bb&gt;]"
+                        AccessPathTypes="[java.nio.ByteBuffer]" gap="649"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        AccessPath="[&lt;java.nio.ByteBufferAsCharBufferL: java.nio.ByteBuffer bb&gt;]"
+                        AccessPathTypes="[java.nio.ByteBuffer]" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.CharBuffer subSequence(int,int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="654"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="654"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="655"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="653"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="653"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="654"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="655"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        AccessPath="[&lt;java.nio.ByteBufferAsCharBufferL: java.nio.ByteBuffer bb&gt;]"
+                        AccessPathTypes="[java.nio.ByteBuffer]" gap="654"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        AccessPath="[&lt;java.nio.ByteBufferAsCharBufferL: java.nio.ByteBuffer bb&gt;]"
+                        AccessPathTypes="[java.nio.ByteBuffer]" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        AccessPath="[&lt;java.nio.ByteBufferAsCharBufferL: int offset&gt;]"
+                        AccessPathTypes="[int]" gap="655"></from>
+                    <to sourceSinkType="Return" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        AccessPath="[&lt;java.nio.ByteBufferAsCharBufferL: int offset&gt;]"
+                        AccessPathTypes="[int]" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String toString(int,int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="int" gap="657"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="int" gap="658"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="660"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="661"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="656"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="660"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="661"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="662"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="657"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="658"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="658"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.nio.CharBuffer"
+                        gap="659" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        AccessPath="[&lt;java.nio.ByteBufferAsCharBufferL: int offset&gt;]"
+                        AccessPathTypes="[int]" gap="663"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        AccessPath="[&lt;java.nio.ByteBufferAsCharBufferL: int offset&gt;]"
+                        AccessPathTypes="[int]" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="662"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="663"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBufferAsCharBufferL"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.ByteBufferAsCharBufferL"
+                        gap="656"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String toString()">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="650"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="651"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="1" BaseType="int" gap="652"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="651"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="652"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="652"></from>
+                    <to sourceSinkType="Field" BaseType="java.nio.CharBuffer" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="java.lang.String" gap="652"></from>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer" gap="650"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="651"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="int" gap="650"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="int" gap="652"
+                        taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.CharBuffer wrap(java.lang.CharSequence)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0"
+                        BaseType="java.nio.CharBuffer"></from>
+                    <to sourceSinkType="GapBaseObject" BaseType="java.nio.CharBuffer" gap="700"></to>
+                </flow>
+            </flows>
+        </method>
+    </methods>
+    <gaps>
+        <gap num="640" id="&lt;java.nio.Buffer: int limit()&gt;"></gap>
+        <gap num="641" id="&lt;java.nio.CharBuffer: char get(int)&gt;"></gap>
+        <gap num="642" id="&lt;java.nio.CharBuffer: char get(int)&gt;"></gap>
+        <gap num="643" id="&lt;java.nio.Buffer: int nextPutIndex()&gt;"></gap>
+        <gap num="644" id="&lt;java.nio.Buffer: int checkIndex(int)&gt;"></gap>
+        <gap num="645" id="&lt;java.nio.Buffer: boolean isReadOnly()&gt;"></gap>
+        <gap num="646" id="&lt;java.nio.CharBuffer: java.nio.CharBuffer put(char)&gt;"></gap>
+        <gap num="647" id="&lt;java.nio.Buffer: int remaining()&gt;"></gap>
+        <gap num="648" id="&lt;java.nio.Buffer: int position()&gt;"></gap>
+        <gap num="649" id="&lt;java.nio.Buffer: int limit()&gt;"></gap>
+        <gap num="650" id="&lt;java.nio.Buffer: int position()&gt;"></gap>
+        <gap num="651" id="&lt;java.nio.Buffer: int limit()&gt;"></gap>
+        <gap num="652" id="&lt;java.nio.CharBuffer: java.lang.String toString(int,int)&gt;"></gap>
+        <gap num="653" id="&lt;java.nio.Buffer: int position()&gt;"></gap>
+        <gap num="654" id="&lt;java.nio.Buffer: int limit()&gt;"></gap>
+        <gap num="655" id="&lt;java.nio.Buffer: int capacity()&gt;"></gap>
+        <gap num="656" id="&lt;java.nio.Buffer: int limit()&gt;"></gap>
+        <gap num="657" id="&lt;java.nio.Buffer: java.nio.Buffer position(int)&gt;"></gap>
+        <gap num="658" id="&lt;java.nio.Buffer: java.nio.Buffer limit(int)&gt;"></gap>
+        <gap num="659"
+            id="&lt;java.nio.CharBuffer: java.nio.CharBuffer put(java.nio.CharBuffer)&gt;"></gap>
+        <gap num="660" id="&lt;java.nio.Buffer: int markValue()&gt;"></gap>
+        <gap num="661" id="&lt;java.nio.Buffer: int position()&gt;"></gap>
+        <gap num="662" id="&lt;java.nio.Buffer: int limit()&gt;"></gap>
+        <gap num="663" id="&lt;java.nio.Buffer: int capacity()&gt;"></gap>
+        <gap num="664" id="&lt;java.nio.Buffer: int remaining()&gt;"></gap>
+        <gap num="665" id="&lt;java.nio.Buffer: int limit()&gt;"></gap>
+        <gap num="666" id="&lt;java.nio.Buffer: int position()&gt;"></gap>
+        <gap num="667"
+            id="&lt;java.nio.CharBuffer: java.nio.CharBuffer put(java.nio.CharBuffer)&gt;"></gap>
+        <gap num="668" id="&lt;java.nio.Buffer: java.nio.Buffer limit(int)&gt;"></gap>
+        <gap num="669" id="&lt;java.nio.Buffer: int position()&gt;"></gap>
+        <gap num="670" id="&lt;java.nio.Buffer: java.nio.Buffer limit(int)&gt;"></gap>
+        <gap num="671" id="&lt;java.nio.Buffer: java.nio.Buffer limit(int)&gt;"></gap>
+        <gap num="672" id="&lt;java.nio.Buffer: int remaining()&gt;"></gap>
+        <gap num="673" id="&lt;java.nio.CharBuffer: char get()&gt;"></gap>
+        <gap num="674" id="&lt;java.nio.Buffer: int nextGetIndex()&gt;"></gap>
+        <gap num="675" id="&lt;java.nio.Buffer: int position()&gt;"></gap>
+        <gap num="676" id="&lt;java.nio.Buffer: int limit()&gt;"></gap>
+        <gap num="677" id="&lt;java.nio.ByteBuffer: java.nio.ByteBuffer duplicate()&gt;"></gap>
+        <gap num="678" id="&lt;java.nio.Buffer: java.nio.Buffer limit(int)&gt;"></gap>
+        <gap num="679" id="&lt;java.nio.Buffer: java.nio.Buffer position(int)&gt;"></gap>
+        <gap num="680" id="&lt;java.nio.Buffer: java.nio.Buffer position(int)&gt;"></gap>
+        <gap num="681" id="&lt;java.nio.Buffer: java.nio.Buffer position(int)&gt;"></gap>
+        <gap num="682" id="&lt;java.nio.Buffer: int capacity()&gt;"></gap>
+        <gap num="683" id="&lt;java.nio.ByteBuffer: java.nio.ByteBuffer compact()&gt;"></gap>
+        <gap num="684" id="&lt;java.nio.Buffer: java.nio.Buffer limit(int)&gt;"></gap>
+        <gap num="685" id="&lt;java.nio.ByteBuffer: java.nio.ByteBuffer slice()&gt;"></gap>
+        <gap num="686" id="&lt;java.nio.Buffer: void discardMark()&gt;"></gap>
+        <gap num="687" id="&lt;java.nio.Buffer: int position()&gt;"></gap>
+        <gap num="688" id="&lt;java.nio.Buffer: int position()&gt;"></gap>
+        <gap num="689" id="&lt;java.nio.Buffer: int limit()&gt;"></gap>
+        <gap num="690" id="&lt;java.nio.Buffer: int limit()&gt;"></gap>
+        <gap num="691" id="&lt;java.nio.CharBuffer: char get(int)&gt;"></gap>
+        <gap num="692" id="&lt;java.nio.CharBuffer: char get(int)&gt;"></gap>
+        <gap num="693" id="&lt;java.nio.Buffer: int position()&gt;"></gap>
+        <gap num="694" id="&lt;java.nio.CharBuffer: java.lang.String toString(int,int)&gt;"></gap>
+        <gap num="695" id="&lt;java.nio.Buffer: int limit()&gt;"></gap>
+        <gap num="696" id="&lt;java.nio.Buffer: boolean isReadOnly()&gt;"></gap>
+        <gap num="697" id="&lt;java.nio.CharBuffer: java.nio.CharBuffer put(char)&gt;"></gap>
+        <gap num="698" id="&lt;java.nio.Buffer: int remaining()&gt;"></gap>
+        <gap num="699" id="&lt;java.nio.CharBuffer: java.nio.CharBuffer put(char)&gt;"></gap>
+        <gap num="700" id="&lt;java.nio.Buffer: int remaining()&gt;"></gap>
+        <gap num="701" id="&lt;java.nio.Buffer: int markValue()&gt;"></gap>
+        <gap num="702" id="&lt;java.nio.Buffer: int position()&gt;"></gap>
+        <gap num="703" id="&lt;java.nio.Buffer: int limit()&gt;"></gap>
+        <gap num="704" id="&lt;java.nio.Buffer: int capacity()&gt;"></gap>
+        <gap num="705" id="&lt;java.nio.Buffer: int position()&gt;"></gap>
+        <gap num="706" id="&lt;java.nio.Buffer: int checkIndex(int,int)&gt;"></gap>
+        <gap num="707" id="&lt;java.nio.CharBuffer: char get(int)&gt;"></gap>
+        <gap num="708" id="&lt;java.nio.Buffer: int remaining()&gt;"></gap>
+        <gap num="709" id="&lt;java.nio.Buffer: int markValue()&gt;"></gap>
+        <gap num="710" id="&lt;java.nio.Buffer: int position()&gt;"></gap>
+        <gap num="711" id="&lt;java.nio.Buffer: int limit()&gt;"></gap>
+        <gap num="712" id="&lt;java.nio.Buffer: int capacity()&gt;"></gap>
+        <gap num="713" id="&lt;java.nio.Buffer: boolean isReadOnly()&gt;"></gap>
+        <gap num="714" id="&lt;java.nio.Buffer: int remaining()&gt;"></gap>
+        <gap num="715" id="&lt;java.nio.CharBuffer: java.nio.CharBuffer put(char)&gt;"></gap>
+        <gap num="716" id="&lt;java.nio.Buffer: int remaining()&gt;"></gap>
+        <gap num="717" id="&lt;java.nio.CharBuffer: java.nio.CharBuffer put(char)&gt;"></gap>
+        <gap num="718" id="&lt;java.nio.Buffer: int remaining()&gt;"></gap>
+        <gap num="719" id="&lt;java.nio.CharBuffer: java.nio.CharBuffer put(char)&gt;"></gap>
+        <gap num="720" id="&lt;java.nio.Buffer: boolean isReadOnly()&gt;"></gap>
+        <gap num="721" id="&lt;java.nio.Buffer: int remaining()&gt;"></gap>
+        <gap num="722" id="&lt;java.nio.CharBuffer: java.nio.CharBuffer put(char)&gt;"></gap>
+        <gap num="723" id="&lt;java.nio.ByteBuffer: boolean isDirect()&gt;"></gap>
+        <gap num="724" id="&lt;java.nio.Buffer: boolean isReadOnly()&gt;"></gap>
+        <gap num="725" id="&lt;java.nio.Buffer: int remaining()&gt;"></gap>
+        <gap num="726" id="&lt;java.nio.Buffer: int remaining()&gt;"></gap>
+        <gap num="727" id="&lt;java.nio.CharBuffer: char get()&gt;"></gap>
+        <gap num="728" id="&lt;java.nio.CharBuffer: java.nio.CharBuffer put(char)&gt;"></gap>
+        <gap num="729" id="&lt;java.nio.Buffer: int checkIndex(int)&gt;"></gap>
+        <gap num="635" id="&lt;java.nio.Buffer: int remaining()&gt;"></gap>
+        <gap num="636" id="&lt;java.nio.CharBuffer: char get()&gt;"></gap>
+        <gap num="637" id="&lt;java.nio.Buffer: int position()&gt;"></gap>
+        <gap num="638" id="&lt;java.nio.Buffer: int position()&gt;"></gap>
+        <gap num="639" id="&lt;java.nio.Buffer: int limit()&gt;"></gap>
+    </gaps>
+</summary>

@@ -1,0 +1,11 @@
+{
+    "class": "CheckBox",
+    "category": "class",
+    "methods": {
+        "CharSequence getAccessibilityClassName()": "Return the class name of this object to be used for accessibility purposes."
+    },
+    "super class": [
+        "Object",
+        "CheckBox"
+    ]
+}

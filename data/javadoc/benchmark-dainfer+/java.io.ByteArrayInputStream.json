@@ -1,0 +1,18 @@
+{
+    "class": "ByteArrayInputStream",
+    "category": "Class",
+    "methods": {
+        "int available()": "Returns the number of remaining bytes that can be read (or skipped over)\n from this input stream.",
+        "void close()": "Closing aByteArrayInputStreamhas no effect.",
+        "void mark(int\u00a0readAheadLimit)": "Set the current marked position in the stream.",
+        "boolean markSupported()": "Tests if thisInputStreamsupports mark/reset.",
+        "int read()": "Reads the next byte of data from this input stream.",
+        "int read(byte[]\u00a0b,\n    int\u00a0off,\n    int\u00a0len)": "Reads up tolenbytes of data into an array of bytes\n from this input stream.",
+        "void reset()": "Resets the buffer to the marked position.",
+        "long skip(long\u00a0n)": "Skipsnbytes of input from this input stream."
+    },
+    "super class": [
+        "java.io.InputStream",
+        "java.lang.Object"
+    ]
+}

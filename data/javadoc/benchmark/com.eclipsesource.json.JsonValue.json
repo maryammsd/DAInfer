@@ -11,7 +11,7 @@
         "JsonObject asObject()": "Returns this JSON value as JsonObject, assuming that this value represents a JSON object.",
         "String asString()": "Returns this JSON value as String, assuming that this value represents a JSON string.",
         "boolean equals(Object object)": "Indicates whether some other object is \"equal to\" this one according to the contract specified in Object.equals(Object).",
-        "int hashCode()": "",
+        "int hashCode()": "Returns a hash code value for the object.",
         "boolean isArray()": "Detects whether this value represents a JSON array.",
         "boolean isBoolean()": "Detects whether this value represents a boolean value.",
         "boolean isFalse()": "Detects whether this value represents the JSON literal false.",

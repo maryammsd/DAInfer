@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="java.lang.Object[] toArray()">
+            <flows/>
+        </method>
+        <method id="boolean addAll(java.util.Collection)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.util.Collection"/>
+                    <to sourceSinkType="Field" BaseType="java.util.Collection" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.util.stream.Stream stream()">
+            <flows/>
+        </method>
+    </methods>
+</summary>

@@ -1,0 +1,19 @@
+{
+    "class": "PersistableBundle",
+    "category": "class",
+    "methods": {
+        "Object clone()": "Clones the current PersistableBundle.",
+        "PersistableBundle deepCopy()": "Make a deep copy of the given bundle.",
+        "int describeContents()": "Report the nature of this Parcelable's contents",
+        "PersistableBundle getPersistableBundle(String key)": "Returns the value associated with the given key, or null if no mapping of the desired type exists for the given key or a null value is explicitly associated with the key.",
+        "void putPersistableBundle(String key, PersistableBundle value)": "Inserts a PersistableBundle value into the mapping of this Bundle, replacing any existing value for the given key.",
+        "PersistableBundle readFromStream(InputStream inputStream)": "Reads a PersistableBundle from an InputStream.",
+        "String toString()": "Returns a string representation of the PersistableBundle that may be suitable for debugging.",
+        "void writeToParcel(Parcel parcel, int flags)": "Writes the PersistableBundle contents to a Parcel, typically in order for it to be passed through an IBinder connection.",
+        "void writeToStream(OutputStream outputStream)": "Writes the content of the PersistableBundle to a OutputStream."
+    },
+    "super class": [
+        "Object",
+        "PersistableBundle"
+    ]
+}

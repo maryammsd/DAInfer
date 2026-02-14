@@ -1,0 +1,11 @@
+{
+    "class": "PrintStreamPrinter",
+    "category": "class",
+    "methods": {
+        "void println(String x)": "Write a line of text to the output."
+    },
+    "super class": [
+        "Object",
+        "PrintStreamPrinter"
+    ]
+}

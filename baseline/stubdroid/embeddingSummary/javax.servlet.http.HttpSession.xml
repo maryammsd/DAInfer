@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="java.lang.Object getAttribute(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="javax.servlet.http.HttpSession"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.Object" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setAttribute(java.lang.String,java.lang.Object)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="javax.servlet.http.HttpSession"/>
+                    <to sourceSinkType="Return" BaseType="void" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+    </methods>
+</summary>

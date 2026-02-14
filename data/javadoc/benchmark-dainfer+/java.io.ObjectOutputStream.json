@@ -1,0 +1,41 @@
+{
+    "class": "ObjectOutputStream",
+    "category": "Class",
+    "methods": {
+        "void annotateClass(Class\u00a0cl)": "Subclasses may implement this method to allow class data to be stored in\n the stream.",
+        "void annotateProxyClass(Class\u00a0cl)": "Subclasses may implement this method to store custom data in the stream\n along with descriptors for dynamic proxy classes.",
+        "void close()": "Closes the stream.",
+        "void defaultWriteObject()": "Write the non-static and non-transient fields of the current class to\n this stream.",
+        "void drain()": "Drain any buffered data in ObjectOutputStream.",
+        "boolean enableReplaceObject(boolean\u00a0enable)": "Enable the stream to do replacement of objects in the stream.",
+        "void flush()": "Flushes the stream.",
+        "ObjectOutputStream.PutField putFields()": "Retrieve the object used to buffer persistent fields to be written to\n the stream.",
+        "protectedObject replaceObject(Objectobj)": "This method will allow trusted subclasses of ObjectOutputStream to\n substitute one object for another during serialization.",
+        "void reset()": "Reset will disregard the state of any objects already written to the\n stream.",
+        "void useProtocolVersion(int\u00a0version)": "Specify stream protocol version to use when writing the stream.",
+        "void write(byte[]\u00a0buf)": "Writes an array of bytes.",
+        "void write(byte[]\u00a0buf,\n     int\u00a0off,\n     int\u00a0len)": "Writes a sub array of bytes.",
+        "void write(int\u00a0val)": "Writes a byte.",
+        "void writeBoolean(boolean\u00a0val)": "Writes a boolean.",
+        "void writeByte(int\u00a0val)": "Writes an 8 bit byte.",
+        "void writeBytes(Stringstr)": "Writes a String as a sequence of bytes.",
+        "void writeChar(int\u00a0val)": "Writes a 16 bit char.",
+        "void writeChars(Stringstr)": "Writes a String as a sequence of chars.",
+        "void writeClassDescriptor(ObjectStreamClassdesc)": "Write the specified class descriptor to the ObjectOutputStream.",
+        "void writeDouble(double\u00a0val)": "Writes a 64 bit double.",
+        "void writeFields()": "Write the buffered fields to the stream.",
+        "void writeFloat(float\u00a0val)": "Writes a 32 bit float.",
+        "void writeInt(int\u00a0val)": "Writes a 32 bit int.",
+        "void writeLong(long\u00a0val)": "Writes a 64 bit long.",
+        "void writeObject(Objectobj)": "Write the specified object to the ObjectOutputStream.",
+        "void writeObjectOverride(Objectobj)": "Method used by subclasses to override the default writeObject method.",
+        "void writeShort(int\u00a0val)": "Writes a 16 bit short.",
+        "void writeStreamHeader()": "The writeStreamHeader method is provided so subclasses can append or\n prepend their own header to the stream.",
+        "void writeUnshared(Objectobj)": "Writes an \"unshared\" object to the ObjectOutputStream.",
+        "void writeUTF(Stringstr)": "Primitive data write of this String inmodified UTF-8format."
+    },
+    "super class": [
+        "java.io.OutputStream",
+        "java.lang.Object"
+    ]
+}

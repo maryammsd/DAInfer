@@ -2,16 +2,16 @@
     "class": "ResponseBody",
     "category": "Class",
     "methods": {
-        "byte[] bytes()": "",
-        "InputStream byteStream()": "",
+        "byte[] bytes()": "Returns the response as a byte array.",
+        "InputStream byteStream()": "Returns the response as a stream of bytes.",
         "Reader charStream()": "Returns the response as a character stream decoded with the charset of the Content-Type header.",
-        "void close()": "",
+        "void close()": "Closes this stream and releases any system resources associated with it. If the stream is already closed then invoking this method has no effect",
         "long contentLength()": "Returns the number of bytes in that will returned by bytes(), or byteStream(), or -1 if unknown.",
-        "MediaType contentType()": "",
+        "MediaType contentType()": "Returns the high-level media type, such as \"text\", \"image\", \"audio\", \"video\", or \"application\".",
         "ResponseBody create(MediaType contentType, byte[] content)": "Returns a new response body that transmits content.",
         "ResponseBody create(MediaType contentType, long contentLength, okio.BufferedSource content)": "Returns a new response body that transmits content.",
         "ResponseBody create(MediaType contentType, String content)": "Returns a new response body that transmits content.",
-        "okio.BufferedSource source()": "",
+        "okio.BufferedSource source()": "Returns the raw response body as a stream of bytes.",
         "String string()": "Returns the response as a string decoded with the charset of the Content-Type header."
     },
     "super class": []

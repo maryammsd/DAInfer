@@ -1,7 +1,0 @@
-{
-    "void close()": {
-        "return type": "void",
-        "method name": "close",
-        "parameters": []
-    }
-}

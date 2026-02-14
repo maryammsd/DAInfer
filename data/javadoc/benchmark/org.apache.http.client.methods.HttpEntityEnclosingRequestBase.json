@@ -2,10 +2,10 @@
     "class": "HttpEntityEnclosingRequestBase",
     "category": "Class",
     "methods": {
-        "Object clone()": "",
-        "boolean expectContinue()": "",
-        "HttpEntity getEntity()": "",
-        "void setEntity(HttpEntity entity)": ""
+        "Object clone()": "Make a clone of this request.",
+        "boolean expectContinue()": "Checks if the request expects a 100-continue response.",
+        "HttpEntity getEntity()": "Gets the entity of the request.",
+        "void setEntity(HttpEntity entity)": "Sets the entity of the request."
     },
     "super class": [
         "org.apache.http.client.methods.HttpRequestBase",

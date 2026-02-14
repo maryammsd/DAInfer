@@ -1,0 +1,261 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="double getDouble(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.BaseBundle"/>
+                    <to sourceSinkType="Return" BaseType="double" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="long[] getLongArray(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.BaseBundle"/>
+                    <to sourceSinkType="Return" BaseType="long[]" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int getInt(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.BaseBundle"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putStringArray(java.lang.String,java.lang.String[])">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.BaseBundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.String[]"/>
+                    <to sourceSinkType="Field" BaseType="android.os.BaseBundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putDoubleArray(java.lang.String,double[])">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.BaseBundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="double[]"/>
+                    <to sourceSinkType="Field" BaseType="android.os.BaseBundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String getString(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.BaseBundle"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="long getLong(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.BaseBundle"/>
+                    <to sourceSinkType="Return" BaseType="long" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="double getDouble(java.lang.String,double)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.BaseBundle"/>
+                    <to sourceSinkType="Return" BaseType="double" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putInt(java.lang.String,int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.BaseBundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.os.BaseBundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putBoolean(java.lang.String,boolean)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.BaseBundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="boolean"/>
+                    <to sourceSinkType="Field" BaseType="android.os.BaseBundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String getString(java.lang.String,java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.BaseBundle"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="long getLong(java.lang.String,long)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.BaseBundle"/>
+                    <to sourceSinkType="Return" BaseType="long" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putLong(java.lang.String,long)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.BaseBundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="long"/>
+                    <to sourceSinkType="Field" BaseType="android.os.BaseBundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putAll(android.os.PersistableBundle)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="android.os.PersistableBundle"/>
+                    <to sourceSinkType="Field" BaseType="android.os.BaseBundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="boolean[] getBooleanArray(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.BaseBundle"/>
+                    <to sourceSinkType="Return" BaseType="boolean[]" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="boolean getBoolean(java.lang.String,boolean)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.BaseBundle"/>
+                    <to sourceSinkType="Return" BaseType="boolean" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putIntArray(java.lang.String,int[])">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.BaseBundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int[]"/>
+                    <to sourceSinkType="Field" BaseType="android.os.BaseBundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="double[] getDoubleArray(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.BaseBundle"/>
+                    <to sourceSinkType="Return" BaseType="double[]" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int getInt(java.lang.String,int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.BaseBundle"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putDouble(java.lang.String,double)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.BaseBundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="double"/>
+                    <to sourceSinkType="Field" BaseType="android.os.BaseBundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.util.Set keySet()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.BaseBundle"/>
+                    <to sourceSinkType="Return" BaseType="java.util.Set" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String[] getStringArray(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.BaseBundle"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String[]" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putLongArray(java.lang.String,long[])">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.BaseBundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="long[]"/>
+                    <to sourceSinkType="Field" BaseType="android.os.BaseBundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putString(java.lang.String,java.lang.String)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.BaseBundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.BaseBundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putBooleanArray(java.lang.String,boolean[])">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.BaseBundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="boolean[]"/>
+                    <to sourceSinkType="Field" BaseType="android.os.BaseBundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int[] getIntArray(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.BaseBundle"/>
+                    <to sourceSinkType="Return" BaseType="int[]" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="boolean getBoolean(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.BaseBundle"/>
+                    <to sourceSinkType="Return" BaseType="boolean" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+    </methods>
+</summary>

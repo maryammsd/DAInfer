@@ -1,0 +1,61 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="java.lang.String toString()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.Integer"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="double doubleValue()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.Integer"/>
+                    <to sourceSinkType="Return" BaseType="double" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="long longValue()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.Integer"/>
+                    <to sourceSinkType="Return" BaseType="long" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="short shortValue()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.Integer"/>
+                    <to sourceSinkType="Return" BaseType="short" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="byte byteValue()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.Integer"/>
+                    <to sourceSinkType="Return" BaseType="byte" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int intValue()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.Integer"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="float floatValue()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.Integer"/>
+                    <to sourceSinkType="Return" BaseType="float" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+    </methods>
+</summary>

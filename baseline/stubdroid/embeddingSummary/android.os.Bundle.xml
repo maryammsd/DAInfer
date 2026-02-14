@@ -1,0 +1,445 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="void putByteArray(java.lang.String,byte[])">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="byte[]"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putSparseParcelableArray(java.lang.String,android.util.SparseArray)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="android.util.SparseArray"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.util.ArrayList getStringArrayList(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Bundle"/>
+                    <to sourceSinkType="Return" BaseType="java.util.ArrayList" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putSerializable(java.lang.String,java.io.Serializable)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.io.Serializable"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putParcelableArray(java.lang.String,android.os.Parcelable[])">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="android.os.Parcelable[]"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putParcelableArrayList(java.lang.String,java.util.ArrayList)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.util.ArrayList"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.os.IBinder getBinder(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Bundle"/>
+                    <to sourceSinkType="Return" BaseType="android.os.IBinder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putSize(java.lang.String,android.util.Size)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="android.util.Size"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putShortArray(java.lang.String,short[])">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="short[]"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putIntegerArrayList(java.lang.String,java.util.ArrayList)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.util.ArrayList"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.util.Size getSize(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Bundle"/>
+                    <to sourceSinkType="Return" BaseType="android.util.Size" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.util.SizeF getSizeF(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Bundle"/>
+                    <to sourceSinkType="Return" BaseType="android.util.SizeF" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="float[] getFloatArray(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Bundle"/>
+                    <to sourceSinkType="Return" BaseType="float[]" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putByte(java.lang.String,byte)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="byte"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="char[] getCharArray(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Bundle"/>
+                    <to sourceSinkType="Return" BaseType="char[]" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putBundle(java.lang.String,android.os.Bundle)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="android.os.Bundle"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="float getFloat(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Bundle"/>
+                    <to sourceSinkType="Return" BaseType="float" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putFloatArray(java.lang.String,float[])">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="float[]"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.util.ArrayList getCharSequenceArrayList(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Bundle"/>
+                    <to sourceSinkType="Return" BaseType="java.util.ArrayList" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putCharArray(java.lang.String,char[])">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="char[]"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putChar(java.lang.String,char)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="char"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.CharSequence getCharSequence(java.lang.String,java.lang.CharSequence)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Bundle"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.CharSequence" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putCharSequence(java.lang.String,java.lang.CharSequence)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.CharSequence"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putParcelable(java.lang.String,android.os.Parcelable)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="android.os.Parcelable"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="char getChar(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Bundle"/>
+                    <to sourceSinkType="Return" BaseType="char" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putCharSequenceArray(java.lang.String,java.lang.CharSequence[])">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.CharSequence[]"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.os.Bundle getBundle(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Bundle"/>
+                    <to sourceSinkType="Return" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="short getShort(java.lang.String,short)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Bundle"/>
+                    <to sourceSinkType="Return" BaseType="short" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putBinder(java.lang.String,android.os.IBinder)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="android.os.IBinder"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="short getShort(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Bundle"/>
+                    <to sourceSinkType="Return" BaseType="short" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.Byte getByte(java.lang.String,byte)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Bundle"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.Byte" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void readFromParcel(android.os.Parcel)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Bundle"/>
+                    <to sourceSinkType="Return" BaseType="void" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="short[] getShortArray(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Bundle"/>
+                    <to sourceSinkType="Return" BaseType="short[]" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="char getChar(java.lang.String,char)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Bundle"/>
+                    <to sourceSinkType="Return" BaseType="char" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="byte[] getByteArray(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Bundle"/>
+                    <to sourceSinkType="Return" BaseType="byte[]" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putFloat(java.lang.String,float)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="float"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putShort(java.lang.String,short)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="short"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.CharSequence getCharSequence(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Bundle"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.CharSequence" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="byte getByte(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Bundle"/>
+                    <to sourceSinkType="Return" BaseType="byte" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putSizeF(java.lang.String,android.util.SizeF)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="android.util.SizeF"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeToParcel(android.os.Parcel,int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="android.os.Parcel"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void putCharSequenceArrayList(java.lang.String,java.util.ArrayList)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.util.ArrayList"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="float getFloat(java.lang.String,float)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Bundle"/>
+                    <to sourceSinkType="Return" BaseType="float" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.CharSequence[] getCharSequenceArray(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Bundle"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.CharSequence[]" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+    </methods>
+</summary>

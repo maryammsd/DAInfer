@@ -1,0 +1,38 @@
+{
+    "class": "Double",
+    "category": "Class",
+    "methods": {
+        "byte byteValue()": "Returns the value of thisDoubleas abyteafter a narrowing primitive conversion.",
+        "int compare(double\u00a0d1,\n       double\u00a0d2)": "Compares the two specifieddoublevalues.",
+        "int compareTo(DoubleanotherDouble)": "Compares twoDoubleobjects numerically.",
+        "long doubleToLongBits(double\u00a0value)": "Returns a representation of the specified floating-point value\n according to the IEEE 754 floating-point \"double\n format\" bit layout.",
+        "long doubleToRawLongBits(double\u00a0value)": "Returns a representation of the specified floating-point value\n according to the IEEE 754 floating-point \"double\n format\" bit layout, preserving Not-a-Number (NaN) values.",
+        "double doubleValue()": "Returns thedoublevalue of thisDoubleobject.",
+        "boolean equals(Objectobj)": "Compares this object against the specified object.",
+        "float floatValue()": "Returns the value of thisDoubleas afloatafter a narrowing primitive conversion.",
+        "int hashCode()": "Returns a hash code for thisDoubleobject.",
+        "int hashCode(double\u00a0value)": "Returns a hash code for adoublevalue; compatible withDouble.hashCode().",
+        "int intValue()": "Returns the value of thisDoubleas anintafter a narrowing primitive conversion.",
+        "boolean isFinite(double\u00a0d)": "Returnstrueif the argument is a finite floating-point\n value; returnsfalseotherwise (for NaN and infinity\n arguments).",
+        "boolean isInfinite()": "Returnstrueif thisDoublevalue is\n infinitely large in magnitude,falseotherwise.",
+        "boolean isInfinite(double\u00a0v)": "Returnstrueif the specified number is infinitely\n large in magnitude,falseotherwise.",
+        "boolean isNaN()": "Returnstrueif thisDoublevalue is\n a Not-a-Number (NaN),falseotherwise.",
+        "boolean isNaN(double\u00a0v)": "Returnstrueif the specified number is a\n Not-a-Number (NaN) value,falseotherwise.",
+        "double longBitsToDouble(long\u00a0bits)": "Returns thedoublevalue corresponding to a given\n bit representation.",
+        "long longValue()": "Returns the value of thisDoubleas alongafter a narrowing primitive conversion.",
+        "double max(double\u00a0a,\n   double\u00a0b)": "Returns the greater of twodoublevalues\n as if by callingMath.max.",
+        "double min(double\u00a0a,\n   double\u00a0b)": "Returns the smaller of twodoublevalues\n as if by callingMath.min.",
+        "double parseDouble(Strings)": "Returns a newdoubleinitialized to the value\n represented by the specifiedString, as performed\n by thevalueOfmethod of classDouble.",
+        "short shortValue()": "Returns the value of thisDoubleas ashortafter a narrowing primitive conversion.",
+        "double sum(double\u00a0a,\n   double\u00a0b)": "Adds twodoublevalues together as per the + operator.",
+        "staticString toHexString(double\u00a0d)": "Returns a hexadecimal string representation of thedoubleargument.",
+        "String toString()": "Returns a string representation of thisDoubleobject.",
+        "staticString toString(double\u00a0d)": "Returns a string representation of thedoubleargument.",
+        "staticDouble valueOf(double\u00a0d)": "Returns aDoubleinstance representing the specifieddoublevalue.",
+        "staticDouble valueOf(Strings)": "Returns aDoubleobject holding thedoublevalue represented by the argument strings."
+    },
+    "super class": [
+        "java.lang.Number",
+        "java.lang.Object"
+    ]
+}

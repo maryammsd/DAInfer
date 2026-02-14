@@ -1,0 +1,24 @@
+{
+    "class": "Range",
+    "category": "class",
+    "methods": {
+        "T clamp(T value)": "Clamps value to this range.",
+        "boolean contains(Range range)": "Checks if another range is within the bounds of this range.",
+        "boolean contains(T value)": "Checks if the value is within the bounds of this range.",
+        "Range create(T lower, T upper)": "Create a new immutable range, with the argument types inferred.",
+        "boolean equals(Object obj)": "Compare two ranges for equality.",
+        "Range extend(Range range)": "Returns the smallest range that includes this range and another range.",
+        "Range extend(T value)": "Returns the smallest range that includes this range and the value.",
+        "Range extend(T lower, T upper)": "Returns the smallest range that includes this range and the inclusive range specified by [lower, upper].",
+        "T getLower()": "Get the lower endpoint.",
+        "T getUpper()": "Get the upper endpoint.",
+        "int hashCode()": "Returns a hash code value for the object.",
+        "Range intersect(T lower, T upper)": "Returns the intersection of this range and the inclusive range specified by [lower, upper].",
+        "Range intersect(Range range)": "Returns the intersection of this range and another range.",
+        "String toString()": "Return the range as a string representation \"[lower, upper]\"."
+    },
+    "super class": [
+        "Object",
+        "Range"
+    ]
+}

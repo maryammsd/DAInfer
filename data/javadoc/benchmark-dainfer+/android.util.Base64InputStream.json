@@ -1,0 +1,18 @@
+{
+    "class": "Base64InputStream",
+    "category": "class",
+    "methods": {
+        "int available()": "Returns an estimate of the number of bytes that can be read (or skipped over) from this input stream without blocking by the next caller of a method for this input stream.",
+        "void close()": "Closes this input stream and releases any system resources associated with the stream.",
+        "void mark(int readlimit)": "Marks the current position in this input stream.",
+        "boolean markSupported()": "Tests if this input stream supports the mark and reset methods.",
+        "int read()": "Reads the next byte of data from this input stream.",
+        "int read(byte[] b, int off, int len)": "Reads up to len bytes of data from this input stream into an array of bytes.",
+        "void reset()": "Repositions this stream to the position at the time the mark method was last called on this input stream.",
+        "long skip(long n)": "Skips over and discards n bytes of data from the input stream."
+    },
+    "super class": [
+        "Object",
+        "Base64InputStream"
+    ]
+}

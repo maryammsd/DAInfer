@@ -2,14 +2,14 @@
     "class": "NBTBase",
     "category": "Class",
     "methods": {
-        "NBTBase copy()": "",
-        "NBTBase createNewByType(byte id)": "",
-        "boolean equals(java.lang.Object p_equals_1_)": "",
-        "byte getId()": "",
-        "java.lang.String getString()": "",
-        "int hashCode()": "",
-        "boolean hasNoTags()": "",
-        "java.lang.String toString()": ""
+        "NBTBase copy()": "Makes a clone of this tag.",
+        "NBTBase createNewByType(byte id)": "Creates a new tag of the specified type.",
+        "boolean equals(java.lang.Object p_equals_1_)": "Checks if this tag is equal to another object.",
+        "byte getId()": "Gets the ID of the tag.",
+        "java.lang.String getString()": "Gets a string representation of the tag.",
+        "int hashCode()": "Returns the hash code of the tag.",
+        "boolean hasNoTags()": "Checks if the tag has no child tags.",
+        "java.lang.String toString()": "Returns a string representation of the tag."
     },
     "super class": []
 }

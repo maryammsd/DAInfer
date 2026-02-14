@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="java.util.Map snapshot()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.util.LruCache"/>
+                    <to sourceSinkType="Return" BaseType="java.util.Map" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+    </methods>
+</summary>

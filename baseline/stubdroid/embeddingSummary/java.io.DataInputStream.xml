@@ -1,0 +1,86 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="short readShort()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.io.DataInputStream"/>
+                    <to sourceSinkType="Return" BaseType="short" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int readInt()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.io.DataInputStream"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="byte readByte()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.io.DataInputStream"/>
+                    <to sourceSinkType="Return" BaseType="byte" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="boolean readBoolean()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.io.DataInputStream"/>
+                    <to sourceSinkType="Return" BaseType="boolean" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int readUnsignedShort()">
+            <flows/>
+        </method>
+        <method id="double readDouble()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.io.DataInputStream"/>
+                    <to sourceSinkType="Return" BaseType="double" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="char readChar()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.io.DataInputStream"/>
+                    <to sourceSinkType="Return" BaseType="char" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="long readLong()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.io.DataInputStream"/>
+                    <to sourceSinkType="Return" BaseType="long" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int read()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.io.DataInputStream"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="float readFloat()">
+            <flows/>
+        </method>
+        <method id="java.lang.String readUTF()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.io.DataInputStream"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int readUnsignedByte()">
+            <flows/>
+        </method>
+    </methods>
+</summary>

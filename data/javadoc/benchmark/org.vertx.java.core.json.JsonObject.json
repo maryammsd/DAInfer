@@ -8,7 +8,7 @@
         "JsonObject copy(java.util.function.Function cloner)": "Deep copy of this JSON object.",
         "String encode()": "Encode this JSON object as a string.",
         "String encodePrettily()": "Encode this JSON object a a string, with whitespace to make the object easier to read by a human, or other sentient organism.",
-        "boolean equals(Object o)": "",
+        "boolean equals(Object o)": "Method for checking equality of two JSON objects.",
         "Set fieldNames()": "Return the set of field names in the JSON objects",
         "byte[] getBinary(String key)": "Get the binary value with the specified key.",
         "byte[] getBinary(String key, byte[] def)": "Like getBinary(String) but specifying a default value to return if there is no entry.",
@@ -37,7 +37,7 @@
         "String getString(String key, String def)": "Like getString(String) but specifying a default value to return if there is no entry.",
         "Object getValue(String key)": "Get the value with the specified key, as an Object with types respecting the limitations of JSON.",
         "Object getValue(String key, Object def)": "Like getValue(String) but specifying a default value to return if there is no entry.",
-        "int hashCode()": "",
+        "int hashCode()": "Method for getting the hash code of the JSON object.",
         "boolean isEmpty()": "Is this object entry?",
         "Iterator iterator()": "Get an Iterator of the entries in the JSON object.",
         "JsonObject mapFrom(Object obj)": "Create a JsonObject from the fields of a Java object.",
@@ -63,7 +63,7 @@
         "int size()": "Get the number of entries in the JSON object",
         "java.util.stream.Stream stream()": "Get a Stream over the entries in the JSON object.",
         "Buffer toBuffer()": "Encode this JSON object as buffer.",
-        "String toString()": "",
+        "String toString()": "Method for getting the string representation of the JSON object.",
         "void writeToBuffer(Buffer buffer)": "Method invoked when serializing this instance."
     },
     "super class": []

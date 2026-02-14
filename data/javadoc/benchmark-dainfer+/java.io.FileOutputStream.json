@@ -1,0 +1,17 @@
+{
+    "class": "FileOutputStream",
+    "category": "Class",
+    "methods": {
+        "void close()": "Closes this file output stream and releases any system resources\n associated with this stream.",
+        "void finalize()": "Cleans up the connection to the file, and ensures that theclosemethod of this file output stream is\n called when there are no more references to this stream.",
+        "FileChannel getChannel()": "Returns the uniqueFileChannelobject associated with this file output stream.",
+        "FileDescriptor getFD()": "Returns the file descriptor associated with this stream.",
+        "void write(byte[]\u00a0b)": "Writesb.lengthbytes from the specified byte array\n to this file output stream.",
+        "void write(byte[]\u00a0b,\n     int\u00a0off,\n     int\u00a0len)": "Writeslenbytes from the specified byte array\n starting at offsetoffto this file output stream.",
+        "void write(int\u00a0b)": "Writes the specified byte to this file output stream."
+    },
+    "super class": [
+        "java.io.OutputStream",
+        "java.lang.Object"
+    ]
+}

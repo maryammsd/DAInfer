@@ -1,0 +1,13 @@
+{
+    "class": "Formatter",
+    "category": "class",
+    "methods": {
+        "String formatFileSize(Context context, long sizeBytes)": "Formats a content size to be in the form of bytes, kilobytes, megabytes, etc.",
+        "String formatIpAddress(int ipv4Address)": "This method was deprecated in API level 15. Use InetAddress.getHostAddress(), which supports both IPv4 and IPv6 addresses. This method does not support IPv6 addresses.",
+        "String formatShortFileSize(Context context, long sizeBytes)": "Like formatFileSize(Context, long), but trying to generate shorter numbers (showing fewer digits of precision)."
+    },
+    "super class": [
+        "Object",
+        "Formatter"
+    ]
+}

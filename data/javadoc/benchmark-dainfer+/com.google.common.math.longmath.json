@@ -1,0 +1,25 @@
+{
+    "class": "LongMath",
+    "category": "Class",
+    "methods": {
+        "long binomial(int n, int k)": "Returns n choose k, also known as the binomial coefficient of n and k, or Long.MAX_VALUE if the result does not fit in a long.",
+        "long checkedAdd(long a, long b)": "Returns the sum of a and b, provided it does not overflow.",
+        "long checkedMultiply(long a, long b)": "Returns the product of a and b, provided it does not overflow.",
+        "long checkedPow(long b, int k)": "Returns the b to the kth power, provided it does not overflow.",
+        "long checkedSubtract(long a, long b)": "Returns the difference of a and b, provided it does not overflow.",
+        "long divide(long p, long q, RoundingMode mode)": "Returns the result of dividing p by q, rounding using the specified RoundingMode.",
+        "long factorial(int n)": "Returns n!, that is, the product of the first n positive integers, 1 if n == 0, or Long.MAX_VALUE if the result does not fit in a long.",
+        "long gcd(long a, long b)": "Returns the greatest common divisor of a, b.",
+        "boolean isPowerOfTwo(long x)": "Returns true if x represents a power of two.",
+        "int log10(long x, RoundingMode mode)": "Returns the base-10 logarithm of x, rounded according to the specified rounding mode.",
+        "int log2(long x, RoundingMode mode)": "Returns the base-2 logarithm of x, rounded according to the specified rounding mode.",
+        "long mean(long x, long y)": "Returns the arithmetic mean of x and y, rounded toward negative infinity.",
+        "int mod(long x, int m)": "Returns x mod m, a non-negative value less than m.",
+        "long mod(long x, long m)": "Returns x mod m, a non-negative value less than m.",
+        "long pow(long b, int k)": "Returns b to the kth power.",
+        "long sqrt(long x, RoundingMode mode)": "Returns the square root of x, rounded with the specified rounding mode."
+    },
+    "super class": [
+        "java.lang.Object"
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "class": "BufferedWriter",
+    "category": "Class",
+    "methods": {
+        "void close()": "Closes the stream, flushing it first.",
+        "void flush()": "Flushes the stream.",
+        "void newLine()": "Writes a line separator.",
+        "void write(char[]\u00a0cbuf,\n     int\u00a0off,\n     int\u00a0len)": "Writes a portion of an array of characters.",
+        "void write(int\u00a0c)": "Writes a single character.",
+        "void write(Strings,\n     int\u00a0off,\n     int\u00a0len)": "Writes a portion of a String."
+    },
+    "super class": [
+        "java.io.Writer",
+        "java.lang.Object"
+    ]
+}

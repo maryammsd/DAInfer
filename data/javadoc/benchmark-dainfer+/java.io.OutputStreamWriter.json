@@ -1,0 +1,16 @@
+{
+    "class": "OutputStreamWriter",
+    "category": "Class",
+    "methods": {
+        "void close()": "Closes the stream, flushing it first.",
+        "void flush()": "Flushes the stream.",
+        "String getEncoding()": "Returns the name of the character encoding being used by this stream.",
+        "void write(char[]\u00a0cbuf,\n     int\u00a0off,\n     int\u00a0len)": "Writes a portion of an array of characters.",
+        "void write(int\u00a0c)": "Writes a single character.",
+        "void write(Stringstr,\n     int\u00a0off,\n     int\u00a0len)": "Writes a portion of a string."
+    },
+    "super class": [
+        "java.io.Writer",
+        "java.lang.Object"
+    ]
+}

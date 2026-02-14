@@ -1,0 +1,26 @@
+{
+    "class": "JsonWriter",
+    "category": "class",
+    "methods": {
+        "JsonWriter beginArray()": "Begins encoding a new array.",
+        "JsonWriter beginObject()": "Begins encoding a new object.",
+        "void close()": "Flushes and closes this writer and the underlying Writer.",
+        "JsonWriter endArray()": "Ends encoding the current array.",
+        "JsonWriter endObject()": "Ends encoding the current object.",
+        "void flush()": "Ensures all buffered data is written to the underlying Writer and flushes that writer.",
+        "boolean isLenient()": "Returns true if this writer has relaxed syntax rules.",
+        "JsonWriter name(String name)": "Encodes the property name.",
+        "JsonWriter nullValue()": "Encodes null.",
+        "void setIndent(String indent)": "Sets the indentation string to be repeated for each level of indentation in the encoded document.",
+        "void setLenient(boolean lenient)": "Configure this writer to relax its syntax rules.",
+        "JsonWriter value(double value)": "Encodes value.",
+        "JsonWriter value(Number value)": "Encodes value.",
+        "JsonWriter value(boolean value)": "Encodes value.",
+        "JsonWriter value(long value)": "Encodes value.",
+        "JsonWriter value(String value)": "Encodes value."
+    },
+    "super class": [
+        "Object",
+        "JsonWriter"
+    ]
+}

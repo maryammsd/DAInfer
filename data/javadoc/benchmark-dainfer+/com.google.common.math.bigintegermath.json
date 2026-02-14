@@ -1,0 +1,16 @@
+{
+    "class": "BigIntegerMath",
+    "category": "Class",
+    "methods": {
+        "BigInteger binomial(int n, int k)": "Returns n choose k, also known as the binomial coefficient of n and k, that is, n! / (k! (n - k)!).",
+        "BigInteger divide(BigInteger p, BigInteger q, RoundingMode mode)": "Returns the result of dividing p by q, rounding using the specified RoundingMode.",
+        "BigInteger factorial(int n)": "Returns n!, that is, the product of the first n positive integers, or 1 if n == 0.",
+        "boolean isPowerOfTwo(BigInteger x)": "Returns true if x represents a power of two.",
+        "int log10(BigInteger x, RoundingMode mode)": "Returns the base-10 logarithm of x, rounded according to the specified rounding mode.",
+        "int log2(BigInteger x, RoundingMode mode)": "Returns the base-2 logarithm of x, rounded according to the specified rounding mode.",
+        "BigInteger sqrt(BigInteger x, RoundingMode mode)": "Returns the square root of x, rounded with the specified rounding mode."
+    },
+    "super class": [
+        "java.lang.Object"
+    ]
+}

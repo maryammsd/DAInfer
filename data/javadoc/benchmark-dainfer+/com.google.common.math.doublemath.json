@@ -1,0 +1,24 @@
+{
+    "class": "DoubleMath",
+    "category": "Class",
+    "methods": {
+        "double factorial(int n)": "Returns n!, that is, the product of the first n positive integers, 1 if n == 0, or n!, or Double.POSITIVE_INFINITY if n! > Double.MAX_VALUE.",
+        "int fuzzyCompare(double a, double b, double tolerance)": "Compares a and b \"fuzzily, \" with a tolerance for nearly-equal values.",
+        "boolean fuzzyEquals(double a, double b, double tolerance)": "Returns true if a and b are within tolerance of each other.",
+        "boolean isMathematicalInteger(double x)": "Returns true if x represents a mathematical integer.",
+        "boolean isPowerOfTwo(double x)": "Returns true if x is exactly equal to 2^k for some finite integer k.",
+        "double log2(double x)": "Returns the base 2 logarithm of a double value.",
+        "int log2(double x, RoundingMode mode)": "Returns the base 2 logarithm of a double value, rounded with the specified rounding mode to an int.",
+        "double mean(double... values)": "Returns the arithmetic mean of values.",
+        "double mean(int... values)": "Returns the arithmetic mean of values.",
+        "double mean(Iterable values)": "Returns the arithmetic mean of values.",
+        "double mean(Iterator values)": "Returns the arithmetic mean of values.",
+        "double mean(long... values)": "Returns the arithmetic mean of values.",
+        "BigInteger roundToBigInteger(double x, RoundingMode mode)": "Returns the BigInteger value that is equal to x rounded with the specified rounding mode, if possible.",
+        "int roundToInt(double x, RoundingMode mode)": "Returns the int value that is equal to x rounded with the specified rounding mode, if possible.",
+        "long roundToLong(double x, RoundingMode mode)": "Returns the long value that is equal to x rounded with the specified rounding mode, if possible."
+    },
+    "super class": [
+        "java.lang.Object"
+    ]
+}

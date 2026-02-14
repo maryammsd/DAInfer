@@ -1,0 +1,272 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="void setIndoorLocMode(boolean)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="boolean"/>
+                    <to sourceSinkType="Field" BaseType="com.baidu.location.BDLocation" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setLongitude(double)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="double"/>
+                    <to sourceSinkType="Field" BaseType="com.baidu.location.BDLocation" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setSpeed(float)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="float"/>
+                    <to sourceSinkType="Field" BaseType="com.baidu.location.BDLocation" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setGpsCheckStatus(int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="com.baidu.location.BDLocation" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int getGpsAccuracyStatus()">
+            <flows/>
+        </method>
+        <method id="double getLatitude()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="com.baidu.location.BDLocation"/>
+                    <to sourceSinkType="Return" BaseType="double" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="boolean hasAddr()">
+            <flows/>
+        </method>
+        <method id="int getGpsCheckStatus()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="com.baidu.location.BDLocation"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int getUserIndoorState()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="com.baidu.location.BDLocation"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="boolean hasSateNumber()">
+            <flows/>
+        </method>
+        <method id="boolean isCellChangeFlag()">
+            <flows/>
+        </method>
+        <method id="void setRadius(float)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="float"/>
+                    <to sourceSinkType="Field" BaseType="com.baidu.location.BDLocation" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="float getDirection()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="com.baidu.location.BDLocation"/>
+                    <to sourceSinkType="Return" BaseType="float" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="float getSpeed()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="com.baidu.location.BDLocation"/>
+                    <to sourceSinkType="Return" BaseType="float" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setLatitude(double)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="double"/>
+                    <to sourceSinkType="Field" BaseType="com.baidu.location.BDLocation" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setDirection(float)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="float"/>
+                    <to sourceSinkType="Field" BaseType="com.baidu.location.BDLocation" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setGpsAccuracyStatus(int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="com.baidu.location.BDLocation" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int getOperators()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="com.baidu.location.BDLocation"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setUserIndoorState(int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="com.baidu.location.BDLocation" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int getLocationWhere()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="com.baidu.location.BDLocation"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int getIndoorNetworkState()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="com.baidu.location.BDLocation"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setParkAvailable(int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="com.baidu.location.BDLocation" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int getIndoorLocationSurpport()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="com.baidu.location.BDLocation"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setIndoorLocationSource(int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="com.baidu.location.BDLocation" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="float getRadius()">
+            <flows/>
+        </method>
+        <method id="boolean isIndoorLocMode()">
+            <flows/>
+        </method>
+        <method id="void setAltitude(double)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="double"/>
+                    <to sourceSinkType="Field" BaseType="com.baidu.location.BDLocation" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int getSatelliteNumber()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="com.baidu.location.BDLocation"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setLocType(int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="com.baidu.location.BDLocation" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int isParkAvailable()">
+            <flows/>
+        </method>
+        <method id="boolean hasAltitude()">
+            <flows/>
+        </method>
+        <method id="void setIndoorNetworkState(int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="com.baidu.location.BDLocation" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int getLocType()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="com.baidu.location.BDLocation"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="boolean hasSpeed()">
+            <flows/>
+        </method>
+        <method id="void setSatelliteNumber(int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="com.baidu.location.BDLocation" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int getIndoorLocationSource()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="com.baidu.location.BDLocation"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="double getLongitude()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="com.baidu.location.BDLocation"/>
+                    <to sourceSinkType="Return" BaseType="double" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setOperators(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="com.baidu.location.BDLocation"/>
+                    <to sourceSinkType="Return" BaseType="void" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="double getAltitude()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="com.baidu.location.BDLocation"/>
+                    <to sourceSinkType="Return" BaseType="double" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+    </methods>
+</summary>

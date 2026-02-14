@@ -41,7 +41,7 @@
         "void firePropertySetEvent(String key, Object value, boolean accumulated, JsonConfig jsonConfig)": "Fires a property set event.",
         "void fireWarnEvent(String warning, JsonConfig jsonConfig)": "Fires a warning event.",
         "JSONObject fromObject(Object object)": "Creates a JSONObject by inspecting the object type.",
-        "Object get(Object key)": "",
+        "Object get(Object key)": "Retrieves the value object associated with a key.",
         "Object get(String key)": "Gets the value object associated with a key.",
         "boolean getBoolean(String key)": "Gets the boolean value associated with a key.",
         "double getDouble(String key)": "Gets the double value associated with a key.",

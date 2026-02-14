@@ -1,0 +1,217 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="android.graphics.Rect unflattenFromString(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.graphics.Rect"/>
+                    <to sourceSinkType="Return" BaseType="android.graphics.Rect" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void union(int,int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.graphics.Rect"/>
+                    <to sourceSinkType="Return" BaseType="void" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.graphics.Rect" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.graphics.Rect" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int width()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.graphics.Rect"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void union(int,int,int,int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.graphics.Rect" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.graphics.Rect" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="2" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.graphics.Rect" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="3" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.graphics.Rect" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void readFromParcel(android.os.Parcel)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="android.os.Parcel"/>
+                    <to sourceSinkType="Field" BaseType="android.graphics.Rect" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int centerX()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.graphics.Rect"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int centerY()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.graphics.Rect"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeToParcel(android.os.Parcel,int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="android.os.Parcel"/>
+                    <to sourceSinkType="Field" BaseType="android.graphics.Rect" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.graphics.Rect" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String flattenToString()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.graphics.Rect"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void offset(int,int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.graphics.Rect" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.graphics.Rect" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String toShortString()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.graphics.Rect"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="float exactCenterX()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.graphics.Rect"/>
+                    <to sourceSinkType="Return" BaseType="float" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="float exactCenterY()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.graphics.Rect"/>
+                    <to sourceSinkType="Return" BaseType="float" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void offsetTo(int,int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.graphics.Rect"/>
+                    <to sourceSinkType="Return" BaseType="void" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.graphics.Rect" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.graphics.Rect" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void set(int,int,int,int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.graphics.Rect" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.graphics.Rect" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="2" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.graphics.Rect" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="3" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.graphics.Rect" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void set(android.graphics.Rect)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.graphics.Rect"/>
+                    <to sourceSinkType="Return" BaseType="void" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int height()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.graphics.Rect"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String toString()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.graphics.Rect"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void union(android.graphics.Rect)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="android.graphics.Rect"/>
+                    <to sourceSinkType="Field" BaseType="android.graphics.Rect" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void inset(int,int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.graphics.Rect" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.graphics.Rect" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+    </methods>
+</summary>

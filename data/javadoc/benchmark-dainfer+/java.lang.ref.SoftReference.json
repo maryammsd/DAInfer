@@ -1,0 +1,11 @@
+{
+    "class": "SoftReference",
+    "category": "Class",
+    "methods": {
+        "T get()": "Returns this reference object's referent."
+    },
+    "super class": [
+        "java.lang.ref.Reference",
+        "java.lang.Object"
+    ]
+}

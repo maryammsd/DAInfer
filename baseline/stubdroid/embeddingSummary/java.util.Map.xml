@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="java.util.Set keySet()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.util.Map"/>
+                    <to sourceSinkType="Return" BaseType="java.util.Set" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void replaceAll(java.util.function.BiFunction)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.util.function.BiFunction"/>
+                    <to sourceSinkType="Field" BaseType="java.util.Map" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.util.Set entrySet()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.util.Map"/>
+                    <to sourceSinkType="Return" BaseType="java.util.Set" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.util.Collection values()">
+            <flows/>
+        </method>
+        <method id="void putAll(java.util.Map)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.util.Map"/>
+                    <to sourceSinkType="Field" BaseType="java.util.Map" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+    </methods>
+</summary>

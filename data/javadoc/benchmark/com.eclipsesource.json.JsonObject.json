@@ -18,7 +18,7 @@
         "int getInt(String name, int defaultValue)": "Returns the int value of the member with the specified name in this object.",
         "long getLong(String name, long defaultValue)": "Returns the long value of the member with the specified name in this object.",
         "String getString(String name, String defaultValue)": "Returns the String value of the member with the specified name in this object.",
-        "int hashCode()": "",
+        "int hashCode()": "Returns a hash code value for the object.",
         "boolean isEmpty()": "Returns true if this object contains no members.",
         "boolean isObject()": "Detects whether this value represents a JSON object.",
         "Iterator iterator()": "Returns an iterator over the members of this object in document order.",

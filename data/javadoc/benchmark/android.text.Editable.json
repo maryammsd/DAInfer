@@ -1,0 +1,22 @@
+{
+    "class": "Editable",
+    "category": "class",
+    "methods": {
+        "Editable append(char text)": "Convenience for append(String.valueOf(text)).",
+        "Editable append(CharSequence text, int start, int end)": "Convenience for replace(length(), length(), text, start, end)",
+        "Editable append(CharSequence text)": "Convenience for replace(length(), length(), text, 0, text.length())",
+        "void clear()": "Convenience for replace(0, length(), \"\", 0, 0).",
+        "void clearSpans()": "Removes all spans from the Editable, as if by calling Spannable.removeSpan(Object) on each of them.",
+        "Editable delete(int st, int en)": "Convenience for replace(st, en, \"\", 0, 0)",
+        "InputFilter[] getFilters()": "Returns the array of input filters that are currently applied to changes to this Editable.",
+        "Editable insert(int where, CharSequence text)": "Convenience for replace(where, where, text, 0, text.length());",
+        "Editable insert(int where, CharSequence text, int start, int end)": "Convenience for replace(where, where, text, start, end)",
+        "Editable replace(int st, int en, CharSequence source, int start, int end)": "Replaces the specified range (st\u2026en) of text in this Editable with a copy of the slice start\u2026end from source.",
+        "Editable replace(int st, int en, CharSequence text)": "Convenience for replace(st, en, text, 0, text.length())",
+        "void setFilters(InputFilter[] filters)": "Sets the series of filters that will be called in succession whenever the text of this Editable is changed, each of which has the opportunity to limit or transform the text that is being inserted."
+    },
+    "super class": [
+        "Object",
+        "Editable"
+    ]
+}

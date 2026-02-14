@@ -1,0 +1,22 @@
+{
+    "class": "BaseRequest",
+    "category": "Class",
+    "methods": {
+        "HttpResponse asBinary()": "",
+        "Future asBinaryAsync()": "",
+        "Future asBinaryAsync(Callback callback)": "",
+        "HttpResponse asJson()": "",
+        "Future asJsonAsync()": "",
+        "Future asJsonAsync(Callback callback)": "",
+        "HttpResponse asObject(Class responseClass)": "",
+        "Future asObjectAsync(Class responseClass)": "",
+        "Future asObjectAsync(Class responseClass, Callback callback)": "",
+        "HttpResponse asString()": "",
+        "Future asStringAsync()": "",
+        "Future asStringAsync(Callback callback)": "",
+        "HttpRequest getHttpRequest()": ""
+    },
+    "super class": [
+        "java.lang.Object"
+    ]
+}

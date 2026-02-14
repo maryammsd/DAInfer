@@ -1,0 +1,23 @@
+{
+    "class": "EditText",
+    "category": "class",
+    "methods": {
+        "void extendSelection(int index)": "Convenience for Selection.extendSelection.",
+        "CharSequence getAccessibilityClassName()": "Return the class name of this object to be used for accessibility purposes.",
+        "boolean getFreezesText()": "Return whether this text view is including its entire text contents in frozen icicles.",
+        "Editable getText()": "Return the text that TextView is displaying.",
+        "boolean isStyleShortcutEnabled()": "Return true if style shortcut is enabled, otherwise returns false.",
+        "boolean onKeyShortcut(int keyCode, KeyEvent event)": "Called on the focused view when a key shortcut event is not handled.",
+        "boolean onTextContextMenuItem(int id)": "Called when a context menu option for the text view is selected.",
+        "void selectAll()": "Convenience for Selection.selectAll.",
+        "void setEllipsize(TextUtils.TruncateAt ellipsis)": "Causes words in the text that are longer than the view's width to be ellipsized instead of broken in the middle.",
+        "void setSelection(int index)": "Convenience for Selection.setSelection(Spannable, int).",
+        "void setSelection(int start, int stop)": "Convenience for Selection.setSelection(Spannable, int, int).",
+        "void setStyleShortcutsEnabled(boolean enabled)": "Enables styls shortcuts, e.g. Ctrl+B for making text bold.",
+        "void setText(CharSequence text, TextView.BufferType type)": "Sets the text to be displayed and the TextView.BufferType."
+    },
+    "super class": [
+        "Object",
+        "EditText"
+    ]
+}

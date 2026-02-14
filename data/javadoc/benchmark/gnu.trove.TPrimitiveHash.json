@@ -3,7 +3,7 @@
     "category": "Class",
     "methods": {
         "int capacity()": "Returns the capacity of the hash table.",
-        "java.lang.Object clone()": "", 
+        "java.lang.Object clone()": "Return a clone of this object.", 
         "void removeAt(int index)": "Delete the record at index.", 
         "int setUp(int initialCapacity)": "Initializes the hashtable to a prime capacity which is at least initialCapacity + 1."
     },

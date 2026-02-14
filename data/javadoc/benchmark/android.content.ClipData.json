@@ -1,0 +1,23 @@
+{
+    "class": "ClipData",
+    "category": "class",
+    "methods": {
+        "void addItem(ContentResolver resolver, ClipData.Item item)": "Add a new Item to the overall ClipData container.",
+        "void addItem(ClipData.Item item)": "Add a new Item to the overall ClipData container.",
+        "int describeContents()": "Describe the kinds of special objects contained in this Parcelable instance's marshaled representation.",
+        "ClipDescription getDescription()": "Return the ClipDescription associated with this data, describing what it contains.",
+        "ClipData.Item getItemAt(int index)": "Return a single item inside of the clip data.",
+        "int getItemCount()": "Return the number of items in the clip data.",
+        "ClipData newHtmlText(CharSequence label, CharSequence text, String htmlText)": "Create a new ClipData holding data of the type ClipDescription.MIMETYPE_TEXT_HTML.",
+        "ClipData newIntent(CharSequence label, Intent intent)": "Create a new ClipData holding an Intent with MIME type ClipDescription.MIMETYPE_TEXT_INTENT.",
+        "ClipData newPlainText(CharSequence label, CharSequence text)": "Create a new ClipData holding data of the type ClipDescription.MIMETYPE_TEXT_PLAIN.",
+        "ClipData newRawUri(CharSequence label, Uri uri)": "Create a new ClipData holding an URI with MIME type ClipDescription.MIMETYPE_TEXT_URILIST.",
+        "ClipData newUri(ContentResolver resolver, CharSequence label, Uri uri)": "Create a new ClipData holding a URI.",
+        "String toString()": "Returns a string representation of the object.",
+        "void writeToParcel(Parcel dest, int flags)": "Flatten this object in to a Parcel."
+    },
+    "super class": [
+        "Object",
+        "ClipData"
+    ]
+}

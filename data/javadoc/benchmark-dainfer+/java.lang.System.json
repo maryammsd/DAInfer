@@ -1,0 +1,35 @@
+{
+    "class": "System",
+    "category": "Class",
+    "methods": {
+        "void arraycopy(Objectsrc,\n         int\u00a0srcPos,Objectdest,\n         int\u00a0destPos,\n         int\u00a0length)": "Copies an array from the specified source array, beginning at the\n specified position, to the specified position of the destination array.",
+        "staticString clearProperty(Stringkey)": "Removes the system property indicated by the specified key.",
+        "staticConsole console()": "Returns the uniqueConsoleobject associated\n with the current Java virtual machine, if any.",
+        "long currentTimeMillis()": "Returns the current time in milliseconds.",
+        "void exit(int\u00a0status)": "Terminates the currently running Java Virtual Machine.",
+        "void gc()": "Runs the garbage collector.",
+        "staticMap getenv()": "Returns an unmodifiable string map view of the current system environment.",
+        "staticString getenv(Stringname)": "Gets the value of the specified environment variable.",
+        "staticProperties getProperties()": "Determines the current system properties.",
+        "staticString getProperty(Stringkey)": "Gets the system property indicated by the specified key.",
+        "staticString getProperty(Stringkey,Stringdef)": "Gets the system property indicated by the specified key.",
+        "staticSecurityManager getSecurityManager()": "Gets the system security interface.",
+        "int identityHashCode(Objectx)": "Returns the same hash code for the given object as\n would be returned by the default method hashCode(),\n whether or not the given object's class overrides\n hashCode().",
+        "staticChannel inheritedChannel()": "Returns the channel inherited from the entity that created this\n Java virtual machine.",
+        "staticString lineSeparator()": "Returns the system-dependent line separator string.",
+        "void load(Stringfilename)": "Loads the native library specified by the filename argument.",
+        "void loadLibrary(Stringlibname)": "Loads the native library specified by thelibnameargument.",
+        "staticString mapLibraryName(Stringlibname)": "Maps a library name into a platform-specific string representing\n a native library.",
+        "long nanoTime()": "Returns the current value of the running Java Virtual Machine's\n high-resolution time source, in nanoseconds.",
+        "void runFinalization()": "Runs the finalization methods of any objects pending finalization.",
+        "void setErr(PrintStreamerr)": "Reassigns the \"standard\" error output stream.",
+        "void setIn(InputStreamin)": "Reassigns the \"standard\" input stream.",
+        "void setOut(PrintStreamout)": "Reassigns the \"standard\" output stream.",
+        "void setProperties(Propertiesprops)": "Sets the system properties to thePropertiesargument.",
+        "staticString setProperty(Stringkey,Stringvalue)": "Sets the system property indicated by the specified key.",
+        "void setSecurityManager(SecurityManagers)": "Sets the System security."
+    },
+    "super class": [
+        "java.lang.Object"
+    ]
+}

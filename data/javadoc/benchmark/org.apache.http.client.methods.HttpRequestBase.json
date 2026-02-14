@@ -4,15 +4,15 @@
     "methods": {
         "RequestConfig getConfig()": "Returns actual request configuration.",
         "String getMethod()": "Returns the HTTP method this request uses, such as GET, PUT, POST, or other.",
-        "ProtocolVersion getProtocolVersion()": "",
-        "RequestLine getRequestLine()": "",
+        "ProtocolVersion getProtocolVersion()": "Gets the protocol version of the request.",
+        "RequestLine getRequestLine()": "Gets the request line of the HTTP request.",
         "URI getURI()": "Returns the original request URI.",
         "void releaseConnection()": "A convenience method to simplify migration from HttpClient 3.1 API.",
-        "void setConfig(RequestConfig config)": "",
-        "void setProtocolVersion(ProtocolVersion version)": "",
-        "void setURI(URI uri)": "",
-        "void started()": "",
-        "String toString()": ""
+        "void setConfig(RequestConfig config)": "Sets the request configuration.",
+        "void setProtocolVersion(ProtocolVersion version)": "Sets the protocol version of the request.",
+        "void setURI(URI uri)": "Sets the original request URI.",
+        "void started()": "Marks the request as started.",
+        "String toString()": "Returns a string representation of the request."
     },
     "super class": [
         "org.apache.http.client.methods.AbstractExecutionAwareRequest",

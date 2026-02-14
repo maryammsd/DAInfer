@@ -1,0 +1,28 @@
+{
+    "class": "DataInputStream",
+    "category": "Class",
+    "methods": {
+        "int read(byte[]\u00a0b)": "Reads some number of bytes from the contained input stream and\n stores them into the buffer arrayb.",
+        "int read(byte[]\u00a0b,\n    int\u00a0off,\n    int\u00a0len)": "Reads up tolenbytes of data from the contained\n input stream into an array of bytes.",
+        "boolean readBoolean()": "See the general contract of thereadBooleanmethod ofDataInput.",
+        "byte readByte()": "See the general contract of thereadBytemethod ofDataInput.",
+        "char readChar()": "See the general contract of thereadCharmethod ofDataInput.",
+        "double readDouble()": "See the general contract of thereadDoublemethod ofDataInput.",
+        "float readFloat()": "See the general contract of thereadFloatmethod ofDataInput.",
+        "void readFully(byte[]\u00a0b)": "See the general contract of thereadFullymethod ofDataInput.",
+        "void readFully(byte[]\u00a0b,\n         int\u00a0off,\n         int\u00a0len)": "See the general contract of thereadFullymethod ofDataInput.",
+        "int readInt()": "See the general contract of thereadIntmethod ofDataInput.",
+        "long readLong()": "See the general contract of thereadLongmethod ofDataInput.",
+        "short readShort()": "See the general contract of thereadShortmethod ofDataInput.",
+        "int readUnsignedByte()": "See the general contract of thereadUnsignedBytemethod ofDataInput.",
+        "int readUnsignedShort()": "See the general contract of thereadUnsignedShortmethod ofDataInput.",
+        "String readUTF()": "See the general contract of thereadUTFmethod ofDataInput.",
+        "staticString readUTF(DataInputin)": "Reads from the\n streamina representation\n of a Unicode  character string encoded inmodified UTF-8format;\n this string of characters is then returned as aString.",
+        "int skipBytes(int\u00a0n)": "See the general contract of theskipBytesmethod ofDataInput."
+    },
+    "super class": [
+        "java.io.FilterInputStream",
+        "java.io.InputStream",
+        "java.lang.Object"
+    ]
+}

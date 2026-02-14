@@ -1,0 +1,19 @@
+{
+    "class": "ByteArrayOutputStream",
+    "category": "Class",
+    "methods": {
+        "void close()": "Closing aByteArrayOutputStreamhas no effect.",
+        "void reset()": "Resets thecountfield of this byte array output\n stream to zero, so that all currently accumulated output in the\n output stream is discarded.",
+        "int size()": "Returns the current size of the buffer.",
+        "byte[] toByteArray()": "Creates a newly allocated byte array.",
+        "String toString()": "Converts the buffer's contents into a string decoding bytes using the\n platform's default character set.",
+        "String toString(StringcharsetName)": "Converts the buffer's contents into a string by decoding the bytes using\n the namedcharset.",
+        "void write(byte[]\u00a0b,\n     int\u00a0off,\n     int\u00a0len)": "Writeslenbytes from the specified byte array\n starting at offsetoffto this byte array output stream.",
+        "void write(int\u00a0b)": "Writes the specified byte to this byte array output stream.",
+        "void writeTo(OutputStreamout)": "Writes the complete contents of this byte array output stream to\n the specified output stream argument, as if by calling the output\n stream's write method usingout.write(buf, 0, count)."
+    },
+    "super class": [
+        "java.io.OutputStream",
+        "java.lang.Object"
+    ]
+}

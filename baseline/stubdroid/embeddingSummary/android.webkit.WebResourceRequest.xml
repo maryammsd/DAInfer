@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="boolean isRedirect()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.webkit.WebResourceRequest"/>
+                    <to sourceSinkType="Return" BaseType="boolean" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.util.Map getRequestHeaders()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.webkit.WebResourceRequest"/>
+                    <to sourceSinkType="Return" BaseType="java.util.Map" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String getMethod()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.webkit.WebResourceRequest"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="boolean hasGesture()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.webkit.WebResourceRequest"/>
+                    <to sourceSinkType="Return" BaseType="boolean" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.net.Uri getUrl()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.webkit.WebResourceRequest"/>
+                    <to sourceSinkType="Return" BaseType="android.net.Uri" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="boolean isForMainFrame()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.webkit.WebResourceRequest"/>
+                    <to sourceSinkType="Return" BaseType="boolean" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+    </methods>
+</summary>

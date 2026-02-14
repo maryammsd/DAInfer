@@ -1,0 +1,38 @@
+{
+    "class": "Float",
+    "category": "Class",
+    "methods": {
+        "byte byteValue()": "Returns the value of thisFloatas abyteafter\n a narrowing primitive conversion.",
+        "int compare(float\u00a0f1,\n       float\u00a0f2)": "Compares the two specifiedfloatvalues.",
+        "int compareTo(FloatanotherFloat)": "Compares twoFloatobjects numerically.",
+        "double doubleValue()": "Returns the value of thisFloatas adoubleafter a widening primitive conversion.",
+        "boolean equals(Objectobj)": "Compares this object against the specified object.",
+        "int floatToIntBits(float\u00a0value)": "Returns a representation of the specified floating-point value\n according to the IEEE 754 floating-point \"single format\" bit\n layout.",
+        "int floatToRawIntBits(float\u00a0value)": "Returns a representation of the specified floating-point value\n according to the IEEE 754 floating-point \"single format\" bit\n layout, preserving Not-a-Number (NaN) values.",
+        "float floatValue()": "Returns thefloatvalue of thisFloatobject.",
+        "int hashCode()": "Returns a hash code for thisFloatobject.",
+        "int hashCode(float\u00a0value)": "Returns a hash code for afloatvalue; compatible withFloat.hashCode().",
+        "float intBitsToFloat(int\u00a0bits)": "Returns thefloatvalue corresponding to a given\n bit representation.",
+        "int intValue()": "Returns the value of thisFloatas anintafter\n a narrowing primitive conversion.",
+        "boolean isFinite(float\u00a0f)": "Returnstrueif the argument is a finite floating-point\n value; returnsfalseotherwise (for NaN and infinity\n arguments).",
+        "boolean isInfinite()": "Returnstrueif thisFloatvalue is\n infinitely large in magnitude,falseotherwise.",
+        "boolean isInfinite(float\u00a0v)": "Returnstrueif the specified number is infinitely\n large in magnitude,falseotherwise.",
+        "boolean isNaN()": "Returnstrueif thisFloatvalue is a\n Not-a-Number (NaN),falseotherwise.",
+        "boolean isNaN(float\u00a0v)": "Returnstrueif the specified number is a\n Not-a-Number (NaN) value,falseotherwise.",
+        "long longValue()": "Returns value of thisFloatas alongafter a\n narrowing primitive conversion.",
+        "float max(float\u00a0a,\n   float\u00a0b)": "Returns the greater of twofloatvalues\n as if by callingMath.max.",
+        "float min(float\u00a0a,\n   float\u00a0b)": "Returns the smaller of twofloatvalues\n as if by callingMath.min.",
+        "float parseFloat(Strings)": "Returns a newfloatinitialized to the value\n represented by the specifiedString, as performed\n by thevalueOfmethod of classFloat.",
+        "short shortValue()": "Returns the value of thisFloatas ashortafter a narrowing primitive conversion.",
+        "float sum(float\u00a0a,\n   float\u00a0b)": "Adds twofloatvalues together as per the + operator.",
+        "staticString toHexString(float\u00a0f)": "Returns a hexadecimal string representation of thefloatargument.",
+        "String toString()": "Returns a string representation of thisFloatobject.",
+        "staticString toString(float\u00a0f)": "Returns a string representation of thefloatargument.",
+        "staticFloat valueOf(float\u00a0f)": "Returns aFloatinstance representing the specifiedfloatvalue.",
+        "staticFloat valueOf(Strings)": "Returns aFloatobject holding thefloatvalue represented by the argument strings."
+    },
+    "super class": [
+        "java.lang.Number",
+        "java.lang.Object"
+    ]
+}

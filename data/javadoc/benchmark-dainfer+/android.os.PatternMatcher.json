@@ -1,0 +1,16 @@
+{
+    "class": "PatternMatcher",
+    "category": "class",
+    "methods": {
+        "int describeContents()": "Describe the kinds of special objects contained in this Parcelable instance's marshaled representation.",
+        "String getPath()": "String getPath()",
+        "int getType()": "int getType()",
+        "boolean match(String str)": "boolean match(String str)",
+        "String toString()": "Returns a string representation of the object.",
+        "void writeToParcel(Parcel dest, int flags)": "Flatten this object in to a Parcel."
+    },
+    "super class": [
+        "Object",
+        "PatternMatcher"
+    ]
+}

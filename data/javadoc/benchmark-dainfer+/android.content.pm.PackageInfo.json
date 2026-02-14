@@ -1,0 +1,18 @@
+{
+    "class": "PackageInfo",
+    "category": "class",
+    "methods": {
+        "int describeContents()": "Describe the kinds of special objects contained in this Parcelable instance's marshaled representation.",
+        "String getApexPackageName()": "If the package is an APEX package (i.e.",
+        "long getArchiveTimeMillis()": "Returns the time at which the app was archived for the user.",
+        "long getLongVersionCode()": "Return versionCode and versionCodeMajor combined together as a single long value.",
+        "boolean isAppMetadataVerified()": "Returns the verification status of the App Metadata of the package.",
+        "void setLongVersionCode(long longVersionCode)": "Set the full version code in this PackageInfo, updating versionCode with the lower bits.",
+        "String toString()": "Returns a string representation of the object.",
+        "void writeToParcel(Parcel dest, int parcelableFlags)": "Flatten this object in to a Parcel."
+    },
+    "super class": [
+        "Object",
+        "PackageInfo"
+    ]
+}

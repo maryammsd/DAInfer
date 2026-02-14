@@ -1,0 +1,77 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="java.lang.StackTraceElement[] getStackTrace()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.Throwable"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.StackTraceElement[]" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setStackTrace(java.lang.StackTraceElement[])">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.Throwable"/>
+                    <to sourceSinkType="Return" BaseType="void" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.Throwable initCause(java.lang.Throwable)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.Throwable"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.Throwable" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void printStackTrace(java.io.PrintWriter)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.Throwable"/>
+                    <to sourceSinkType="Return" BaseType="void" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String toString()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.Throwable"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String getMessage()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.Throwable"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String getLocalizedMessage()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.Throwable"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.Throwable getCause()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.Throwable"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.Throwable" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void printStackTrace(java.io.PrintStream)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.Throwable"/>
+                    <to sourceSinkType="Return" BaseType="void" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+    </methods>
+</summary>

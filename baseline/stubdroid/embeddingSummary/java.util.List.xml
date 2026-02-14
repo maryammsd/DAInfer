@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="java.lang.Object[] toArray()">
+            <flows/>
+        </method>
+        <method id="java.util.ListIterator listIterator(int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.util.List" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="boolean addAll(java.util.Collection)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.util.Collection"/>
+                    <to sourceSinkType="Field" BaseType="java.util.List" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.util.Spliterator spliterator()">
+            <flows/>
+        </method>
+        <method id="java.util.ListIterator listIterator()">
+            <flows/>
+        </method>
+        <method id="java.util.List subList(int,int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.util.List"/>
+                    <to sourceSinkType="Return" BaseType="java.util.List" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void replaceAll(java.util.function.UnaryOperator)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.util.function.UnaryOperator"/>
+                    <to sourceSinkType="Field" BaseType="java.util.List" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+    </methods>
+</summary>

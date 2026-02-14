@@ -1,0 +1,13 @@
+{
+    "class": "CharSequence",
+    "category": "Interface",
+    "methods": {
+        "char charAt(int\u00a0index)": "Returns thecharvalue at the specified index.",
+        "defaultIntStream chars()": "Returns a stream ofintzero-extending thecharvalues\n from this sequence.",
+        "defaultIntStream codePoints()": "Returns a stream of code point values from this sequence.",
+        "int length()": "Returns the length of this character sequence.",
+        "CharSequence subSequence(int\u00a0start,\n           int\u00a0end)": "Returns aCharSequencethat is a subsequence of this sequence.",
+        "String toString()": "Returns a string containing the characters in this sequence in the same\n order as this sequence."
+    },
+    "super class": []
+}

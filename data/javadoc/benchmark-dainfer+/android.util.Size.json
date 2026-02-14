@@ -1,0 +1,16 @@
+{
+    "class": "Size",
+    "category": "class",
+    "methods": {
+        "boolean equals(Object obj)": "Check if this size is equal to another size.",
+        "int getHeight()": "Get the height of the size (in pixels).",
+        "int getWidth()": "Get the width of the size (in pixels).",
+        "int hashCode()": "Returns a hash code value for the object.",
+        "Size parseSize(String string)": "Parses the specified string as a size value.",
+        "String toString()": "Return the size represented as a string with the format \"WxH\""
+    },
+    "super class": [
+        "Object",
+        "Size"
+    ]
+}

@@ -1,0 +1,26 @@
+{
+    "class": "DataOutputStream",
+    "category": "Class",
+    "methods": {
+        "void flush()": "Flushes this data output stream.",
+        "int size()": "Returns the current value of the counterwritten,\n the number of bytes written to this data output stream so far.",
+        "void write(byte[]\u00a0b,\n     int\u00a0off,\n     int\u00a0len)": "Writeslenbytes from the specified byte array\n starting at offsetoffto the underlying output stream.",
+        "void write(int\u00a0b)": "Writes the specified byte (the low eight bits of the argumentb) to the underlying output stream.",
+        "void writeBoolean(boolean\u00a0v)": "Writes abooleanto the underlying output stream as\n a 1-byte value.",
+        "void writeByte(int\u00a0v)": "Writes out abyteto the underlying output stream as\n a 1-byte value.",
+        "void writeBytes(Strings)": "Writes out the string to the underlying output stream as a\n sequence of bytes.",
+        "void writeChar(int\u00a0v)": "Writes acharto the underlying output stream as a\n 2-byte value, high byte first.",
+        "void writeChars(Strings)": "Writes a string to the underlying output stream as a sequence of\n characters.",
+        "void writeDouble(double\u00a0v)": "Converts the double argument to alongusing thedoubleToLongBitsmethod in classDouble,\n and then writes thatlongvalue to the underlying\n output stream as an 8-byte quantity, high byte first.",
+        "void writeFloat(float\u00a0v)": "Converts the float argument to anintusing thefloatToIntBitsmethod in classFloat,\n and then writes thatintvalue to the underlying\n output stream as a 4-byte quantity, high byte first.",
+        "void writeInt(int\u00a0v)": "Writes anintto the underlying output stream as four\n bytes, high byte first.",
+        "void writeLong(long\u00a0v)": "Writes alongto the underlying output stream as eight\n bytes, high byte first.",
+        "void writeShort(int\u00a0v)": "Writes ashortto the underlying output stream as two\n bytes, high byte first.",
+        "void writeUTF(Stringstr)": "Writes a string to the underlying output stream usingmodified UTF-8encoding in a machine-independent manner."
+    },
+    "super class": [
+        "java.io.FilterOutputStream",
+        "java.io.OutputStream",
+        "java.lang.Object"
+    ]
+}

@@ -1,0 +1,17 @@
+{
+    "class": "Base64",
+    "category": "class",
+    "methods": {
+        "byte[] decode(String str, int flags)": "Decode the Base64-encoded data in input and return the data in a new byte array.",
+        "byte[] decode(byte[] input, int flags)": "Decode the Base64-encoded data in input and return the data in a new byte array.",
+        "byte[] decode(byte[] input, int offset, int len, int flags)": "Decode the Base64-encoded data in input and return the data in a new byte array.",
+        "byte[] encode(byte[] input, int flags)": "Base64-encode the given data and return a newly allocated byte[] with the result.",
+        "byte[] encode(byte[] input, int offset, int len, int flags)": "Base64-encode the given data and return a newly allocated byte[] with the result.",
+        "String encodeToString(byte[] input, int offset, int len, int flags)": "Base64-encode the given data and return a newly allocated String with the result.",
+        "String encodeToString(byte[] input, int flags)": "Base64-encode the given data and return a newly allocated String with the result."
+    },
+    "super class": [
+        "Object",
+        "Base64"
+    ]
+}

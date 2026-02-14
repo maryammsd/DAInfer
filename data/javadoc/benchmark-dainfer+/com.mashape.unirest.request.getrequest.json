@@ -1,0 +1,15 @@
+{
+    "class": "GetRequest",
+    "category": "Class",
+    "methods": {
+        "GetRequest basicAuth(String username, String password)": "",
+        "GetRequest header(String name, String value)": "",
+        "GetRequest headers(Map headers)": "",
+        "GetRequest routeParam(String name, String value)": ""
+    },
+    "super class": [
+        "com.mashape.unirest.request.HttpRequest",
+        "com.mashape.unirest.request.BaseRequest",
+        "java.lang.Object"
+    ]
+}

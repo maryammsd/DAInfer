@@ -1,7 +1,9 @@
 from bs4 import BeautifulSoup
 import re
 import os
+import json 
 
+count_skipped = 0
 
 def pageParser(filePath: str, projectName: str):
     """
@@ -16,6 +18,7 @@ def pageParser(filePath: str, projectName: str):
 
     # Invoke the appropriate parser based on the project name
     if "android" in filePath:
+        print("Android doc detected")
         return parserForAndroid(filePath)
     elif (
         "ofbiz" in filePath
@@ -28,6 +31,20 @@ def pageParser(filePath: str, projectName: str):
     else:
         return defaultParse(filePath)
 
+def save_to_file(class_name: str, message: str):
+    """
+    Save a message to a log file named after the class.
+    Args:
+        class_name: The name of the class
+        message: The message to be saved
+    """
+    log_filename = f"{class_name}_log.txt"
+    path_to_save = "./logs"
+    if os.path.exists(path_to_save) == False:
+        os.makedirs(path_to_save)
+    log_filename = os.path.join(path_to_save, log_filename)
+    with open(log_filename, "a") as log_file:
+        log_file.write(message + "\n")
 
 def defaultParse(filePath: str):
     """
@@ -38,6 +55,7 @@ def defaultParse(filePath: str):
         package_name: The name of the package
         classInfo: A dictionary containing the class/interface name, category, and a list of methods with their descriptions
     """
+    global count_skipped 
     classInfo = {}
 
     if "package-summary" in filePath:
@@ -104,10 +122,24 @@ def defaultParse(filePath: str):
     # Loop through each row and extract the method name and description
     for row in method_rows:
         # Find the columns in the row
-        cols = row.find_all("td")
+        cols = row.find_all(["td", "th"])
 
+        print(f" Number of the existing cols: {len(cols)} ")
         # Check if the row contains method information
         if len(cols) == 2:
+            print(f" class: {class_name} ")
+            print(row)
+            print("--------------------------------------------------------")
+            print(f" cols[0]: {cols[0]} ")
+            print(f" cols[1]: {cols[1]} ")
+            if cols[0].code is None :
+                print("Skipping 1st row due to missing <code> tag")
+                save_to_file(class_name, f"{class_name} {row} ----- Skipping 1st row due to missing <code> tag")
+                continue
+            if cols[1].code is None :
+                print("Skipping 2nd row due to missing <code> tag")
+                save_to_file(class_name, f"{class_name} {row} ----- Skipping 2nd row due to missing <code> tag")
+                continue
             # Extract the method name and description
             method_signature = "".join(
                 (cols[0].code.text.strip() + " " + cols[1].code.text.strip()).split(
@@ -141,6 +173,63 @@ def defaultParse(filePath: str):
             print(method_signature)
             print(method_description)
             print("\n")
+        elif len(cols) == 3:
+            if cols[0].code is None :
+                print("Skipping 1st row due to missing <code> tag")
+                save_to_file(class_name, f"{class_name} {row} ----- Skipping 1st row due to missing <code> tag")
+                continue
+            if cols[1].code is None :
+                print("Skipping 2nd row due to missing <code> tag")
+                save_to_file(class_name, f"{class_name} {row} ----- Skipping 2nd row due to missing <code> tag")
+                continue
+            if cols[2].div is None :
+                print("Skipping 3rd row due to missing <div> tag")
+                save_to_file(class_name, f"{class_name} {row} ----- Skipping 3rd row due to missing <div> tag")
+                continue
+            # Return type: "T"
+            return_type = cols[0].get_text(strip=True)
+            
+            # Method name: "get"
+            link = cols[1].find("a")
+            method_name = link.get_text(strip=True) if link else ""
+            
+            # Full signature: "get()"
+            full_signature = cols[1].find("code").get_text(strip=True)
+            
+            # Description
+            desc = cols[2].find("div", class_="block")
+            method_description = desc.get_text(strip=True) if desc else ""
+            method_signature = f"{return_type} {full_signature}"
+           
+            print(method_signature)
+            # error-prone
+            method_signature = re.sub(r"<.*?>", "", method_signature)
+            method_signature = method_signature.strip(">")
+            tmp_sig1 = method_signature[: method_signature.rfind("(")]
+            paras = method_signature[method_signature.rfind("(") :]
+            fname = tmp_sig1[tmp_sig1.rfind(" ") + 1 :]
+            tmp_sig2 = tmp_sig1[: tmp_sig1.rfind(" ")]
+            returnType1 = tmp_sig2[tmp_sig2.rfind(" ") + 1 :]
+            method_signature = returnType1 + " " + fname + paras
+            method_signature = method_signature.strip(">")
+            method_signature = method_signature.replace("<", "").replace(">", "")
+
+            #method_description = "" if cols[1].div is None else cols[1].div.text.strip()
+            #method_description = re.sub(r"\s+", " ", method_description)
+            #method_description = re.sub(r"\s*,\s*", ", ", method_description)
+
+            if "Deprecated." in method_description:
+                continue
+
+            classInfo["methods"][method_signature] = method_description
+            print(method_signature)
+            print(method_description)
+            print("\n")
+        else:
+            print(f" Skipping row due to unexpected number of columns: {len(cols)} ")
+            save_to_file(class_name, f"{class_name} {row} ----- Skipping row due to unexpected number of columns: {len(cols)}")
+            count_skipped+=1
+            continue
 
     # CHA
     soup = BeautifulSoup(html_doc, "html.parser")
@@ -544,7 +633,7 @@ def parserForOfBiz(filePath: str):
     return package_name, classInfo
 
 
-def parseProject(javadocPath: str, projectName: str):
+def parseProject(javadocPath: str, projectName: str, outputPath: str = None):
     """
     Parse the Javadoc files in the given directory and extract the method information.
     Args:
@@ -570,16 +659,38 @@ def parseProject(javadocPath: str, projectName: str):
                 html_files.append(os.path.join(root, file))
 
     # Print the list of HTML files
+    
     for filePath in html_files:
         print(filePath)
+        filename = filePath.split("/")[-1]
+        filename = filename.replace(".html", "")
+        print("Processing file:", filename)
         package_name, classInfo = pageParser(filePath, projectName)
         if package_name is not None and classInfo is not None:
             methods.append(classInfo)
             if package_name not in methodDoc:
                 methodDoc[package_name] = {}
             methodDoc[package_name][classInfo["class"]] = classInfo
+            path_to_save = outputPath
+            if os.path.exists(path_to_save) == False:
+                os.makedirs(path_to_save)
+            with open(os.path.join(path_to_save, filename + ".json"), "w") as f:
+                print("Writing to file:", filename + ".json")
+                json.dump(classInfo, f, indent=4)
 
     total_size = sum(len(lst) for lst in methodDoc.values())
     print(total_size, " classes obtained")
     print(len(methods))
     return methodDoc
+
+
+# main code to test the function
+
+#def __main__():
+    
+    #methodDoc = parseProject("/home/maryam/clearblue/source-code/DAInfer/data/javadoc/html", "dataflow", "/home/maryam/clearblue/source-code/DAInfer/data/javadoc/benchmark-dainfer+/")
+    ##skipped_methods = []
+    ## write to a file
+    #print(f"Total skipped rows: {count_skipped}")
+
+#main_code = __main__()

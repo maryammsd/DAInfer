@@ -1,0 +1,23 @@
+{
+    "class": "CharArrayWriter",
+    "category": "Class",
+    "methods": {
+        "CharArrayWriter append(char\u00a0c)": "Appends the specified character to this writer.",
+        "CharArrayWriter append(CharSequencecsq)": "Appends the specified character sequence to this writer.",
+        "CharArrayWriter append(CharSequencecsq,\n      int\u00a0start,\n      int\u00a0end)": "Appends a subsequence of the specified character sequence to this writer.",
+        "void close()": "Close the stream.",
+        "void flush()": "Flush the stream.",
+        "void reset()": "Resets the buffer so that you can use it again without\n throwing away the already allocated buffer.",
+        "int size()": "Returns the current size of the buffer.",
+        "char[] toCharArray()": "Returns a copy of the input data.",
+        "String toString()": "Converts input data to a string.",
+        "void write(char[]\u00a0c,\n     int\u00a0off,\n     int\u00a0len)": "Writes characters to the buffer.",
+        "void write(int\u00a0c)": "Writes a character to the buffer.",
+        "void write(Stringstr,\n     int\u00a0off,\n     int\u00a0len)": "Write a portion of a string to the buffer.",
+        "void writeTo(Writerout)": "Writes the contents of the buffer to another character stream."
+    },
+    "super class": [
+        "java.io.Writer",
+        "java.lang.Object"
+    ]
+}

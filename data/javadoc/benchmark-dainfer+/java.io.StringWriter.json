@@ -1,0 +1,21 @@
+{
+    "class": "StringWriter",
+    "category": "Class",
+    "methods": {
+        "StringWriter append(char\u00a0c)": "Appends the specified character to this writer.",
+        "StringWriter append(CharSequencecsq)": "Appends the specified character sequence to this writer.",
+        "StringWriter append(CharSequencecsq,\n      int\u00a0start,\n      int\u00a0end)": "Appends a subsequence of the specified character sequence to this writer.",
+        "void close()": "Closing aStringWriterhas no effect.",
+        "void flush()": "Flush the stream.",
+        "StringBuffer getBuffer()": "Return the string buffer itself.",
+        "String toString()": "Return the buffer's current value as a string.",
+        "void write(char[]\u00a0cbuf,\n     int\u00a0off,\n     int\u00a0len)": "Write a portion of an array of characters.",
+        "void write(int\u00a0c)": "Write a single character.",
+        "void write(Stringstr)": "Write a string.",
+        "void write(Stringstr,\n     int\u00a0off,\n     int\u00a0len)": "Write a portion of a string."
+    },
+    "super class": [
+        "java.io.Writer",
+        "java.lang.Object"
+    ]
+}

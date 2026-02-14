@@ -1,0 +1,248 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="int getHeaderFieldInt(java.lang.String,int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.net.URLConnection"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int getReadTimeout()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.net.URLConnection"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setDoOutput(boolean)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="boolean"/>
+                    <to sourceSinkType="Field" BaseType="java.net.URLConnection" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setConnectTimeout(int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.net.URLConnection" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setIfModifiedSince(long)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="long"/>
+                    <to sourceSinkType="Field" BaseType="java.net.URLConnection" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.io.InputStream getInputStream()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.net.URLConnection"/>
+                    <to sourceSinkType="Return" BaseType="java.io.InputStream" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.io.OutputStream getOutputStream()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.net.URLConnection"/>
+                    <to sourceSinkType="Return" BaseType="java.io.OutputStream" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setAllowUserInteraction(boolean)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.net.URLConnection"/>
+                    <to sourceSinkType="Return" BaseType="void" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String toString()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.net.URLConnection"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String getHeaderField(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.net.URLConnection"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setRequestProperty(java.lang.String,java.lang.String)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="java.net.URLConnection" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="java.net.URLConnection" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.net.URL getURL()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.net.URLConnection"/>
+                    <to sourceSinkType="Return" BaseType="java.net.URL" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="boolean getUseCaches()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.net.URLConnection"/>
+                    <to sourceSinkType="Return" BaseType="boolean" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String getHeaderField(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.net.URLConnection"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.util.Map getHeaderFields()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.net.URLConnection"/>
+                    <to sourceSinkType="Return" BaseType="java.util.Map" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String getRequestProperty(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.net.URLConnection"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setDoInput(boolean)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="boolean"/>
+                    <to sourceSinkType="Field" BaseType="java.net.URLConnection" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int getConnectTimeout()">
+            <flows/>
+        </method>
+        <method id="boolean getDoInput()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.net.URLConnection"/>
+                    <to sourceSinkType="Return" BaseType="boolean" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="boolean getDoOutput()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.net.URLConnection"/>
+                    <to sourceSinkType="Return" BaseType="boolean" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="long getHeaderFieldDate(java.lang.String,long)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.net.URLConnection"/>
+                    <to sourceSinkType="Return" BaseType="long" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setDefaultUseCaches(boolean)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="boolean"/>
+                    <to sourceSinkType="Field" BaseType="java.net.URLConnection" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.util.Map getRequestProperties()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.net.URLConnection"/>
+                    <to sourceSinkType="Return" BaseType="java.util.Map" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setReadTimeout(int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.net.URLConnection" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="boolean getAllowUserInteraction()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.net.URLConnection"/>
+                    <to sourceSinkType="Return" BaseType="boolean" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="long getHeaderFieldLong(java.lang.String,long)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.net.URLConnection"/>
+                    <to sourceSinkType="Return" BaseType="long" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void addRequestProperty(java.lang.String,java.lang.String)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="java.net.URLConnection" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="java.net.URLConnection" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setUseCaches(boolean)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="boolean"/>
+                    <to sourceSinkType="Field" BaseType="java.net.URLConnection" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="long getIfModifiedSince()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.net.URLConnection"/>
+                    <to sourceSinkType="Return" BaseType="long" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="boolean getDefaultUseCaches()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.net.URLConnection"/>
+                    <to sourceSinkType="Return" BaseType="boolean" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+    </methods>
+</summary>

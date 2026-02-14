@@ -1,0 +1,25 @@
+{
+    "class": "LruCache",
+    "category": "class",
+    "methods": {
+        "int createCount()": "Returns the number of times create(java.lang.Object) returned a value.",
+        "void evictAll()": "Clear the cache, calling entryRemoved(boolean, K, V, V) on each removed entry.",
+        "int evictionCount()": "Returns the number of values that have been evicted.",
+        "V get(K key)": "Returns the value for key if it exists in the cache or can be created by #create.",
+        "int hitCount()": "Returns the number of times get(K) returned a value that was already present in the cache.",
+        "int maxSize()": "For caches that do not override sizeOf(K, V), this returns the maximum number of entries in the cache.",
+        "int missCount()": "Returns the number of times get(K) returned null or required a new value to be created.",
+        "V put(K key, V value)": "Caches value for key.",
+        "int putCount()": "Returns the number of times put(K, V) was called.",
+        "V remove(K key)": "Removes the entry for key if it exists.",
+        "void resize(int maxSize)": "Sets the size of the cache.",
+        "int size()": "For caches that do not override sizeOf(K, V), this returns the number of entries in the cache.",
+        "Map snapshot()": "Returns a copy of the current contents of the cache, ordered from least recently accessed to most recently accessed.",
+        "String toString()": "Returns a string representation of the object.",
+        "void trimToSize(int maxSize)": "Remove the eldest entries until the total of remaining entries is at or below the requested size."
+    },
+    "super class": [
+        "Object",
+        "LruCache"
+    ]
+}

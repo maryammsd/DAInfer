@@ -1,0 +1,91 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="android.util.JsonWriter name(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.util.JsonWriter"/>
+                    <to sourceSinkType="Return" BaseType="android.util.JsonWriter" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.util.JsonWriter endObject()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.util.JsonWriter"/>
+                    <to sourceSinkType="Return" BaseType="android.util.JsonWriter" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.util.JsonWriter value(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.util.JsonWriter"/>
+                    <to sourceSinkType="Return" BaseType="android.util.JsonWriter" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.util.JsonWriter value(long)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.util.JsonWriter"/>
+                    <to sourceSinkType="Return" BaseType="android.util.JsonWriter" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setIndent(java.lang.String)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.util.JsonWriter" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.util.JsonWriter value(java.lang.Number)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.util.JsonWriter"/>
+                    <to sourceSinkType="Return" BaseType="android.util.JsonWriter" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.util.JsonWriter endArray()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.util.JsonWriter"/>
+                    <to sourceSinkType="Return" BaseType="android.util.JsonWriter" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.util.JsonWriter beginObject()">
+            <flows/>
+        </method>
+        <method id="android.util.JsonWriter beginArray()">
+            <flows/>
+        </method>
+        <method id="android.util.JsonWriter nullValue()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.util.JsonWriter"/>
+                    <to sourceSinkType="Return" BaseType="android.util.JsonWriter" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.util.JsonWriter value(boolean)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.util.JsonWriter"/>
+                    <to sourceSinkType="Return" BaseType="android.util.JsonWriter" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.util.JsonWriter value(double)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.util.JsonWriter"/>
+                    <to sourceSinkType="Return" BaseType="android.util.JsonWriter" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+    </methods>
+</summary>

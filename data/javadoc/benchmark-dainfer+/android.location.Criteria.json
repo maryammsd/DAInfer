@@ -1,0 +1,33 @@
+{
+    "class": "Criteria",
+    "category": "class",
+    "methods": {
+        "int describeContents()": "Describe the kinds of special objects contained in this Parcelable instance's marshaled representation.",
+        "int getAccuracy()": "Returns a constant indicating desired accuracy of location.",
+        "int getBearingAccuracy()": "Returns a constant indicating the desired bearing accuracy.",
+        "int getHorizontalAccuracy()": "Returns a constant indicating the desired horizontal accuracy (latitude and longitude).",
+        "int getPowerRequirement()": "Returns a constant indicating the desired maximum power requirement.",
+        "int getSpeedAccuracy()": "Returns a constant indicating the desired speed accuracy.",
+        "int getVerticalAccuracy()": "Returns a constant indicating the desired vertical accuracy (altitude).",
+        "boolean isAltitudeRequired()": "Returns whether the provider must provide altitude information.",
+        "boolean isBearingRequired()": "Returns whether the provider must provide bearing information.",
+        "boolean isCostAllowed()": "Returns whether the provider is allowed to incur monetary cost.",
+        "boolean isSpeedRequired()": "Returns whether the provider must provide speed information.",
+        "void setAccuracy(int accuracy)": "Indicates the desired accuracy for latitude and longitude.",
+        "void setAltitudeRequired(boolean altitudeRequired)": "Indicates whether the provider must provide altitude information.",
+        "void setBearingAccuracy(int accuracy)": "Indicates the desired bearing accuracy.",
+        "void setBearingRequired(boolean bearingRequired)": "Indicates whether the provider must provide bearing information.",
+        "void setCostAllowed(boolean costAllowed)": "Indicates whether the provider is allowed to incur monetary cost.",
+        "void setHorizontalAccuracy(int accuracy)": "Indicates the desired horizontal accuracy (latitude and longitude).",
+        "void setPowerRequirement(int powerRequirement)": "Indicates the desired maximum power requirement.",
+        "void setSpeedAccuracy(int accuracy)": "Indicates the desired speed accuracy.",
+        "void setSpeedRequired(boolean speedRequired)": "Indicates whether the provider must provide speed information.",
+        "void setVerticalAccuracy(int accuracy)": "Indicates the desired vertical accuracy (altitude).",
+        "String toString()": "Returns a string representation of the object.",
+        "void writeToParcel(Parcel parcel, int flags)": "Flatten this object in to a Parcel."
+    },
+    "super class": [
+        "Object",
+        "Criteria"
+    ]
+}

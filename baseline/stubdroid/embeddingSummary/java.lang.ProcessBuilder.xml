@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="java.lang.ProcessBuilder command(java.util.List)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.util.List"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.ProcessBuilder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.util.List command()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.ProcessBuilder"/>
+                    <to sourceSinkType="Return" BaseType="java.util.List" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+    </methods>
+</summary>

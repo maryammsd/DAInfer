@@ -1,0 +1,131 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="java.math.BigInteger toBigIntegerExact()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.math.BigDecimal"/>
+                    <to sourceSinkType="Return" BaseType="java.math.BigInteger" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.math.BigDecimal ulp()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.math.BigDecimal"/>
+                    <to sourceSinkType="Return" BaseType="java.math.BigDecimal" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int intValue()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.math.BigDecimal"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int intValueExact()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.math.BigDecimal"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="float floatValue()">
+            <flows/>
+        </method>
+        <method id="java.math.BigInteger toBigInteger()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.math.BigDecimal"/>
+                    <to sourceSinkType="Return" BaseType="java.math.BigInteger" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="short shortValueExact()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.math.BigDecimal"/>
+                    <to sourceSinkType="Return" BaseType="short" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.math.BigDecimal plus()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.math.BigDecimal"/>
+                    <to sourceSinkType="Return" BaseType="java.math.BigDecimal" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.math.BigDecimal stripTrailingZeros()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.math.BigDecimal"/>
+                    <to sourceSinkType="Return" BaseType="java.math.BigDecimal" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String toPlainString()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.math.BigDecimal"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.math.BigDecimal abs()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.math.BigDecimal"/>
+                    <to sourceSinkType="Return" BaseType="java.math.BigDecimal" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="long longValue()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.math.BigDecimal"/>
+                    <to sourceSinkType="Return" BaseType="long" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="long longValueExact()">
+            <flows/>
+        </method>
+        <method id="java.lang.String toEngineeringString()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.math.BigDecimal"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.math.BigDecimal negate()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.math.BigDecimal"/>
+                    <to sourceSinkType="Return" BaseType="java.math.BigDecimal" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String toString()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.math.BigDecimal"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="double doubleValue()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.math.BigDecimal"/>
+                    <to sourceSinkType="Return" BaseType="double" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+    </methods>
+</summary>

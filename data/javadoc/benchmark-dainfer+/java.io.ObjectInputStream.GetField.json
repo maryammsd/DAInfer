@@ -1,0 +1,20 @@
+{
+    "class": "ObjectInputStream.GetField",
+    "category": "Class",
+    "methods": {
+        "boolean defaulted(Stringname)": "Return true if the named field is defaulted and has no value in this\n stream.",
+        "boolean get(Stringname,\n   boolean\u00a0val)": "Get the value of the named boolean field from the persistent field.",
+        "byte get(Stringname,\n   byte\u00a0val)": "Get the value of the named byte field from the persistent field.",
+        "char get(Stringname,\n   char\u00a0val)": "Get the value of the named char field from the persistent field.",
+        "double get(Stringname,\n   double\u00a0val)": "Get the value of the named double field from the persistent field.",
+        "float get(Stringname,\n   float\u00a0val)": "Get the value of the named float field from the persistent field.",
+        "int get(Stringname,\n   int\u00a0val)": "Get the value of the named int field from the persistent field.",
+        "long get(Stringname,\n   long\u00a0val)": "Get the value of the named long field from the persistent field.",
+        "abstractObject get(Stringname,Objectval)": "Get the value of the named Object field from the persistent field.",
+        "short get(Stringname,\n   short\u00a0val)": "Get the value of the named short field from the persistent field.",
+        "abstractObjectStreamClass getObjectStreamClass()": "Get the ObjectStreamClass that describes the fields in the stream."
+    },
+    "super class": [
+        "java.lang.Object"
+    ]
+}

@@ -1,0 +1,93 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="android.text.Editable getEditableText()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.widget.TextView"/>
+                    <to sourceSinkType="Return" BaseType="android.text.Editable" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void append(java.lang.CharSequence,int,int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.widget.TextView"/>
+                    <to sourceSinkType="Return" BaseType="void" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.CharSequence"/>
+                    <to sourceSinkType="Field" BaseType="android.widget.TextView" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.widget.TextView" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="2" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.widget.TextView" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.CharSequence getHint()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.widget.TextView"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.CharSequence" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.CharSequence getText()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.widget.TextView"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.CharSequence" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setHint(java.lang.CharSequence)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.CharSequence"/>
+                    <to sourceSinkType="Field" BaseType="android.widget.TextView" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.CharSequence getError()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.widget.TextView"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.CharSequence" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setText(java.lang.CharSequence)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.CharSequence"/>
+                    <to sourceSinkType="Field" BaseType="android.widget.TextView" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setText(char[],int,int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.widget.TextView"/>
+                    <to sourceSinkType="Return" BaseType="void" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void append(java.lang.CharSequence)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.widget.TextView"/>
+                    <to sourceSinkType="Return" BaseType="void" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.CharSequence"/>
+                    <to sourceSinkType="Field" BaseType="android.widget.TextView" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+    </methods>
+</summary>

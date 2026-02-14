@@ -3,9 +3,9 @@
     "category": "Class",
     "methods": {
         "void abort()": "Aborts this http request.",
-        "Object clone()": "",
-        "void completed()": "",
-        "boolean isAborted()": "",
+        "Object clone()": "Make a clone of this request.",
+        "void completed()": "Marks this request as completed.",
+        "boolean isAborted()": "Checks if this request has been aborted.",
         "void reset()": "Resets internal state of the request making it reusable.",
         "void setCancellable(Cancellable cancellable)": "Sets Cancellable for the ongoing operation."
     },

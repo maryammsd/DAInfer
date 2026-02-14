@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="java.util.Enumeration elements()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.util.Vector"/>
+                    <to sourceSinkType="Return" BaseType="java.util.Enumeration" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="boolean addAll(int,java.util.Collection)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.util.Vector" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.util.Collection"/>
+                    <to sourceSinkType="Field" BaseType="java.util.Vector" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.util.ListIterator listIterator(int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.util.Vector" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void copyInto(java.lang.Object[])">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.util.Vector"/>
+                    <to sourceSinkType="Return" BaseType="void" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.util.ListIterator listIterator()">
+            <flows/>
+        </method>
+    </methods>
+</summary>

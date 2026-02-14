@@ -1,0 +1,80 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="java.lang.String toString()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.math.BigInteger"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="double doubleValue()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.math.BigInteger"/>
+                    <to sourceSinkType="Return" BaseType="double" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="byte[] toByteArray()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.math.BigInteger"/>
+                    <to sourceSinkType="Return" BaseType="byte[]" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int intValue()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.math.BigInteger"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int intValueExact()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.math.BigInteger"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="float floatValue()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.math.BigInteger"/>
+                    <to sourceSinkType="Return" BaseType="float" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.math.BigInteger abs()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.math.BigInteger"/>
+                    <to sourceSinkType="Return" BaseType="java.math.BigInteger" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="short shortValueExact()">
+            <flows/>
+        </method>
+        <method id="java.math.BigInteger not()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.math.BigInteger"/>
+                    <to sourceSinkType="Return" BaseType="java.math.BigInteger" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.math.BigInteger negate()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.math.BigInteger"/>
+                    <to sourceSinkType="Return" BaseType="java.math.BigInteger" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+    </methods>
+</summary>

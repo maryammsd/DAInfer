@@ -1,0 +1,14 @@
+{
+    "class": "Pair",
+    "category": "class",
+    "methods": {
+        "Pair create(A a, B b)": "Convenience method for creating an appropriately typed pair.",
+        "boolean equals(Object o)": "Checks the two objects for equality by delegating to their respective Object.equals(Object) methods.",
+        "int hashCode()": "Compute a hash code using the hash codes of the underlying objects",
+        "String toString()": "Returns a string representation of the object."
+    },
+    "super class": [
+        "Object",
+        "Pair"
+    ]
+}

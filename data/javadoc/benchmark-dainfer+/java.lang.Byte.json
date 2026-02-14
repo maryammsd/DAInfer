@@ -1,0 +1,31 @@
+{
+    "class": "Byte",
+    "category": "Class",
+    "methods": {
+        "byte byteValue()": "Returns the value of thisByteas abyte.",
+        "int compare(byte\u00a0x,\n       byte\u00a0y)": "Compares twobytevalues numerically.",
+        "int compareTo(ByteanotherByte)": "Compares twoByteobjects numerically.",
+        "staticByte decode(Stringnm)": "Decodes aStringinto aByte.",
+        "double doubleValue()": "Returns the value of thisByteas adoubleafter a widening primitive conversion.",
+        "boolean equals(Objectobj)": "Compares this object to the specified object.",
+        "float floatValue()": "Returns the value of thisByteas afloatafter\n a widening primitive conversion.",
+        "int hashCode()": "Returns a hash code for thisByte; equal to the result\n of invokingintValue().",
+        "int hashCode(byte\u00a0value)": "Returns a hash code for abytevalue; compatible withByte.hashCode().",
+        "int intValue()": "Returns the value of thisByteas anintafter\n a widening primitive conversion.",
+        "long longValue()": "Returns the value of thisByteas alongafter\n a widening primitive conversion.",
+        "byte parseByte(Strings)": "Parses the string argument as a signed decimalbyte.",
+        "byte parseByte(Strings,\n         int\u00a0radix)": "Parses the string argument as a signedbytein the\n radix specified by the second argument.",
+        "short shortValue()": "Returns the value of thisByteas ashortafter\n a widening primitive conversion.",
+        "String toString()": "Returns aStringobject representing thisByte's value.",
+        "staticString toString(byte\u00a0b)": "Returns a newStringobject representing the\n specifiedbyte.",
+        "int toUnsignedInt(byte\u00a0x)": "Converts the argument to anintby an unsigned\n conversion.",
+        "long toUnsignedLong(byte\u00a0x)": "Converts the argument to alongby an unsigned\n conversion.",
+        "staticByte valueOf(byte\u00a0b)": "Returns aByteinstance representing the specifiedbytevalue.",
+        "staticByte valueOf(Strings)": "Returns aByteobject holding the value\n given by the specifiedString.",
+        "staticByte valueOf(Strings,\n       int\u00a0radix)": "Returns aByteobject holding the value\n extracted from the specifiedStringwhen parsed\n with the radix given by the second argument."
+    },
+    "super class": [
+        "java.lang.Number",
+        "java.lang.Object"
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "class": "CharArrayReader",
+    "category": "Class",
+    "methods": {
+        "void close()": "Closes the stream and releases any system resources associated with\n it.",
+        "void mark(int\u00a0readAheadLimit)": "Marks the present position in the stream.",
+        "boolean markSupported()": "Tells whether this stream supports the mark() operation, which it does.",
+        "int read()": "Reads a single character.",
+        "int read(char[]\u00a0b,\n    int\u00a0off,\n    int\u00a0len)": "Reads characters into a portion of an array.",
+        "boolean ready()": "Tells whether this stream is ready to be read.",
+        "void reset()": "Resets the stream to the most recent mark, or to the beginning if it has\n never been marked.",
+        "long skip(long\u00a0n)": "Skips characters."
+    },
+    "super class": [
+        "java.io.Reader",
+        "java.lang.Object"
+    ]
+}

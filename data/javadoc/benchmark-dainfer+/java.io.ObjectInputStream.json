@@ -1,0 +1,40 @@
+{
+    "class": "ObjectInputStream",
+    "category": "Class",
+    "methods": {
+        "int available()": "Returns the number of bytes that can be read without blocking.",
+        "void close()": "Closes the input stream.",
+        "void defaultReadObject()": "Read the non-static and non-transient fields of the current class from\n this stream.",
+        "boolean enableResolveObject(boolean\u00a0enable)": "Enable the stream to allow objects read from the stream to be replaced.",
+        "int read()": "Reads a byte of data.",
+        "int read(byte[]\u00a0buf,\n    int\u00a0off,\n    int\u00a0len)": "Reads into an array of bytes.",
+        "boolean readBoolean()": "Reads in a boolean.",
+        "byte readByte()": "Reads an 8 bit byte.",
+        "char readChar()": "Reads a 16 bit char.",
+        "protectedObjectStreamClass readClassDescriptor()": "Read a class descriptor from the serialization stream.",
+        "double readDouble()": "Reads a 64 bit double.",
+        "ObjectInputStream.GetField readFields()": "Reads the persistent fields from the stream and makes them available by\n name.",
+        "float readFloat()": "Reads a 32 bit float.",
+        "void readFully(byte[]\u00a0buf)": "Reads bytes, blocking until all bytes are read.",
+        "void readFully(byte[]\u00a0buf,\n         int\u00a0off,\n         int\u00a0len)": "Reads bytes, blocking until all bytes are read.",
+        "int readInt()": "Reads a 32 bit int.",
+        "long readLong()": "Reads a 64 bit long.",
+        "Object readObject()": "Read an object from the ObjectInputStream.",
+        "protectedObject readObjectOverride()": "This method is called by trusted subclasses of ObjectInputStream that\n constructed ObjectInputStream using the protected no-arg constructor.",
+        "short readShort()": "Reads a 16 bit short.",
+        "void readStreamHeader()": "The readStreamHeader method is provided to allow subclasses to read and\n verify their own stream headers.",
+        "Object readUnshared()": "Reads an \"unshared\" object from the ObjectInputStream.",
+        "int readUnsignedByte()": "Reads an unsigned 8 bit byte.",
+        "int readUnsignedShort()": "Reads an unsigned 16 bit short.",
+        "String readUTF()": "Reads a String inmodified UTF-8format.",
+        "void registerValidation(ObjectInputValidationobj,\n                  int\u00a0prio)": "Register an object to be validated before the graph is returned.",
+        "protectedClass resolveClass(ObjectStreamClassdesc)": "Load the local class equivalent of the specified stream class\n description.",
+        "protectedObject resolveObject(Objectobj)": "This method will allow trusted subclasses of ObjectInputStream to\n substitute one object for another during deserialization.",
+        "protectedClass resolveProxyClass(String[]\u00a0interfaces)": "Returns a proxy class that implements the interfaces named in a proxy\n class descriptor; subclasses may implement this method to read custom\n data from the stream along with the descriptors for dynamic proxy\n classes, allowing them to use an alternate loading mechanism for the\n interfaces and the proxy class.",
+        "int skipBytes(int\u00a0len)": "Skips bytes."
+    },
+    "super class": [
+        "java.io.InputStream",
+        "java.lang.Object"
+    ]
+}

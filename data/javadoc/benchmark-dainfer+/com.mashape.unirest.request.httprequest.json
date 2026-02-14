@@ -1,0 +1,21 @@
+{
+    "class": "HttpRequest",
+    "category": "Class",
+    "methods": {
+        "HttpRequest basicAuth(String username, String password)": "",
+        "Body getBody()": "",
+        "Map getHeaders()": "",
+        "HttpMethod getHttpMethod()": "",
+        "String getUrl()": "",
+        "HttpRequest header(String name, String value)": "",
+        "HttpRequest headers(Map headers)": "",
+        "HttpRequest queryString(Map parameters)": "",
+        "HttpRequest queryString(String name, Collection value)": "",
+        "HttpRequest queryString(String name, Object value)": "",
+        "HttpRequest routeParam(String name, String value)": ""
+    },
+    "super class": [
+        "com.mashape.unirest.request.BaseRequest",
+        "java.lang.Object"
+    ]
+}

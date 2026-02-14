@@ -1,0 +1,30 @@
+{
+    "class": "Array",
+    "category": "Class",
+    "methods": {
+        "staticObject get(Objectarray,\n   int\u00a0index)": "Returns the value of the indexed component in the specified\n array object.",
+        "boolean getBoolean(Objectarray,\n          int\u00a0index)": "Returns the value of the indexed component in the specified\n array object, as aboolean.",
+        "byte getByte(Objectarray,\n       int\u00a0index)": "Returns the value of the indexed component in the specified\n array object, as abyte.",
+        "char getChar(Objectarray,\n       int\u00a0index)": "Returns the value of the indexed component in the specified\n array object, as achar.",
+        "double getDouble(Objectarray,\n         int\u00a0index)": "Returns the value of the indexed component in the specified\n array object, as adouble.",
+        "float getFloat(Objectarray,\n        int\u00a0index)": "Returns the value of the indexed component in the specified\n array object, as afloat.",
+        "int getInt(Objectarray,\n      int\u00a0index)": "Returns the value of the indexed component in the specified\n array object, as anint.",
+        "int getLength(Objectarray)": "Returns the length of the specified array object, as anint.",
+        "long getLong(Objectarray,\n       int\u00a0index)": "Returns the value of the indexed component in the specified\n array object, as along.",
+        "short getShort(Objectarray,\n        int\u00a0index)": "Returns the value of the indexed component in the specified\n array object, as ashort.",
+        "staticObject newInstance(Class\u00a0componentType,\n           int...\u00a0dimensions)": "Creates a new array\n with the specified component type and dimensions.",
+        "staticObject newInstance(Class\u00a0componentType,\n           int\u00a0length)": "Creates a new array with the specified component type and\n length.",
+        "void set(Objectarray,\n   int\u00a0index,Objectvalue)": "Sets the value of the indexed component of the specified array\n object to the specified new value.",
+        "void setBoolean(Objectarray,\n          int\u00a0index,\n          boolean\u00a0z)": "Sets the value of the indexed component of the specified array\n object to the specifiedbooleanvalue.",
+        "void setByte(Objectarray,\n       int\u00a0index,\n       byte\u00a0b)": "Sets the value of the indexed component of the specified array\n object to the specifiedbytevalue.",
+        "void setChar(Objectarray,\n       int\u00a0index,\n       char\u00a0c)": "Sets the value of the indexed component of the specified array\n object to the specifiedcharvalue.",
+        "void setDouble(Objectarray,\n         int\u00a0index,\n         double\u00a0d)": "Sets the value of the indexed component of the specified array\n object to the specifieddoublevalue.",
+        "void setFloat(Objectarray,\n        int\u00a0index,\n        float\u00a0f)": "Sets the value of the indexed component of the specified array\n object to the specifiedfloatvalue.",
+        "void setInt(Objectarray,\n      int\u00a0index,\n      int\u00a0i)": "Sets the value of the indexed component of the specified array\n object to the specifiedintvalue.",
+        "void setLong(Objectarray,\n       int\u00a0index,\n       long\u00a0l)": "Sets the value of the indexed component of the specified array\n object to the specifiedlongvalue.",
+        "void setShort(Objectarray,\n        int\u00a0index,\n        short\u00a0s)": "Sets the value of the indexed component of the specified array\n object to the specifiedshortvalue."
+    },
+    "super class": [
+        "java.lang.Object"
+    ]
+}

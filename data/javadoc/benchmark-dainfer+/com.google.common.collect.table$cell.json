@@ -1,0 +1,12 @@
+{
+    "class": "Table.Cell",
+    "category": "Interface",
+    "methods": {
+        "boolean equals(Object obj)": "Compares the specified object with this cell for equality.",
+        "C getColumnKey()": "Returns the column key of this cell.",
+        "R getRowKey()": "Returns the row key of this cell.",
+        "V getValue()": "Returns the value of this cell.",
+        "int hashCode()": "Returns the hash code of this cell."
+    },
+    "super class": []
+}

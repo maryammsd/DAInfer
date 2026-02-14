@@ -2,6 +2,12 @@
     "labeledCorrectSpecs": [
         [
             "java.nio.IntBuffer",
+            "IntBuffer asReadOnlyBuffer()",
+            "IntBuffer get(int[] dst)",
+            "[]-->(1, 0)"
+        ],
+        [
+            "java.nio.IntBuffer",
             "IntBuffer wrap(int[] array, int offset, int length)",
             "int[] array()",
             "[]-->(1, 0)"

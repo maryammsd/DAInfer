@@ -7,8 +7,8 @@
         "com.fasterxml.jackson.core.JsonParser.NumberType numberType()": "Returns code that identifies type of underlying numeric value, if (and only if) node is a number node.",
         "void serialize(com.fasterxml.jackson.core.JsonGenerator jgen, SerializerProvider provider)": "Method called to serialize node instances using given generator.",
         "void serializeWithType(com.fasterxml.jackson.core.JsonGenerator jgen, SerializerProvider provider, TypeSerializer typeSer)": "Type information is needed, even if JsonNode instances are \"plain\" JSON, since they may be mixed with other types.",
-        "com.fasterxml.jackson.core.JsonParser traverse()": "",
-        "com.fasterxml.jackson.core.JsonParser traverse(com.fasterxml.jackson.core.ObjectCodec codec)": ""
+        "com.fasterxml.jackson.core.JsonParser traverse()": "Method for constructing a JsonParser instance for iterating over contents of the tree that this node is root of.",
+        "com.fasterxml.jackson.core.JsonParser traverse(com.fasterxml.jackson.core.ObjectCodec codec)": "Method for constructing a JsonParser instance for iterating over contents of the tree that this node is root of."
     },
     "super class": [
         "com.fasterxml.jackson.databind.JsonNode",

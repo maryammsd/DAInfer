@@ -1,0 +1,10 @@
+{
+    "class": "LineNumberInputStream",
+    "category": "Class",
+    "methods": {},
+    "super class": [
+        "java.io.FilterInputStream",
+        "java.io.InputStream",
+        "java.lang.Object"
+    ]
+}

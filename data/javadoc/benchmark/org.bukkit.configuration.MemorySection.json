@@ -21,7 +21,7 @@
         "List<String> getComments(String path)": "Gets the requested comment list by path.",
         "ConfigurationSection getConfigurationSection(String path)": "Gets the requested ConfigurationSection by path.",
         "String getCurrentPath()": "Gets the path of this ConfigurationSection from its root Configuration.",
-        "Object getDefault(String path)": "",
+        "Object getDefault(String path)": "Return the default value at the given path from the default Configuration defined in ConfigurationSection.getRoot().",
         "ConfigurationSection getDefaultSection()": "Gets the equivalent ConfigurationSection from the default Configuration defined in ConfigurationSection.getRoot().",
         "double getDouble(String path)": "Gets the requested double by path.",
         "double getDouble(String path, double def)": "Gets the requested double by path, returning a default value if not found.",

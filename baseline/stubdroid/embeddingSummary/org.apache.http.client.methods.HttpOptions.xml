@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="java.net.URI getURI()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="org.apache.http.client.methods.HttpOptions"/>
+                    <to sourceSinkType="Return" BaseType="java.net.URI" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+    </methods>
+</summary>

@@ -1,0 +1,306 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="short getShort(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBuffer"/>
+                    <to sourceSinkType="Return" BaseType="short" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int getInt()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBuffer"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.ByteBuffer get(byte[])">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBuffer"/>
+                    <to sourceSinkType="Return" BaseType="java.nio.ByteBuffer" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="double getDouble()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBuffer"/>
+                    <to sourceSinkType="Return" BaseType="double" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="short getShort()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBuffer"/>
+                    <to sourceSinkType="Return" BaseType="short" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.ByteBuffer putShort(int,short)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBuffer" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="short"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBuffer" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.ByteBuffer putLong(long)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="long"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBuffer" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.ByteBuffer get(byte[],int,int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBuffer"/>
+                    <to sourceSinkType="Return" BaseType="java.nio.ByteBuffer" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.ByteBuffer putDouble(int,double)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBuffer" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="double"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBuffer" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="byte[] array()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBuffer"/>
+                    <to sourceSinkType="Return" BaseType="byte[]" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="double getDouble(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBuffer"/>
+                    <to sourceSinkType="Return" BaseType="double" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.ByteBuffer putChar(char)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="char"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBuffer" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.ByteBuffer putShort(short)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="short"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBuffer" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.ByteBuffer putInt(int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBuffer" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="long getLong()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBuffer"/>
+                    <to sourceSinkType="Return" BaseType="long" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.ByteBuffer slice()">
+            <flows/>
+        </method>
+        <method id="java.nio.ByteBuffer put(int,byte)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBuffer" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="byte"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBuffer" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="long getLong(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBuffer"/>
+                    <to sourceSinkType="Return" BaseType="long" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="float getFloat(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBuffer"/>
+                    <to sourceSinkType="Return" BaseType="float" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="char getChar(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBuffer"/>
+                    <to sourceSinkType="Return" BaseType="char" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.ByteBuffer putChar(int,char)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBuffer" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="char"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBuffer" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.ByteBuffer asReadOnlyBuffer()">
+            <flows/>
+        </method>
+        <method id="java.nio.ByteBuffer put(byte[])">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="byte[]"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBuffer" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.ByteBuffer putInt(int,int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBuffer" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBuffer" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.ByteBuffer put(byte[],int,int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="byte[]"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBuffer" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBuffer" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="2" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBuffer" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="char getChar()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBuffer"/>
+                    <to sourceSinkType="Return" BaseType="char" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.ByteBuffer putFloat(float)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="float"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBuffer" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.ByteBuffer put(byte)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="byte"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBuffer" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="float getFloat()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBuffer"/>
+                    <to sourceSinkType="Return" BaseType="float" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.ByteBuffer putFloat(int,float)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBuffer" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="float"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBuffer" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.ByteBuffer putDouble(double)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="double"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBuffer" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.ByteBuffer putLong(int,long)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBuffer" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="long"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBuffer" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.ByteBuffer duplicate()">
+            <flows/>
+        </method>
+        <method id="int getInt(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.ByteBuffer"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.ByteBuffer put(java.nio.ByteBuffer)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.nio.ByteBuffer"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.ByteBuffer" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+    </methods>
+</summary>

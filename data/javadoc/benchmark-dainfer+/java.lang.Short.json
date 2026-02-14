@@ -1,0 +1,32 @@
+{
+    "class": "Short",
+    "category": "Class",
+    "methods": {
+        "byte byteValue()": "Returns the value of thisShortas abyteafter\n a narrowing primitive conversion.",
+        "int compare(short\u00a0x,\n       short\u00a0y)": "Compares twoshortvalues numerically.",
+        "int compareTo(ShortanotherShort)": "Compares twoShortobjects numerically.",
+        "staticShort decode(Stringnm)": "Decodes aStringinto aShort.",
+        "double doubleValue()": "Returns the value of thisShortas adoubleafter a widening primitive conversion.",
+        "boolean equals(Objectobj)": "Compares this object to the specified object.",
+        "float floatValue()": "Returns the value of thisShortas afloatafter a widening primitive conversion.",
+        "int hashCode()": "Returns a hash code for thisShort; equal to the result\n of invokingintValue().",
+        "int hashCode(short\u00a0value)": "Returns a hash code for ashortvalue; compatible withShort.hashCode().",
+        "int intValue()": "Returns the value of thisShortas anintafter\n a widening primitive conversion.",
+        "long longValue()": "Returns the value of thisShortas alongafter\n a widening primitive conversion.",
+        "short parseShort(Strings)": "Parses the string argument as a signed decimalshort.",
+        "short parseShort(Strings,\n          int\u00a0radix)": "Parses the string argument as a signedshortin the\n radix specified by the second argument.",
+        "short reverseBytes(short\u00a0i)": "Returns the value obtained by reversing the order of the bytes in the\n two's complement representation of the specifiedshortvalue.",
+        "short shortValue()": "Returns the value of thisShortas ashort.",
+        "String toString()": "Returns aStringobject representing thisShort's value.",
+        "staticString toString(short\u00a0s)": "Returns a newStringobject representing the\n specifiedshort.",
+        "int toUnsignedInt(short\u00a0x)": "Converts the argument to anintby an unsigned\n conversion.",
+        "long toUnsignedLong(short\u00a0x)": "Converts the argument to alongby an unsigned\n conversion.",
+        "staticShort valueOf(short\u00a0s)": "Returns aShortinstance representing the specifiedshortvalue.",
+        "staticShort valueOf(Strings)": "Returns aShortobject holding the\n value given by the specifiedString.",
+        "staticShort valueOf(Strings,\n       int\u00a0radix)": "Returns aShortobject holding the value\n extracted from the specifiedStringwhen parsed\n with the radix given by the second argument."
+    },
+    "super class": [
+        "java.lang.Number",
+        "java.lang.Object"
+    ]
+}

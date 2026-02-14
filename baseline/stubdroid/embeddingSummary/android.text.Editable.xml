@@ -1,0 +1,109 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="android.text.Editable insert(int,java.lang.CharSequence,int,int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.text.Editable" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.CharSequence"/>
+                    <to sourceSinkType="Field" BaseType="android.text.Editable" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="2" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.text.Editable" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="3" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.text.Editable" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.text.Editable replace(int,int,java.lang.CharSequence,int,int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.text.Editable" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.text.Editable" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="2" BaseType="java.lang.CharSequence"/>
+                    <to sourceSinkType="Field" BaseType="android.text.Editable" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="3" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.text.Editable" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="4" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.text.Editable" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.text.Editable append(char)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="char"/>
+                    <to sourceSinkType="Field" BaseType="android.text.Editable" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.text.Editable append(java.lang.CharSequence,int,int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.CharSequence"/>
+                    <to sourceSinkType="Field" BaseType="android.text.Editable" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.text.Editable" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="2" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.text.Editable" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.text.Editable insert(int,java.lang.CharSequence)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.text.Editable" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.CharSequence"/>
+                    <to sourceSinkType="Field" BaseType="android.text.Editable" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.text.Editable append(java.lang.CharSequence)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.CharSequence"/>
+                    <to sourceSinkType="Field" BaseType="android.text.Editable" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.text.Editable replace(int,int,java.lang.CharSequence)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.text.Editable" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.text.Editable" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="2" BaseType="java.lang.CharSequence"/>
+                    <to sourceSinkType="Field" BaseType="android.text.Editable" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+    </methods>
+</summary>

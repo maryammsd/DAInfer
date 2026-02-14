@@ -1,0 +1,23 @@
+{
+    "class": "PointF",
+    "category": "class",
+    "methods": {
+        "int describeContents()": "Parcelable interface methods",
+        "boolean equals(float x, float y)": "Returns true if the point's coordinates equal (x, y)",
+        "boolean equals(Object o)": "Indicates whether some other object is \"equal to\" this one.",
+        "int hashCode()": "Returns a hash code value for the object.",
+        "float length(float x, float y)": "Returns the euclidian distance from (0, 0) to (x, y)",
+        "float length()": "Return the euclidian distance from (0, 0) to the point",
+        "void negate()": "void negate()",
+        "void offset(float dx, float dy)": "void offset(float dx, float dy)",
+        "void readFromParcel(Parcel in)": "Set the point's coordinates from the data stored in the specified parcel.",
+        "void set(PointF p)": "Set the point's x and y coordinates to the coordinates of p",
+        "void set(float x, float y)": "Set the point's x and y coordinates",
+        "String toString()": "Returns a string representation of the object.",
+        "void writeToParcel(Parcel out, int flags)": "Write this point to the specified parcel."
+    },
+    "super class": [
+        "Object",
+        "PointF"
+    ]
+}

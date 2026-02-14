@@ -3,10 +3,10 @@
     "category": "Class",
     "methods": {
         "java.lang.String escape(java.lang.String s)": "Escape quotes, \\, /, \\r, \\n, \\b, \\f, \\t and other control characters (U+0000 through U+001F).",
-        "java.lang.String toJSONString()": "",
+        "java.lang.String toJSONString()": "Method for converting a Map or List to a JSON text.",
         "java.lang.String toJSONString(java.util.Map map)": "Convert a map to JSON text.",
-        "java.lang.String toString()": "",
-        "java.lang.String toString(java.lang.String key, java.lang.Object value)": "",
+        "java.lang.String toString()": "Returns a string representation of the object.",
+        "java.lang.String toString(java.lang.String key, java.lang.Object value)": "Returns a string representation of the key-value pair.",
         "void writeJSONString(java.util.Map map, java.io.Writer out)": "Encode a map into JSON text and write it to out.",
         "void writeJSONString(java.io.Writer out)": "write JSON string to out."
     },

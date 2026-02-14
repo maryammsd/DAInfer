@@ -1,0 +1,92 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="float red()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.graphics.Color"/>
+                    <to sourceSinkType="Return" BaseType="float" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.graphics.Color valueOf(float,float,float)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="float"/>
+                    <to sourceSinkType="Field" BaseType="android.graphics.Color" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="float"/>
+                    <to sourceSinkType="Field" BaseType="android.graphics.Color" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="2" BaseType="float"/>
+                    <to sourceSinkType="Field" BaseType="android.graphics.Color" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int toArgb()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.graphics.Color"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="float[] getComponents()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.graphics.Color"/>
+                    <to sourceSinkType="Return" BaseType="float[]" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="float green()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.graphics.Color"/>
+                    <to sourceSinkType="Return" BaseType="float" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.graphics.Color valueOf(float,float,float,float)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="float"/>
+                    <to sourceSinkType="Field" BaseType="android.graphics.Color" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="float"/>
+                    <to sourceSinkType="Field" BaseType="android.graphics.Color" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="2" BaseType="float"/>
+                    <to sourceSinkType="Field" BaseType="android.graphics.Color" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="3" BaseType="float"/>
+                    <to sourceSinkType="Field" BaseType="android.graphics.Color" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String toString()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.graphics.Color"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.graphics.Color convert(android.graphics.ColorSpace)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.graphics.Color"/>
+                    <to sourceSinkType="Return" BaseType="android.graphics.Color" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="long pack()">
+            <flows/>
+        </method>
+    </methods>
+</summary>

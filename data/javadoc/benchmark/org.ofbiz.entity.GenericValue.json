@@ -3,7 +3,7 @@
     "category": "Class",
     "methods": {
         "java.lang.Object clone()": "Clones this GenericValue, this is a shallow clone and uses the default shallow HashMap clone",
-        "GenericValue create()": "",
+        "GenericValue create()": "Method to create a new empty GenericValue",
         "GenericValue create(Delegator delegator, ModelEntity modelEntity, java.lang.Object singlePkValue)": "Creates new GenericValue from existing Map",
         "GenericValue create(Delegator delegator, ModelEntity modelEntity, java.util.Map fields)": "Creates new GenericValue from existing Map",
         "GenericValue create(GenericPK primaryKey)": "Creates new GenericValue from existing GenericValue",
@@ -20,13 +20,13 @@
         "java.util.List getRelatedMulti(java.lang.String relationNameOne, java.lang.String relationNameTwo, java.util.List orderBy)": "Get the named Related Entity for the GenericValue from the persistent store across another Relation.",
         "GenericValue getRelatedOne(java.lang.String relationName)": "Deprecated. use getRelatedOne(String, boolean)",
         "GenericValue getRelatedOne(java.lang.String relationName, boolean useCache)": "Get the named Related Entity for the GenericValue from the persistent store",
-        "java.lang.String getStackTraceAsString()": "",
+        "java.lang.String getStackTraceAsString()": "Get the stack trace as a String",
         "int hashCode()": "Creates a hashCode for the entity, using the default String hashCode and Map hashCode, overrides the default hashCode",
-        "void refresh()": "",
-        "void refreshFromCache()": "",
-        "void remove()": "",
+        "void refresh()": "Refresh the entity",
+        "void refreshFromCache()": "Refresh the entity from cache",
+        "void remove()": "Remove the entity",
         "void removeRelated(java.lang.String relationName)": "Remove the named Related Entity for the GenericValue from the persistent store",
-        "void store()": ""
+        "void store()": "Store the entity"
     },
     "super class": [
         "org.apache.ofbiz.entity.GenericEntity"

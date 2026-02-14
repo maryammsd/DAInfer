@@ -1,0 +1,19 @@
+{
+    "class": "FilterInputStream",
+    "category": "Class",
+    "methods": {
+        "int available()": "Returns an estimate of the number of bytes that can be read (or\n skipped over) from this input stream without blocking by the next\n caller of a method for this input stream.",
+        "void close()": "Closes this input stream and releases any system resources\n associated with the stream.",
+        "void mark(int\u00a0readlimit)": "Marks the current position in this input stream.",
+        "boolean markSupported()": "Tests if this input stream supports themarkandresetmethods.",
+        "int read()": "Reads the next byte of data from this input stream.",
+        "int read(byte[]\u00a0b)": "Reads up tobyte.lengthbytes of data from this\n input stream into an array of bytes.",
+        "int read(byte[]\u00a0b,\n    int\u00a0off,\n    int\u00a0len)": "Reads up tolenbytes of data from this input stream\n into an array of bytes.",
+        "void reset()": "Repositions this stream to the position at the time themarkmethod was last called on this input stream.",
+        "long skip(long\u00a0n)": "Skips over and discardsnbytes of data from the\n input stream."
+    },
+    "super class": [
+        "java.io.InputStream",
+        "java.lang.Object"
+    ]
+}

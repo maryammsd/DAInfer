@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="java.lang.String toString()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="char get()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer"/>
+                    <to sourceSinkType="Return" BaseType="char" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.CharBuffer asReadOnlyBuffer()">
+            <flows/>
+        </method>
+        <method id="java.nio.CharBuffer slice()">
+            <flows/>
+        </method>
+        <method id="char[] array()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.CharBuffer"/>
+                    <to sourceSinkType="Return" BaseType="char[]" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.CharBuffer duplicate()">
+            <flows/>
+        </method>
+    </methods>
+</summary>

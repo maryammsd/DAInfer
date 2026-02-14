@@ -1,0 +1,505 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="void writePersistableBundle(android.os.PersistableBundle)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="android.os.PersistableBundle"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeLong(long)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="long"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.Object readValue(java.lang.ClassLoader)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Parcel"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.Object" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeInt(int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeByteArray(byte[])">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="byte[]"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeDoubleArray(double[])">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="double[]"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeBooleanArray(boolean[])">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="boolean[]"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void readBooleanArray(boolean[])">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Parcel"/>
+                    <to sourceSinkType="Return" BaseType="void" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="byte readByte()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Parcel"/>
+                    <to sourceSinkType="Return" BaseType="byte" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeMap(java.util.Map)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.util.Map"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeBundle(android.os.Bundle)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="android.os.Bundle"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeArray(java.lang.Object[])">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.Object[]"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void readIntArray(int[])">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Parcel"/>
+                    <to sourceSinkType="Return" BaseType="void" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void readFloatArray(float[])">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Parcel"/>
+                    <to sourceSinkType="Return" BaseType="void" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.os.Bundle readBundle()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Parcel"/>
+                    <to sourceSinkType="Return" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="byte[] marshall()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Parcel"/>
+                    <to sourceSinkType="Return" BaseType="byte[]" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeStringList(java.util.List)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.util.List"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeByteArray(byte[],int,int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="byte[]"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="2" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void readByteArray(byte[])">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Parcel"/>
+                    <to sourceSinkType="Return" BaseType="void" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.os.IBinder readStrongBinder()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Parcel"/>
+                    <to sourceSinkType="Return" BaseType="android.os.IBinder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeStrongInterface(android.os.IInterface)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="android.os.IInterface"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="float readFloat()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Parcel"/>
+                    <to sourceSinkType="Return" BaseType="float" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeBinderList(java.util.List)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.util.List"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String readString()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Parcel"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void unmarshall(byte[],int,int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="byte[]"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="2" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="double readDouble()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Parcel"/>
+                    <to sourceSinkType="Return" BaseType="double" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeIntArray(int[])">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int[]"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeByte(byte)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="byte"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeInterfaceToken(java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Parcel"/>
+                    <to sourceSinkType="Return" BaseType="void" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeTypedList(java.util.List)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.util.List"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void readCharArray(char[])">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Parcel"/>
+                    <to sourceSinkType="Return" BaseType="void" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="long readLong()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Parcel"/>
+                    <to sourceSinkType="Return" BaseType="long" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeList(java.util.List)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.util.List"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeSparseBooleanArray(android.util.SparseBooleanArray)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="android.util.SparseBooleanArray"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void readLongArray(long[])">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Parcel"/>
+                    <to sourceSinkType="Return" BaseType="void" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeSize(android.util.Size)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="android.util.Size"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.util.Size readSize()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Parcel"/>
+                    <to sourceSinkType="Return" BaseType="android.util.Size" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeCharArray(char[])">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="char[]"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void readStringArray(java.lang.String[])">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Parcel"/>
+                    <to sourceSinkType="Return" BaseType="void" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeSerializable(java.io.Serializable)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.io.Serializable"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeParcelable(android.os.Parcelable,int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="android.os.Parcelable"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.os.PersistableBundle readPersistableBundle(java.lang.ClassLoader)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Parcel"/>
+                    <to sourceSinkType="Return" BaseType="android.os.PersistableBundle" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.ClassLoader"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void readBinderArray(android.os.IBinder[])">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Parcel"/>
+                    <to sourceSinkType="Return" BaseType="void" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeFloat(float)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="float"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeValue(java.lang.Object)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.Object"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeBinderArray(android.os.IBinder[])">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="android.os.IBinder[]"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeFloatArray(float[])">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="float[]"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.util.SparseBooleanArray readSparseBooleanArray()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Parcel"/>
+                    <to sourceSinkType="Return" BaseType="android.util.SparseBooleanArray" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeStrongBinder(android.os.IBinder)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="android.os.IBinder"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeLongArray(long[])">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Parcel"/>
+                    <to sourceSinkType="Return" BaseType="void" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="long[]"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int readInt()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Parcel"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void readBinderList(java.util.List)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Parcel"/>
+                    <to sourceSinkType="Return" BaseType="void" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeStringArray(java.lang.String[])">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String[]"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeSparseArray(android.util.SparseArray)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="android.util.SparseArray"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeString(java.lang.String)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeDouble(double)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="double"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.os.PersistableBundle readPersistableBundle()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Parcel"/>
+                    <to sourceSinkType="Return" BaseType="android.os.PersistableBundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void writeSizeF(android.util.SizeF)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="android.util.SizeF"/>
+                    <to sourceSinkType="Field" BaseType="android.os.Parcel" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void readDoubleArray(double[])">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.os.Parcel"/>
+                    <to sourceSinkType="Return" BaseType="void" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+    </methods>
+</summary>

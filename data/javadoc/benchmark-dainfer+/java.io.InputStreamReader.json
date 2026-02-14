@@ -1,0 +1,15 @@
+{
+    "class": "InputStreamReader",
+    "category": "Class",
+    "methods": {
+        "void close()": "Closes the stream and releases any system resources associated with\n it.",
+        "String getEncoding()": "Returns the name of the character encoding being used by this stream.",
+        "int read()": "Reads a single character.",
+        "int read(char[]\u00a0cbuf,\n    int\u00a0offset,\n    int\u00a0length)": "Reads characters into a portion of an array.",
+        "boolean ready()": "Tells whether this stream is ready to be read."
+    },
+    "super class": [
+        "java.io.Reader",
+        "java.lang.Object"
+    ]
+}

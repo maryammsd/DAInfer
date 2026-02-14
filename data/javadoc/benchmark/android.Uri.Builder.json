@@ -1,0 +1,27 @@
+{
+    "class": "Uri.Builder",
+    "category": "class",
+    "methods": {
+        "Uri.Builder appendEncodedPath(String newSegment)": "Appends the given segment to the path.",
+        "Uri.Builder appendPath(String newSegment)": "Encodes the given segment and appends it to the path.",
+        "Uri.Builder appendQueryParameter(String key, String value)": "Encodes the key and value and then appends the parameter to the query string.",
+        "Uri.Builder authority(String authority)": "Encodes and sets the authority.",
+        "Uri build()": "Constructs a Uri with the current attributes.",
+        "Uri.Builder clearQuery()": "Clears the the previously set query.",
+        "Uri.Builder encodedAuthority(String authority)": "Sets the previously encoded authority.",
+        "Uri.Builder encodedFragment(String fragment)": "Sets the previously encoded fragment.",
+        "Uri.Builder encodedOpaquePart(String opaquePart)": "Sets the previously encoded opaque scheme-specific-part.",
+        "Uri.Builder encodedPath(String path)": "Sets the previously encoded path.",
+        "Uri.Builder encodedQuery(String query)": "Sets the previously encoded query.",
+        "Uri.Builder fragment(String fragment)": "Encodes and sets the fragment.",
+        "Uri.Builder opaquePart(String opaquePart)": "Encodes and sets the given opaque scheme-specific-part.",
+        "Uri.Builder path(String path)": "Sets the path.",
+        "Uri.Builder query(String query)": "Encodes and sets the query.",
+        "Uri.Builder scheme(String scheme)": "Sets the scheme.",
+        "String toString()": "Returns a string representation of the object."
+    },
+    "super class": [
+        "Object",
+        "Uri.Builder"
+    ]
+}

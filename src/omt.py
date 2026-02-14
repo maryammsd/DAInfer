@@ -1,5 +1,249 @@
 from z3 import *
+from z3 import IntVal, simplify
 from helper import *
+
+#### Added by Maryam 
+
+def maximizeMatchingWeight_CHA_LLM(graph, ftype, fname):
+    """
+    Key decision procedure of specification inference
+    Args:
+        graph: bi-partite graph
+        ftype: similarity matrix of types
+        fname: similarity matrix of names
+        NNSet: The set of nouns
+
+    Returns:
+        The optimal specification and the optimal value
+    """
+
+    print("Start maximizing matching weight with CHA LLM...")
+    (nodeList1, nodeList2) = graph
+
+    # Create a Z3 solver instance
+    solver = Optimize()
+
+    # Create Z3 integer variables
+    # Add a constraint to limit the value of the matching indicators
+    e = {}
+    for i in range(len(nodeList1)):
+        e[i] = {}
+        for j in range(len(nodeList2)):
+            e[i][j] = Int("e" + str(i) + str(j))
+            solver.add(e[i][j] >= 0, e[i][j] <= 1)
+
+    sumi = {}
+    sumj = {}
+    for i in range(len(nodeList1)):
+        sumj[i] = 0
+        for j in range(len(nodeList2)):
+            sumj[i] += e[i][j]
+        solver.add(sumj[i] >= 0, sumj[i] <= 1)
+
+    for j in range(len(nodeList2)):
+        sumi[j] = 0
+        for i in range(len(nodeList1)):
+            sumi[j] += e[i][j]
+        solver.add(sumi[j] >= 0, sumi[j] <= 1)
+
+    for i in range(len(nodeList1)):
+        for j in range(len(nodeList2)):
+            if ftype[(i, j)] == -1:
+                solver.add(e[i][j] == 0)
+
+    for j in range(len(nodeList2)):
+        solver.add(e[0][j] == 0)
+
+    sum0 = 0
+    for i in range(len(nodeList1)):
+        sum0 += e[i][0]
+    solver.add(sum0 == 1)
+
+    referenceParaNum = 0
+    for k in range(1, len(nodeList2)):
+        (type2k, name2k) = nodeList2[k]
+        if not "a" <= type2k[0] <= "z":
+            referenceParaNum += 1
+
+    if referenceParaNum > 0:
+        cnt = 0
+        for j in range(1, len(nodeList2)):
+            (type2j, name2j) = nodeList2[j]
+            if not "a" <= type2j[0] <= "z":
+                for i in range(1, len(nodeList1)):
+                    cnt += e[i][j]
+        solver.add(cnt >= 1)
+
+    obj = 0
+    for i in range(1, len(nodeList1)):
+        for j in range(1, len(nodeList2)):
+            (type1i, name1i) = nodeList1[i]
+            (type2j, name2j) = nodeList2[j]
+            obj += (
+                e[i][j]
+                * fname[(i, j)] 
+                * (ftype[(i, j)] + 1)
+            )
+    
+    # Convert obj to a Z3 constant if it's an integer
+    if isinstance(obj, int):
+        obj = IntVal(obj)
+
+    if True:
+        # Add the objective function to the solver
+        print(f"Type of obj: {type(obj)}, Value of obj: {obj}")
+        solver.maximize(obj)
+
+        config.SMTCnt += 1
+
+        # Check if the solver has a solution
+        if solver.check() == sat:
+            # Get the optimal value of x
+            print("SAT")
+            model = solver.model()
+            opVal = 0
+            specVec = []
+            target = None
+            for i in range(len(nodeList1)):
+                for j in range(len(nodeList2)):
+                    if model[e[i][j]] == 1:
+                        opVal += fname[(i, j)]
+                        if j == 0:
+                            target = (i, j)
+                        else:
+                            specVec.append((i, j))
+            if target is None:
+                return None, None
+            else:
+                return str(specVec) + "-->" + str(target), opVal
+        else:
+            print("No solution found")
+            return None, None
+    else:                   
+        print("Objective value is zero, skipping SMT solving.")
+        return None, None
+
+##### Added by Maryam
+
+def maximizeMatchingWeight_CHA_Embeddings(graph, ftype, fname):
+    """
+    Key decision procedure of specification inference
+    Args:
+        graph: bi-partite graph
+        ftype: similarity matrix of types
+        fname: similarity matrix of names
+        NNSet: The set of nouns
+
+    Returns:
+        The optimal specification and the optimal value
+    """
+
+    print("Start maximizing matching weight with CHA LLM...")
+    (nodeList1, nodeList2) = graph
+
+    # Create a Z3 solver instance
+    solver = Optimize()
+
+    # Create Z3 integer variables
+    # Add a constraint to limit the value of the matching indicators
+    e = {}
+    for i in range(len(nodeList1)):
+        e[i] = {}
+        for j in range(len(nodeList2)):
+            e[i][j] = Int("e" + str(i) + str(j))
+            solver.add(e[i][j] >= 0, e[i][j] <= 1)
+
+    sumi = {}
+    sumj = {}
+    for i in range(len(nodeList1)):
+        sumj[i] = 0
+        for j in range(len(nodeList2)):
+            sumj[i] += e[i][j]
+        solver.add(sumj[i] >= 0, sumj[i] <= 1)
+
+    for j in range(len(nodeList2)):
+        sumi[j] = 0
+        for i in range(len(nodeList1)):
+            sumi[j] += e[i][j]
+        solver.add(sumi[j] >= 0, sumi[j] <= 1)
+
+    for i in range(len(nodeList1)):
+        for j in range(len(nodeList2)):
+            if ftype[(i, j)] == -1:
+                solver.add(e[i][j] == 0)
+
+    for j in range(len(nodeList2)):
+        solver.add(e[0][j] == 0)
+
+    sum0 = 0
+    for i in range(len(nodeList1)):
+        sum0 += e[i][0]
+    solver.add(sum0 == 1)
+
+    referenceParaNum = 0
+    for k in range(1, len(nodeList2)):
+        (type2k, name2k) = nodeList2[k]
+        if not "a" <= type2k[0] <= "z":
+            referenceParaNum += 1
+
+    if referenceParaNum > 0:
+        cnt = 0
+        for j in range(1, len(nodeList2)):
+            (type2j, name2j) = nodeList2[j]
+            if not "a" <= type2j[0] <= "z":
+                for i in range(1, len(nodeList1)):
+                    cnt += e[i][j]
+        solver.add(cnt >= 1)
+
+    obj = 0
+    for i in range(1, len(nodeList1)):
+        for j in range(1, len(nodeList2)):
+            (type1i, name1i) = nodeList1[i]
+            (type2j, name2j) = nodeList2[j]
+            obj += (
+                e[i][j]
+                * fname[(i, j)] 
+                * (ftype[(i, j)] + 1)
+            )
+    
+    # Convert obj to a Z3 constant if it's an integer
+    if isinstance(obj, int):
+        obj = IntVal(obj)
+
+    if True:
+        # Add the objective function to the solver
+        print(f"Type of obj: {type(obj)}, Value of obj: {obj}")
+        solver.maximize(obj)
+
+        config.SMTCnt += 1
+
+        # Check if the solver has a solution
+        if solver.check() == sat:
+            # Get the optimal value of x
+            print("SAT")
+            model = solver.model()
+            opVal = 0
+            specVec = []
+            target = None
+            for i in range(len(nodeList1)):
+                for j in range(len(nodeList2)):
+                    if model[e[i][j]] == 1:
+                        opVal += fname[(i, j)]
+                        if j == 0:
+                            target = (i, j)
+                        else:
+                            specVec.append((i, j))
+            if target is None:
+                return None, None
+            else:
+                return str(specVec) + "-->" + str(target), opVal
+        else:
+            print("No solution found")
+            return None, None
+    else:                   
+        print("Objective value is zero, skipping SMT solving.")
+        return None, None
+
 
 
 def maximizeMatchingWeight_CHA(graph, ftype, fname, NNSet: set):
@@ -179,7 +423,7 @@ def maximizeMatchingWeight_NoCHA(graph, ftype, fname, NNSet: set):
     (nodeList1, nodeList2) = graph
 
     # Create a Z3 solver instance
-    solver = Optimize()
+    solver = z3.Optimize()
 
     # Create Z3 integer variables
     # Add a constraint to limit the value of the matching indicators
@@ -187,7 +431,7 @@ def maximizeMatchingWeight_NoCHA(graph, ftype, fname, NNSet: set):
     for i in range(len(nodeList1)):
         e[i] = {}
         for j in range(len(nodeList2)):
-            e[i][j] = Int("e" + str(i) + str(j))
+            e[i][j] = z3.Int("e" + str(i) + str(j))
             solver.add(e[i][j] >= 0, e[i][j] <= 1)
 
     sumi = {}
@@ -229,7 +473,7 @@ def maximizeMatchingWeight_NoCHA(graph, ftype, fname, NNSet: set):
     config.SMTCnt += 1
 
     # Check if the solver has a solution
-    if solver.check() == sat:
+    if solver.check() == z3.sat:
         # Get the optimal value of x
         print("SAT")
         model = solver.model()
@@ -238,6 +482,7 @@ def maximizeMatchingWeight_NoCHA(graph, ftype, fname, NNSet: set):
         specVec = []
         target = None
         fieldConfidence = 0
+        
         for i in range(len(nodeList1)):
             for j in range(len(nodeList2)):
                 if model[e[i][j]] == 1:
@@ -265,3 +510,6 @@ def maximizeMatchingWeight_NoCHA(graph, ftype, fname, NNSet: set):
     else:
         print("No solution found")
         return None, None
+    
+
+

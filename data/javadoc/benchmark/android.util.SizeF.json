@@ -1,0 +1,18 @@
+{
+    "class": "SizeF",
+    "category": "class",
+    "methods": {
+        "int describeContents()": "Parcelable interface methods",
+        "boolean equals(Object obj)": "Check if this size is equal to another size.",
+        "float getHeight()": "Get the height of the size (as an arbitrary unit).",
+        "float getWidth()": "Get the width of the size (as an arbitrary unit).",
+        "int hashCode()": "Returns a hash code value for the object.",
+        "SizeF parseSizeF(String string)": "Parses the specified string as a size value.",
+        "String toString()": "Return the size represented as a string with the format \"WxH\"",
+        "void writeToParcel(Parcel out, int flags)": "Write this size to the specified parcel."
+    },
+    "super class": [
+        "Object",
+        "SizeF"
+    ]
+}

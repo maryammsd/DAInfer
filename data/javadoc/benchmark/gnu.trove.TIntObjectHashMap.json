@@ -2,7 +2,7 @@
     "class": "TIntObjectHashMap",
     "category": "Class",
     "methods": {
-        "TIntObjectHashMap<V> clone()": "",
+        "TIntObjectHashMap<V> clone()": "Create a copy of this map.",
         "boolean containsKey(int key)": "Checks for the presence of key in the keys of the map.",
         "boolean containsValue(V val)": "Checks for the presence of val in the values of the map.",
         "boolean equals(java.lang.Object other)": "Compares this map with another map for equality of their stored entries.",
@@ -12,18 +12,18 @@
         "V get(int key)": "Retrieves the value for key.",
         "java.lang.Object[] getValues()": "Returns the values of the map.",
         "<T> T[] getValues(T[] a)": "Return the values of the map; the runtime type of the returned array is that of the specified array.",
-        "int hashCode()": "",
-        "TIntObjectIterator<V> iterator()": "",
+        "int hashCode()": "Return the hash code value for the map.",
+        "TIntObjectIterator<V> iterator()": "Returns a TIntObjectIterator with access to this map's keys and values.",
         "int[] keys()": "Returns the keys of the map.",
         "V put(int key, V value)": "Inserts a key/value pair into the map.",
-        "void readExternal(java.io.ObjectInput in)": "",
+        "void readExternal(java.io.ObjectInput in)": "The object implements the readExternal method to restore its contents by calling the methods of DataInput for primitive types and readObject for objects, strings and arrays.",
         "protected void rehash(int newCapacity)": "Rehashes the map to the new capacity.",
         "V remove(int key)": "Deletes a key/value pair from the map.",
         "void removeAt(int index)": "Removes the mapping at index from the map.",
         "boolean retainEntries(TIntObjectProcedure<V> procedure)": "Retains only those entries in the map for which the procedure returns a true value.",
         "int setUp(int initialCapacity)": "Initializes the hashtable to a prime capacity which is at least initialCapacity + 1.",
         "void transformValues(TObjectFunction<V,V> function)": "Transform the values in this map using function.",
-        "void writeExternal(java.io.ObjectOutput out)": ""
+        "void writeExternal(java.io.ObjectOutput out)": "The object implements the writeExternal method to save its contents by calling the methods of DataOutput for its primitive values or calling the writeObject method of ObjectOutput for objects, strings, and arrays."
     },
     "super class": [
         "gnu.trove.THash",

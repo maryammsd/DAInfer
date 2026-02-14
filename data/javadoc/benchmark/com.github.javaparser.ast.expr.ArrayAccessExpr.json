@@ -4,17 +4,17 @@
     "methods": {
         "R accept(GenericVisitor v, A arg)": "Accept method for visitor support.",
         "void accept(VoidVisitor v, A arg)": "Accept method for visitor support.",
-        "ArrayAccessExpr asArrayAccessExpr()": "",
-        "ArrayAccessExpr clone()": "",
-        "Expression getIndex()": "",
-        "ArrayAccessExprMetaModel getMetaModel()": "",
-        "Expression getName()": "",
-        "void ifArrayAccessExpr(Consumer action)": "",
-        "boolean isArrayAccessExpr()": "",
-        "boolean remove(Node node)": "",
-        "boolean replace(Node node, Node replacementNode)": "",
-        "ArrayAccessExpr setIndex(Expression index)": "",
-        "ArrayAccessExpr setName(Expression name)": ""
+        "ArrayAccessExpr asArrayAccessExpr()": "Check if this Expression is an ArrayAccessExpr and return it as such.",
+        "ArrayAccessExpr clone()": "Create a deep copy of this ArrayAccessExpr.",
+        "Expression getIndex()": "Get the index expression of this ArrayAccessExpr.",
+        "ArrayAccessExprMetaModel getMetaModel()": "Get the meta model for this ArrayAccessExpr.",
+        "Expression getName()": "Get the name expression of this ArrayAccessExpr.",
+        "void ifArrayAccessExpr(Consumer action)": "Execute the given action if this Expression is an ArrayAccessExpr.",
+        "boolean isArrayAccessExpr()": "Check if this Expression is an ArrayAccessExpr.",
+        "boolean remove(Node node)": "Remove the given node from this ArrayAccessExpr.",
+        "boolean replace(Node node, Node replacementNode)": "Replace the given node with the replacement node in this ArrayAccessExpr.",
+        "ArrayAccessExpr setIndex(Expression index)": "Set the index expression of this ArrayAccessExpr.",
+        "ArrayAccessExpr setName(Expression name)": "Set the name expression of this ArrayAccessExpr."
     },
     "super class": []
 }

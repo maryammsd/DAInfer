@@ -1,0 +1,18 @@
+{
+    "class": "Object",
+    "category": "Class",
+    "methods": {
+        "protectedObject clone()": "Creates and returns a copy of this object.",
+        "boolean equals(Objectobj)": "Indicates whether some other object is \"equal to\" this one.",
+        "void finalize()": "Called by the garbage collector on an object when garbage collection\n determines that there are no more references to the object.",
+        "Class getClass()": "Returns the runtime class of thisObject.",
+        "int hashCode()": "Returns a hash code value for the object.",
+        "void notify()": "Wakes up a single thread that is waiting on this object's\n monitor.",
+        "void notifyAll()": "Wakes up all threads that are waiting on this object's monitor.",
+        "String toString()": "Returns a string representation of the object.",
+        "void wait()": "Causes the current thread to wait until another thread invokes thenotify()method or thenotifyAll()method for this object.",
+        "void wait(long\u00a0timeout)": "Causes the current thread to wait until either another thread invokes thenotify()method or thenotifyAll()method for this object, or a\n specified amount of time has elapsed.",
+        "void wait(long\u00a0timeout,\n    int\u00a0nanos)": "Causes the current thread to wait until another thread invokes thenotify()method or thenotifyAll()method for this object, or\n some other thread interrupts the current thread, or a certain\n amount of real time has elapsed."
+    },
+    "super class": []
+}

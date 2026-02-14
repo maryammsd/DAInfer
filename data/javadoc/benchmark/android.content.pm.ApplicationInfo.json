@@ -1,0 +1,26 @@
+{
+    "class": "ApplicationInfo",
+    "category": "class",
+    "methods": {
+        "boolean areAttributionsUserVisible()": "Returns whether attributions provided by the application are meant to be user-visible.",
+        "int describeContents()": "Describe the kinds of special objects contained in this Parcelable instance's marshaled representation.",
+        "void dump(Printer pw, String prefix)": "void dump(Printer pw, String prefix)",
+        "CharSequence getCategoryTitle(Context context, int category)": "Return a concise, localized title for the given ApplicationInfo.category value, or null for unknown values such as CATEGORY_UNDEFINED.",
+        "int getGwpAsanMode()": "int getGwpAsanMode()",
+        "Set getKnownActivityEmbeddingCerts()": "Gets the trusted host certificate digests of apps that are allowed to embed activities of this application.",
+        "int getMemtagMode()": "Returns whether the application has requested Memtag to be enabled, disabled, or left unspecified.",
+        "int getNativeHeapZeroInitialized()": "Returns whether the application has requested automatic zero-initialization of native heap memory allocations to be enabled or disabled.",
+        "int getRequestRawExternalStorageAccess()": "int getRequestRawExternalStorageAccess()",
+        "boolean isProfileable()": "Returns whether this application can be profiled, either by the shell user or the system.",
+        "boolean isProfileableByShell()": "Returns whether or not this application can be profiled by the shell user, even when running on a device that is running in user mode.",
+        "boolean isResourceOverlay()": "Returns true if the package has declared in its manifest that it is a runtime resource overlay.",
+        "boolean isVirtualPreload()": "Returns whether or not this application was installed as a virtual preload.",
+        "CharSequence loadDescription(PackageManager pm)": "Retrieve the textual description of the application.",
+        "String toString()": "Returns a string representation of the object.",
+        "void writeToParcel(Parcel dest, int parcelableFlags)": "void writeToParcel(Parcel dest, int parcelableFlags)"
+    },
+    "super class": [
+        "Object",
+        "ApplicationInfo"
+    ]
+}

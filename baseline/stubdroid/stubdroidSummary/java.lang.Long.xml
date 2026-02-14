@@ -1,0 +1,569 @@
+<?xml version="1.0"?>
+<summary fileFormatVersion="103">
+    <hierarchy superClass="java.lang.Number">
+        <interface name="java.lang.Comparable"></interface>
+    </hierarchy>
+    <methods>
+        <method id="int bitCount(long)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="long"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="byte byteValue()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.Long"
+                        AccessPath="[&lt;java.lang.Long: long value&gt;]" AccessPathTypes="[long]"></from>
+                    <to sourceSinkType="Return" BaseType="byte" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="long divideUnsigned(long,long)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="long"></from>
+                    <to sourceSinkType="Return" BaseType="long" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="long"></from>
+                    <to sourceSinkType="Return" BaseType="long" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="double doubleValue()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.Long"
+                        AccessPath="[&lt;java.lang.Long: long value&gt;]" AccessPathTypes="[long]"></from>
+                    <to sourceSinkType="Return" BaseType="double" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="float floatValue()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.Long"
+                        AccessPath="[&lt;java.lang.Long: long value&gt;]" AccessPathTypes="[long]"></from>
+                    <to sourceSinkType="Return" BaseType="float" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.Long getLong(java.lang.String,java.lang.Long)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.Long"></from>
+                    <to sourceSinkType="Return" BaseType="java.lang.Long" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.Long getLong(java.lang.String,long)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="long"></from>
+                    <to sourceSinkType="Return" BaseType="java.lang.Long"
+                        AccessPath="[&lt;java.lang.Long: long value&gt;]" AccessPathTypes="[long]"
+                        taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="int hashCode(long)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="long"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="long highestOneBit(long)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="long"></from>
+                    <to sourceSinkType="Return" BaseType="long" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="int intValue()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.Long"
+                        AccessPath="[&lt;java.lang.Long: long value&gt;]" AccessPathTypes="[long]"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="long longValue()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.Long"
+                        AccessPath="[&lt;java.lang.Long: long value&gt;]" AccessPathTypes="[long]"></from>
+                    <to sourceSinkType="Return" BaseType="long" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="long lowestOneBit(long)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="long"></from>
+                    <to sourceSinkType="Return" BaseType="long" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="long max(long,long)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="long"></from>
+                    <to sourceSinkType="Return" BaseType="long" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="long"></from>
+                    <to sourceSinkType="Return" BaseType="long" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="long min(long,long)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="long"></from>
+                    <to sourceSinkType="Return" BaseType="long" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="long"></from>
+                    <to sourceSinkType="Return" BaseType="long" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="int numberOfLeadingZeros(long)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="long"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="int numberOfTrailingZeros(long)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="long"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="long parseUnsignedLong(java.lang.String)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.Object"
+                        gap="1"></from>
+                    <to sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeBin"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$TreeBin: java.util.concurrent.ConcurrentHashMap$TreeNode root&gt;, &lt;java.util.concurrent.ConcurrentHashMap$Node: java.lang.Object key&gt;]"
+                        AccessPathTypes="[java.util.concurrent.ConcurrentHashMap$TreeNode, java.lang.Object]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.Object"
+                        gap="0"></from>
+                    <to sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeBin"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$TreeBin: java.util.concurrent.ConcurrentHashMap$TreeNode root&gt;, &lt;java.util.concurrent.ConcurrentHashMap$Node: java.lang.Object key&gt;]"
+                        AccessPathTypes="[java.util.concurrent.ConcurrentHashMap$TreeNode, java.lang.Object]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeNode" gap="0"></from>
+                    <to sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeBin"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$TreeBin: java.util.concurrent.ConcurrentHashMap$TreeNode root&gt;]"
+                        AccessPathTypes="[java.util.concurrent.ConcurrentHashMap$TreeNode]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeBin"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$TreeBin: java.util.concurrent.ConcurrentHashMap$TreeNode root&gt;, &lt;java.util.concurrent.ConcurrentHashMap$Node: java.lang.Object key&gt;]"
+                        AccessPathTypes="[java.util.concurrent.ConcurrentHashMap$TreeNode, java.lang.Object]"
+                        gap="4"></from>
+                    <to sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeBin"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$TreeBin: java.util.concurrent.ConcurrentHashMap$TreeNode root&gt;, &lt;java.util.concurrent.ConcurrentHashMap$Node: java.lang.Object key&gt;]"
+                        AccessPathTypes="[java.util.concurrent.ConcurrentHashMap$TreeNode, java.lang.Object]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeBin"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$TreeBin: java.util.concurrent.ConcurrentHashMap$TreeNode root&gt;, &lt;java.util.concurrent.ConcurrentHashMap$Node: java.lang.Object key&gt;]"
+                        AccessPathTypes="[java.util.concurrent.ConcurrentHashMap$TreeNode, java.lang.Object]"
+                        gap="2"></from>
+                    <to sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeBin"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$TreeBin: java.util.concurrent.ConcurrentHashMap$TreeNode root&gt;, &lt;java.util.concurrent.ConcurrentHashMap$Node: java.lang.Object key&gt;]"
+                        AccessPathTypes="[java.util.concurrent.ConcurrentHashMap$TreeNode, java.lang.Object]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeBin"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$TreeBin: java.util.concurrent.ConcurrentHashMap$TreeNode root&gt;]"
+                        AccessPathTypes="[java.util.concurrent.ConcurrentHashMap$TreeNode]" gap="2"></from>
+                    <to sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeBin"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$TreeBin: java.util.concurrent.ConcurrentHashMap$TreeNode root&gt;]"
+                        AccessPathTypes="[java.util.concurrent.ConcurrentHashMap$TreeNode]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeNode"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$Node: java.lang.Object key&gt;]"
+                        AccessPathTypes="[java.lang.Object]" gap="1"></from>
+                    <to sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeBin"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$TreeBin: java.util.concurrent.ConcurrentHashMap$TreeNode root&gt;, &lt;java.util.concurrent.ConcurrentHashMap$Node: java.lang.Object key&gt;]"
+                        AccessPathTypes="[java.util.concurrent.ConcurrentHashMap$TreeNode, java.lang.Object]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeNode"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$Node: java.lang.Object key&gt;]"
+                        AccessPathTypes="[java.lang.Object]" gap="0"></from>
+                    <to sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeBin"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$TreeBin: java.util.concurrent.ConcurrentHashMap$TreeNode root&gt;, &lt;java.util.concurrent.ConcurrentHashMap$Node: java.lang.Object key&gt;]"
+                        AccessPathTypes="[java.util.concurrent.ConcurrentHashMap$TreeNode, java.lang.Object]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeNode" gap="1"></from>
+                    <to sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeBin"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$TreeBin: java.util.concurrent.ConcurrentHashMap$TreeNode root&gt;]"
+                        AccessPathTypes="[java.util.concurrent.ConcurrentHashMap$TreeNode]"
+                        taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="long parseUnsignedLong(java.lang.String,int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.Object"
+                        gap="5"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.Object"
+                        gap="6" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.Object"
+                        gap="6"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.Object"
+                        gap="5" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.Object"
+                        gap="6"></from>
+                    <to sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeNode"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$Node: java.lang.Object key&gt;]"
+                        AccessPathTypes="[java.lang.Object]" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.Object"
+                        gap="5"></from>
+                    <to sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeNode"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$Node: java.lang.Object key&gt;]"
+                        AccessPathTypes="[java.lang.Object]" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.Object"
+                        gap="6"></from>
+                    <to sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeBin"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$TreeBin: java.util.concurrent.ConcurrentHashMap$TreeNode root&gt;, &lt;java.util.concurrent.ConcurrentHashMap$Node: java.lang.Object key&gt;]"
+                        AccessPathTypes="[java.util.concurrent.ConcurrentHashMap$TreeNode, java.lang.Object]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.Object"
+                        gap="5"></from>
+                    <to sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeBin"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$TreeBin: java.util.concurrent.ConcurrentHashMap$TreeNode root&gt;, &lt;java.util.concurrent.ConcurrentHashMap$Node: java.lang.Object key&gt;]"
+                        AccessPathTypes="[java.util.concurrent.ConcurrentHashMap$TreeNode, java.lang.Object]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeNode" gap="5"></from>
+                    <to sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeBin"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$TreeBin: java.util.concurrent.ConcurrentHashMap$TreeNode root&gt;]"
+                        AccessPathTypes="[java.util.concurrent.ConcurrentHashMap$TreeNode]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeBin"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$TreeBin: java.util.concurrent.ConcurrentHashMap$TreeNode root&gt;, &lt;java.util.concurrent.ConcurrentHashMap$Node: java.lang.Object key&gt;]"
+                        AccessPathTypes="[java.util.concurrent.ConcurrentHashMap$TreeNode, java.lang.Object]"
+                        gap="8"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.Object"
+                        gap="5" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeNode"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$Node: java.lang.Object key&gt;]"
+                        AccessPathTypes="[java.lang.Object]" gap="5"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.Object"
+                        gap="6" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeNode"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$Node: java.lang.Object key&gt;]"
+                        AccessPathTypes="[java.lang.Object]" gap="6"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.Object"
+                        gap="5" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeNode"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$Node: java.lang.Object key&gt;]"
+                        AccessPathTypes="[java.lang.Object]" gap="6"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.Object"
+                        gap="6" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeBin"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$TreeBin: java.util.concurrent.ConcurrentHashMap$TreeNode root&gt;]"
+                        AccessPathTypes="[java.util.concurrent.ConcurrentHashMap$TreeNode]" gap="7"></from>
+                    <to sourceSinkType="GapBaseObject"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeNode" gap="5"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeNode" gap="6"></from>
+                    <to sourceSinkType="GapBaseObject"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeNode" gap="5"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeBin"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$TreeBin: java.util.concurrent.ConcurrentHashMap$TreeNode root&gt;, &lt;java.util.concurrent.ConcurrentHashMap$Node: java.lang.Object key&gt;]"
+                        AccessPathTypes="[java.util.concurrent.ConcurrentHashMap$TreeNode, java.lang.Object]"
+                        gap="8"></from>
+                    <to sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeNode"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$Node: java.lang.Object key&gt;]"
+                        AccessPathTypes="[java.lang.Object]" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeBin"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$TreeBin: java.util.concurrent.ConcurrentHashMap$TreeNode root&gt;, &lt;java.util.concurrent.ConcurrentHashMap$Node: java.lang.Object key&gt;]"
+                        AccessPathTypes="[java.util.concurrent.ConcurrentHashMap$TreeNode, java.lang.Object]"
+                        gap="8"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.Object"
+                        gap="6" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeNode"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$Node: java.lang.Object key&gt;]"
+                        AccessPathTypes="[java.lang.Object]" gap="5"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.Object"
+                        gap="5" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeBin"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$TreeBin: java.util.concurrent.ConcurrentHashMap$TreeNode root&gt;, &lt;java.util.concurrent.ConcurrentHashMap$Node: java.lang.Object key&gt;]"
+                        AccessPathTypes="[java.util.concurrent.ConcurrentHashMap$TreeNode, java.lang.Object]"
+                        gap="7"></from>
+                    <to sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeNode"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$Node: java.lang.Object key&gt;]"
+                        AccessPathTypes="[java.lang.Object]" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeBin" gap="7"></from>
+                    <to sourceSinkType="GapBaseObject"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeBin" gap="9"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeNode"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$Node: java.lang.Object key&gt;]"
+                        AccessPathTypes="[java.lang.Object]" gap="6"></from>
+                    <to sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeNode"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$Node: java.lang.Object key&gt;]"
+                        AccessPathTypes="[java.lang.Object]" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeNode" gap="6"></from>
+                    <to sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeBin"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$TreeBin: java.util.concurrent.ConcurrentHashMap$TreeNode root&gt;]"
+                        AccessPathTypes="[java.util.concurrent.ConcurrentHashMap$TreeNode]"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeBin" gap="7"></from>
+                    <to sourceSinkType="GapBaseObject"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeBin" gap="8"></to>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeNode"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$Node: java.lang.Object key&gt;]"
+                        AccessPathTypes="[java.lang.Object]" gap="5"></from>
+                    <to sourceSinkType="Field"
+                        BaseType="java.util.concurrent.ConcurrentHashMap$TreeNode"
+                        AccessPath="[&lt;java.util.concurrent.ConcurrentHashMap$Node: java.lang.Object key&gt;]"
+                        AccessPathTypes="[java.lang.Object]" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="long remainderUnsigned(long,long)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="long"></from>
+                    <to sourceSinkType="Return" BaseType="long" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="long"></from>
+                    <to sourceSinkType="Return" BaseType="long" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="long reverse(long)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="long"></from>
+                    <to sourceSinkType="Return" BaseType="long" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="long reverseBytes(long)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="long"></from>
+                    <to sourceSinkType="Return" BaseType="long" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="long rotateLeft(long,int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="long"></from>
+                    <to sourceSinkType="Return" BaseType="long" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="long rotateRight(long,int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="long"></from>
+                    <to sourceSinkType="Return" BaseType="long" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="short shortValue()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.Long"
+                        AccessPath="[&lt;java.lang.Long: long value&gt;]" AccessPathTypes="[long]"></from>
+                    <to sourceSinkType="Return" BaseType="short" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="int signum(long)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="long"></from>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="long sum(long,long)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="long"></from>
+                    <to sourceSinkType="Return" BaseType="long" taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="long"></from>
+                    <to sourceSinkType="Return" BaseType="long" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String toUnsignedString(long,int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"></from>
+                    <to sourceSinkType="Parameter" ParameterIndex="0" BaseType="int" gap="10"
+                        taintSubFields="true"></to>
+                </flow>
+                <flow isAlias="false">
+                    <from sourceSinkType="Return" BaseType="java.lang.String" gap="10"></from>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.Long valueOf(java.lang.String,int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"></from>
+                    <to sourceSinkType="Return" BaseType="java.lang.Long"
+                        AccessPath="[&lt;java.lang.Long: long value&gt;]" AccessPathTypes="[long]"
+                        taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.Long valueOf(long)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="long"></from>
+                    <to sourceSinkType="Return" BaseType="java.lang.Long"
+                        AccessPath="[&lt;java.lang.Long: long value&gt;]" AccessPathTypes="[long]"
+                        taintSubFields="true"></to>
+                </flow>
+            </flows>
+        </method>
+    </methods>
+    <gaps>
+        <gap num="0"
+            id="&lt;java.util.concurrent.ConcurrentHashMap$TreeNode: java.util.concurrent.ConcurrentHashMap$TreeNode findTreeNode(int,java.lang.Object,java.lang.Class)&gt;"></gap>
+        <gap num="1"
+            id="&lt;java.util.concurrent.ConcurrentHashMap$TreeNode: java.util.concurrent.ConcurrentHashMap$TreeNode findTreeNode(int,java.lang.Object,java.lang.Class)&gt;"></gap>
+        <gap num="2" id="&lt;java.util.concurrent.ConcurrentHashMap$TreeBin: void lockRoot()&gt;"></gap>
+        <gap num="3" id="&lt;java.util.concurrent.ConcurrentHashMap$TreeBin: void unlockRoot()&gt;"></gap>
+        <gap num="4" id="&lt;java.util.concurrent.ConcurrentHashMap$TreeBin: void unlockRoot()&gt;"></gap>
+        <gap num="5"
+            id="&lt;java.util.concurrent.ConcurrentHashMap$TreeNode: java.util.concurrent.ConcurrentHashMap$TreeNode findTreeNode(int,java.lang.Object,java.lang.Class)&gt;"></gap>
+        <gap num="6"
+            id="&lt;java.util.concurrent.ConcurrentHashMap$TreeNode: java.util.concurrent.ConcurrentHashMap$TreeNode findTreeNode(int,java.lang.Object,java.lang.Class)&gt;"></gap>
+        <gap num="7" id="&lt;java.util.concurrent.ConcurrentHashMap$TreeBin: void lockRoot()&gt;"></gap>
+        <gap num="8" id="&lt;java.util.concurrent.ConcurrentHashMap$TreeBin: void unlockRoot()&gt;"></gap>
+        <gap num="9" id="&lt;java.util.concurrent.ConcurrentHashMap$TreeBin: void unlockRoot()&gt;"></gap>
+        <gap num="10" id="&lt;java.math.BigInteger: java.lang.String toString(int)&gt;"></gap>
+    </gaps>
+</summary>

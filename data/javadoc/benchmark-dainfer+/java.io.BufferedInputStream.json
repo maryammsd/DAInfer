@@ -1,0 +1,19 @@
+{
+    "class": "BufferedInputStream",
+    "category": "Class",
+    "methods": {
+        "int available()": "Returns an estimate of the number of bytes that can be read (or\n skipped over) from this input stream without blocking by the next\n invocation of a method for this input stream.",
+        "void close()": "Closes this input stream and releases any system resources\n associated with the stream.",
+        "void mark(int\u00a0readlimit)": "See the general contract of themarkmethod ofInputStream.",
+        "boolean markSupported()": "Tests if this input stream supports themarkandresetmethods.",
+        "int read()": "See\n the general contract of thereadmethod ofInputStream.",
+        "int read(byte[]\u00a0b,\n    int\u00a0off,\n    int\u00a0len)": "Reads bytes from this byte-input stream into the specified byte array,\n starting at the given offset.",
+        "void reset()": "See the general contract of theresetmethod ofInputStream.",
+        "long skip(long\u00a0n)": "See the general contract of theskipmethod ofInputStream."
+    },
+    "super class": [
+        "java.io.FilterInputStream",
+        "java.io.InputStream",
+        "java.lang.Object"
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "class": "IntMath",
+    "category": "Class",
+    "methods": {
+        "int binomial(int n, int k)": "Returns n choose k, also known as the binomial coefficient of n and k, or Integer.MAX_VALUE if the result does not fit in an int.",
+        "int checkedAdd(int a, int b)": "Returns the sum of a and b, provided it does not overflow.",
+        "int checkedMultiply(int a, int b)": "Returns the product of a and b, provided it does not overflow.",
+        "int checkedPow(int b, int k)": "Returns the b to the kth power, provided it does not overflow.",
+        "int checkedSubtract(int a, int b)": "Returns the difference of a and b, provided it does not overflow.",
+        "int divide(int p, int q, RoundingMode mode)": "Returns the result of dividing p by q, rounding using the specified RoundingMode.",
+        "int factorial(int n)": "Returns n!, that is, the product of the first n positive integers, 1 if n == 0, or Integer.MAX_VALUE if the result does not fit in a int.",
+        "int gcd(int a, int b)": "Returns the greatest common divisor of a, b.",
+        "boolean isPowerOfTwo(int x)": "Returns true if x represents a power of two.",
+        "int log10(int x, RoundingMode mode)": "Returns the base-10 logarithm of x, rounded according to the specified rounding mode.",
+        "int log2(int x, RoundingMode mode)": "Returns the base-2 logarithm of x, rounded according to the specified rounding mode.",
+        "int mean(int x, int y)": "Returns the arithmetic mean of x and y, rounded towards negative infinity.",
+        "int mod(int x, int m)": "Returns x mod m, a non-negative value less than m.",
+        "int pow(int b, int k)": "Returns b to the kth power.",
+        "int sqrt(int x, RoundingMode mode)": "Returns the square root of x, rounded with the specified rounding mode."
+    },
+    "super class": [
+        "java.lang.Object"
+    ]
+}

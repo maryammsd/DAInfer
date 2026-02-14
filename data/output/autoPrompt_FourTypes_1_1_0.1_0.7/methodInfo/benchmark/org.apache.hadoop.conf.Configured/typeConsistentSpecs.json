@@ -1,8 +1,0 @@
-{
-    "typeConsistentSpecs": [
-        [
-            "void setConf(Configuration conf)",
-            "Configuration getConf()"
-        ]
-    ]
-}

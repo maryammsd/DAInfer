@@ -1,0 +1,16 @@
+{
+    "class": "WebResourceRequest",
+    "category": "class",
+    "methods": {
+        "String getMethod()": "Gets the method associated with the request, for example \"GET\".",
+        "Map getRequestHeaders()": "Gets the headers associated with the request.",
+        "Uri getUrl()": "Gets the URL for which the resource request was made.",
+        "boolean hasGesture()": "Gets whether a gesture (such as a click) was associated with the request.",
+        "boolean isForMainFrame()": "Gets whether the request was made in order to fetch the main frame's document.",
+        "boolean isRedirect()": "Gets whether the request was a result of a server-side redirect."
+    },
+    "super class": [
+        "Object",
+        "WebResourceRequest"
+    ]
+}

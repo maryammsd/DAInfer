@@ -1,0 +1,28 @@
+{
+    "class": "JsonReader",
+    "category": "class",
+    "methods": {
+        "void beginArray()": "Consumes the next token from the JSON stream and asserts that it is the beginning of a new array.",
+        "void beginObject()": "Consumes the next token from the JSON stream and asserts that it is the beginning of a new object.",
+        "void close()": "Closes this JSON reader and the underlying Reader.",
+        "void endArray()": "Consumes the next token from the JSON stream and asserts that it is the end of the current array.",
+        "void endObject()": "Consumes the next token from the JSON stream and asserts that it is the end of the current object.",
+        "boolean hasNext()": "Returns true if the current array or object has another element.",
+        "boolean isLenient()": "Returns true if this parser is liberal in what it accepts.",
+        "boolean nextBoolean()": "Returns the boolean value of the next token, consuming it.",
+        "double nextDouble()": "Returns the double value of the next token, consuming it.",
+        "int nextInt()": "Returns the int value of the next token, consuming it.",
+        "long nextLong()": "Returns the long value of the next token, consuming it.",
+        "String nextName()": "Returns the next token, a property name, and consumes it.",
+        "void nextNull()": "Consumes the next token from the JSON stream and asserts that it is a literal null.",
+        "String nextString()": "Returns the string value of the next token, consuming it.",
+        "JsonToken peek()": "Returns the type of the next token without consuming it.",
+        "void setLenient(boolean lenient)": "Configure this parser to be be liberal in what it accepts.",
+        "void skipValue()": "Skips the next value recursively.",
+        "String toString()": "Returns a string representation of the object."
+    },
+    "super class": [
+        "Object",
+        "JsonReader"
+    ]
+}

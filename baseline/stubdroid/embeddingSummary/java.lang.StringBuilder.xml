@@ -1,0 +1,377 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="java.lang.StringBuilder insert(int,char[],int,int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="char[]"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="2" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="3" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.StringBuilder insert(int,java.lang.String)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.StringBuilder insert(int,java.lang.CharSequence)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.CharSequence"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int codePointAt(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.StringBuilder"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.StringBuilder replace(int,int,java.lang.String)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="2" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.StringBuilder insert(int,char[])">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="char[]"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.StringBuilder insert(int,boolean)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.StringBuilder"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.StringBuilder appendCodePoint(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.StringBuilder"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void getChars(int,int,char[],int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.StringBuilder"/>
+                    <to sourceSinkType="Return" BaseType="void" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.StringBuilder append(float)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.StringBuilder"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int codePointBefore(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.StringBuilder"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.StringBuilder insert(int,java.lang.Object)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.Object"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.StringBuilder append(java.lang.StringBuffer)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.StringBuffer"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.StringBuilder append(char[])">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="char[]"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.StringBuilder insert(int,float)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="float"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String toString()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.StringBuilder"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setCharAt(int,char)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.StringBuilder"/>
+                    <to sourceSinkType="Return" BaseType="void" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.StringBuilder insert(int,java.lang.CharSequence,int,int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.CharSequence"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="2" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="3" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.StringBuilder insert(int,long)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="long"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.StringBuilder append(char)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.StringBuilder"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.StringBuilder append(boolean)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="boolean"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.StringBuilder append(long)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="long"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.StringBuilder insert(int,int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.StringBuilder append(char[],int,int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="char[]"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="2" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String substring(int,int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.StringBuilder"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.StringBuilder append(java.lang.Object)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.Object"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.StringBuilder insert(int,double)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="double"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String substring(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.StringBuilder"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.StringBuilder append(java.lang.CharSequence,int,int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.CharSequence"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="2" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.StringBuilder append(double)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.StringBuilder"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.CharSequence subSequence(int,int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.StringBuilder"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.CharSequence" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.StringBuilder insert(int,char)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="char"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="char charAt(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.StringBuilder"/>
+                    <to sourceSinkType="Return" BaseType="char" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.StringBuilder append(java.lang.CharSequence)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.CharSequence"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.StringBuilder append(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.lang.StringBuilder"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.StringBuilder append(java.lang.String)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="java.lang.StringBuilder" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+    </methods>
+</summary>

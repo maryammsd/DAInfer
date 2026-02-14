@@ -1,0 +1,26 @@
+{
+    "class": "BaseEncoding",
+    "category": "Class",
+    "methods": {
+        "BaseEncoding base16()": "The \"base16\" encoding specified by RFC 4648 section 8, Base 16 Encoding.",
+        "BaseEncoding base32()": "The \"base32\" encoding specified by RFC 4648 section 6, Base 32 Encoding.",
+        "BaseEncoding base32Hex()": "The \"base32hex\" encoding specified by RFC 4648 section 7, Base 32 Encoding with Extended Hex Alphabet.",
+        "BaseEncoding base64()": "The \"base64\" base encoding specified by RFC 4648 section 4, Base 64 Encoding.",
+        "BaseEncoding base64Url()": "The \"base64url\" encoding specified by RFC 4648 section 5, Base 64 Encoding with URL and Filename Safe Alphabet, also sometimes referred to as the \"web safe Base64.\" (This is the same as the base 64 encoding with URL and filename safe alphabet from RFC 3548.)",
+        "byte[] decode(CharSequence chars)": "Decodes the specified character sequence, and returns the resulting byte[].",
+        "ByteSource decodingSource(CharSource encodedSource)": "Returns a ByteSource that reads base-encoded bytes from the specified CharSource.",
+        "InputStream decodingStream(Reader reader)": "Returns an InputStream that decodes base-encoded input from the specified Reader.",
+        "String encode(byte[] bytes)": "Encodes the specified byte array, and returns the encoded String.",
+        "String encode(byte[] bytes, int off, int len)": "Encodes the specified range of the specified byte array, and returns the encoded String.",
+        "ByteSink encodingSink(CharSink encodedSink)": "Returns a ByteSink that writes base-encoded bytes to the specified CharSink.",
+        "OutputStream encodingStream(Writer writer)": "Returns an OutputStream that encodes bytes using this encoding into the specified Writer.",
+        "BaseEncoding lowerCase()": "Returns an encoding that behaves equivalently to this encoding, but encodes and decodes with lowercase letters.",
+        "BaseEncoding omitPadding()": "Returns an encoding that behaves equivalently to this encoding, but omits any padding characters as specified by RFC 4648 section 3.2, Padding of Encoded Data.",
+        "BaseEncoding upperCase()": "Returns an encoding that behaves equivalently to this encoding, but encodes and decodes with uppercase letters.",
+        "BaseEncoding withPadChar(char padChar)": "Returns an encoding that behaves equivalently to this encoding, but uses an alternate character for padding.",
+        "BaseEncoding withSeparator(String separator, int n)": "Returns an encoding that behaves equivalently to this encoding, but adds a separator string after every n characters."
+    },
+    "super class": [
+        "java.lang.Object"
+    ]
+}

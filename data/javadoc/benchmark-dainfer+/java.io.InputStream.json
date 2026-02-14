@@ -1,0 +1,18 @@
+{
+    "class": "InputStream",
+    "category": "Class",
+    "methods": {
+        "int available()": "Returns an estimate of the number of bytes that can be read (or\n skipped over) from this input stream without blocking by the next\n invocation of a method for this input stream.",
+        "void close()": "Closes this input stream and releases any system resources associated\n with the stream.",
+        "void mark(int\u00a0readlimit)": "Marks the current position in this input stream.",
+        "boolean markSupported()": "Tests if this input stream supports themarkandresetmethods.",
+        "int read()": "Reads the next byte of data from the input stream.",
+        "int read(byte[]\u00a0b)": "Reads some number of bytes from the input stream and stores them into\n the buffer arrayb.",
+        "int read(byte[]\u00a0b,\n    int\u00a0off,\n    int\u00a0len)": "Reads up tolenbytes of data from the input stream into\n an array of bytes.",
+        "void reset()": "Repositions this stream to the position at the time themarkmethod was last called on this input stream.",
+        "long skip(long\u00a0n)": "Skips over and discardsnbytes of data from this input\n stream."
+    },
+    "super class": [
+        "java.lang.Object"
+    ]
+}

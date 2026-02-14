@@ -1,0 +1,161 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="java.lang.String getDataType(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.content.IntentFilter create(java.lang.String,java.lang.String)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"/>
+                    <to sourceSinkType="Return" BaseType="android.content.IntentFilter" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.content.IntentFilter" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.content.IntentFilter" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void addDataScheme(java.lang.String)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.content.IntentFilter" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.util.Iterator schemeSpecificPartsIterator()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"/>
+                    <to sourceSinkType="Return" BaseType="java.util.Iterator" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.util.Iterator schemesIterator()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"/>
+                    <to sourceSinkType="Return" BaseType="java.util.Iterator" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int getPriority()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String getCategory(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void addDataPath(java.lang.String,int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.content.IntentFilter" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.content.IntentFilter" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void addAction(java.lang.String)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.content.IntentFilter" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.util.Iterator authoritiesIterator()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"/>
+                    <to sourceSinkType="Return" BaseType="java.util.Iterator" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.util.Iterator typesIterator()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"/>
+                    <to sourceSinkType="Return" BaseType="java.util.Iterator" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.util.Iterator pathsIterator()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"/>
+                    <to sourceSinkType="Return" BaseType="java.util.Iterator" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String getDataScheme(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void addDataSchemeSpecificPart(java.lang.String,int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.content.IntentFilter" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="android.content.IntentFilter" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void addDataAuthority(java.lang.String,java.lang.String)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.content.IntentFilter" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.content.IntentFilter" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.util.Iterator categoriesIterator()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.content.IntentFilter"/>
+                    <to sourceSinkType="Return" BaseType="java.util.Iterator" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void addCategory(java.lang.String)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.content.IntentFilter" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+    </methods>
+</summary>

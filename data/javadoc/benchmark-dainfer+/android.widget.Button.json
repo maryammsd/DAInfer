@@ -1,0 +1,12 @@
+{
+    "class": "Button",
+    "category": "class",
+    "methods": {
+        "CharSequence getAccessibilityClassName()": "Return the class name of this object to be used for accessibility purposes.",
+        "PointerIcon onResolvePointerIcon(MotionEvent event, int pointerIndex)": "Resolve the pointer icon that should be used for specified pointer in the motion event."
+    },
+    "super class": [
+        "Object",
+        "Button"
+    ]
+}

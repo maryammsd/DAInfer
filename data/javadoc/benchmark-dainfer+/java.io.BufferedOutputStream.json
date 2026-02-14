@@ -1,0 +1,14 @@
+{
+    "class": "BufferedOutputStream",
+    "category": "Class",
+    "methods": {
+        "void flush()": "Flushes this buffered output stream.",
+        "void write(byte[]\u00a0b,\n     int\u00a0off,\n     int\u00a0len)": "Writeslenbytes from the specified byte array\n starting at offsetoffto this buffered output stream.",
+        "void write(int\u00a0b)": "Writes the specified byte to this buffered output stream."
+    },
+    "super class": [
+        "java.io.FilterOutputStream",
+        "java.io.OutputStream",
+        "java.lang.Object"
+    ]
+}

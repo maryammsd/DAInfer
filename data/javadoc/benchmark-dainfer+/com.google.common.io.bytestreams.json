@@ -1,0 +1,25 @@
+{
+    "class": "ByteStreams",
+    "category": "Class",
+    "methods": {
+        "long copy(InputStream from, OutputStream to)": "Copies all bytes from the input stream to the output stream.",
+        "long copy(ReadableByteChannel from, WritableByteChannel to)": "Copies all bytes from the readable channel to the writable channel.",
+        "InputStream limit(InputStream in, long limit)": "Wraps a InputStream, limiting the number of bytes which can be read.",
+        "ByteArrayDataInput newDataInput(byte[] bytes)": "Returns a new ByteArrayDataInput instance to read from the bytes array from the beginning.",
+        "ByteArrayDataInput newDataInput(byte[] bytes, int start)": "Returns a new ByteArrayDataInput instance to read from the bytes array, starting at the given position.",
+        "ByteArrayDataInput newDataInput(ByteArrayInputStream byteArrayInputStream)": "Returns a new ByteArrayDataInput instance to read from the given ByteArrayInputStream.",
+        "ByteArrayDataOutput newDataOutput()": "Returns a new ByteArrayDataOutput instance with a default size.",
+        "ByteArrayDataOutput newDataOutput(ByteArrayOutputStream byteArrayOutputSteam)": "Returns a new ByteArrayDataOutput instance which writes to the given ByteArrayOutputStream.",
+        "ByteArrayDataOutput newDataOutput(int size)": "Returns a new ByteArrayDataOutput instance sized to hold size bytes before resizing.",
+        "OutputStream nullOutputStream()": "Returns an OutputStream that simply discards written bytes.",
+        "int read(InputStream in, byte[] b, int off, int len)": "Reads some bytes from an input stream and stores them into the buffer array b.",
+        "T readBytes(InputStream input, ByteProcessor processor)": "Process the bytes of the given input stream using the given processor.",
+        "void readFully(InputStream in, byte[] b)": "Attempts to read enough bytes from the stream to fill the given byte array, with the same behavior as DataInput.readFully(byte[]).",
+        "void readFully(InputStream in, byte[] b, int off, int len)": "Attempts to read len bytes from the stream into the given array starting at off, with the same behavior as DataInput.readFully(byte[], int, int).",
+        "void skipFully(InputStream in, long n)": "Discards n bytes of data from the input stream.",
+        "byte[] toByteArray(InputStream in)": "Reads all bytes from an input stream into a byte array."
+    },
+    "super class": [
+        "java.lang.Object"
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "class": "HttpResponse",
+    "category": "Class",
+    "methods": {
+        "T getBody()": "",
+        "Headers getHeaders()": "",
+        "InputStream getRawBody()": "",
+        "int getStatus()": "",
+        "String getStatusText()": ""
+    },
+    "super class": [
+        "java.lang.Object"
+    ]
+}

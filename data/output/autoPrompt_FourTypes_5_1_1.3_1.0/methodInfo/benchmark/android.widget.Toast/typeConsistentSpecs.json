@@ -1,8 +1,0 @@
-{
-    "typeConsistentSpecs": [
-        [
-            "void setView(View view)",
-            "View getView()"
-        ]
-    ]
-}

@@ -1,0 +1,13 @@
+{
+    "class": "Base64OutputStream",
+    "category": "class",
+    "methods": {
+        "void close()": "Closes this output stream and releases any system resources associated with the stream.",
+        "void write(byte[] b, int off, int len)": "Writes len bytes from the specified byte array starting at offset off to this output stream.",
+        "void write(int b)": "Writes the specified byte to this output stream."
+    },
+    "super class": [
+        "Object",
+        "Base64OutputStream"
+    ]
+}

@@ -1,0 +1,111 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="int get()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.IntBuffer"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.IntBuffer put(int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.IntBuffer" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.IntBuffer put(java.nio.IntBuffer)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.nio.IntBuffer"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.IntBuffer" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.IntBuffer get(int[])">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.IntBuffer"/>
+                    <to sourceSinkType="Return" BaseType="java.nio.IntBuffer" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.IntBuffer duplicate()">
+            <flows/>
+        </method>
+        <method id="java.nio.IntBuffer put(int,int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.IntBuffer" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.IntBuffer" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.IntBuffer get(int[],int,int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.IntBuffer"/>
+                    <to sourceSinkType="Return" BaseType="java.nio.IntBuffer" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String toString()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.IntBuffer"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.IntBuffer put(int[],int,int)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int[]"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.IntBuffer" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="1" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.IntBuffer" taintSubFields="true"/>
+                </flow>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="2" BaseType="int"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.IntBuffer" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int[] array()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.IntBuffer"/>
+                    <to sourceSinkType="Return" BaseType="int[]" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.IntBuffer put(int[])">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="int[]"/>
+                    <to sourceSinkType="Field" BaseType="java.nio.IntBuffer" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="int get(int)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="java.nio.IntBuffer"/>
+                    <to sourceSinkType="Return" BaseType="int" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.nio.IntBuffer asReadOnlyBuffer()">
+            <flows/>
+        </method>
+    </methods>
+</summary>

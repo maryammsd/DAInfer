@@ -67,7 +67,7 @@
         "int getHeight()": "Returns the current height of this component.",
         "HierarchyBoundsListener[] getHierarchyBoundsListeners()": "Returns an array of all the hierarchy bounds listeners registered on this component.",
         "HierarchyListener[] getHierarchyListeners()": "Returns an array of all the hierarchy listeners registered on this component.",
-        "boolean getIgnoreRepaint()": "",
+        "boolean getIgnoreRepaint()": "Returns whether or not paint messages received from the operating system should be ignored.",
         "InputContext getInputContext()": "Gets the input context used by this component for handling the communication with input methods when text is entered in this component.",
         "InputMethodListener[] getInputMethodListeners()": "Returns an array of all the input method listeners registered on this component.",
         "InputMethodRequests getInputMethodRequests()": "Gets the input method request handler which supports requests from input methods for this component.",

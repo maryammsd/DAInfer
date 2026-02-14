@@ -1,0 +1,205 @@
+<?xml version="1.0" ?>
+<summary fileFormatVersion="103">
+    <methods>
+        <method id="void setBearing(float)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="float"/>
+                    <to sourceSinkType="Field" BaseType="android.location.Location" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setLatitude(double)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="double"/>
+                    <to sourceSinkType="Field" BaseType="android.location.Location" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String toString()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.location.Location"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="double getAltitude()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.location.Location"/>
+                    <to sourceSinkType="Return" BaseType="double" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="android.os.Bundle getExtras()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.location.Location"/>
+                    <to sourceSinkType="Return" BaseType="android.os.Bundle" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setAccuracy(float)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="float"/>
+                    <to sourceSinkType="Field" BaseType="android.location.Location" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setAltitude(double)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="double"/>
+                    <to sourceSinkType="Field" BaseType="android.location.Location" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="float getBearingAccuracyDegrees()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.location.Location"/>
+                    <to sourceSinkType="Return" BaseType="float" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="float getBearing()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.location.Location"/>
+                    <to sourceSinkType="Return" BaseType="float" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setSpeed(float)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="float"/>
+                    <to sourceSinkType="Field" BaseType="android.location.Location" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="double getLatitude()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.location.Location"/>
+                    <to sourceSinkType="Return" BaseType="double" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setSpeedAccuracyMetersPerSecond(float)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="float"/>
+                    <to sourceSinkType="Field" BaseType="android.location.Location" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="double getLongitude()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.location.Location"/>
+                    <to sourceSinkType="Return" BaseType="double" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setProvider(java.lang.String)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="java.lang.String"/>
+                    <to sourceSinkType="Field" BaseType="android.location.Location" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setLongitude(double)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="double"/>
+                    <to sourceSinkType="Field" BaseType="android.location.Location" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="float getVerticalAccuracyMeters()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.location.Location"/>
+                    <to sourceSinkType="Return" BaseType="float" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="float bearingTo(android.location.Location)">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.location.Location"/>
+                    <to sourceSinkType="Return" BaseType="float" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void set(android.location.Location)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="android.location.Location"/>
+                    <to sourceSinkType="Field" BaseType="android.location.Location" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setBearingAccuracyDegrees(float)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="float"/>
+                    <to sourceSinkType="Field" BaseType="android.location.Location" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="java.lang.String getProvider()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.location.Location"/>
+                    <to sourceSinkType="Return" BaseType="java.lang.String" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="float getSpeedAccuracyMetersPerSecond()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.location.Location"/>
+                    <to sourceSinkType="Return" BaseType="float" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="float getAccuracy()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.location.Location"/>
+                    <to sourceSinkType="Return" BaseType="float" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="float getSpeed()">
+            <flows>
+                <flow isAlias="false">
+                    <from sourceSinkType="Field" BaseType="android.location.Location"/>
+                    <to sourceSinkType="Return" BaseType="float" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setExtras(android.os.Bundle)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="android.os.Bundle"/>
+                    <to sourceSinkType="Field" BaseType="android.location.Location" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+        <method id="void setVerticalAccuracyMeters(float)">
+            <flows>
+                <flow isAlias="true">
+                    <from sourceSinkType="Parameter" ParameterIndex="0" BaseType="float"/>
+                    <to sourceSinkType="Field" BaseType="android.location.Location" taintSubFields="true"/>
+                </flow>
+            </flows>
+        </method>
+    </methods>
+</summary>
