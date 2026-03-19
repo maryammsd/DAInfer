@@ -26,9 +26,16 @@ Step 2: Download the necessary resources for the tagging model. Execute the foll
 > nltk.download('brown')
 > nltk.download('universal_tagset')
 > nltk.download('averaged_perceptron_tagger')
+nltk.download('punkt')
 ```
 
-Step 3: Add your openai key in `src/config.py`
+Step 3: Download the English model for spaCy:
+
+```
+python -m spacy download en_core_web_sm
+```
+
+Step 4: Add your openai key in `src/config.py`
 
 ```python
 global_openai_key = "sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
