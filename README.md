@@ -2,6 +2,10 @@
 
 This is the official GitHub repository for the following paper:
 
+DAInfer+: Neurosymbolic Inference of API Specifications from Documentation via Embedding Models. 
+
+This paper is a journal extension of the following paper, that uses Embedding Models to retrieve data-flow specifications for Android and Java APIs:
+
 DAInfer: Inferring API Aliasing Specifications from Library Documentation via Neurosymbolic Optimization (FSE 2024)
 
 
@@ -30,24 +34,36 @@ Step 3: Add your openai key in `src/config.py`
 global_openai_key = "sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
 
-### Run
+### Run 
 
-If you want to run the DAInfer with the default setting, you can simply execute the following command:
+DAInfer+ supports a few capabalities to infer both data-flow and alias specifications for Android and Java APIs with the help of LLMs or embedding models. You can choose any of the below options to run your desired capability through the commandline:
+
+```
+usage: python run.py [-h] [n] [n] [m] [m] [--easy] [--eager] [--llm] [--llm-dataflow] [--sink-source] [--embed]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  m : the temprature for GPT
+  n : self-consistency parameter used to run a few prompts and select the high reported results by LLM
+  --easy: 
+  --eager
+  --llm
+  --llm-dataflow
+  --sink-source
+  --embed
+ 
+```
+You can configure your desired LLM model and embedding model in the `config.py` by modifying the variables `LLM` and `EMBEDDING_MODEL`. Currently, our tool only suppoerts E5 and SentenceBert models as well as GPT, Qwen, DeppSeek Coder and DeepSeek V2. We used `ollama` and locally built the open-sourced LLM models on our machine. You need to do the same to be able to use these models. To use GPT, you only need to set the OpenAI key in the variable `openai_key_baseline` in the `config.py` file. 
+
+
+*Run Alias Spec Inference with LLM.* If you want to run the DAInfer with the default setting to use LLM for retrieving the alias specifications for APIs, you can simply execute the following command:
 
 ```commandline
 cd src
 python run.py 1 1 0.7 0.7 --lazy
 ```
 
-If you want to apply the self-consistency to the two-staged prompting and adjust the temperatures, you can change the four arguments passed to `main.py`.
-For example, if you want to set K = 5 for both the two stages and the temperatures are both set to 1.0, you can execute the following command:
-
-```commandline
-cd src
-python run.py 5 5 1.0 1.0 --lazy
-```
-
-If you want to disable the lazy strategy in the neural-symbolic optimization, you can replace the `-lazy` flag with `-eager`.
+If you want to disable the lazy strategy in the neural-symbolic optimization, you can replace the `--lazy` flag with `--eager`.
 
 ```commandline
 cd src
@@ -56,16 +72,45 @@ python run.py 1 1 0.7 0.7 --eager
 
 ATTENTION: The eager mode would invoke OpenAI API for a large number of methods in the library documentation, which may cost a lot of money. We recommend you to use the lazy mode to avoid the high cost.
 
-## Data
+*Run Data-Flow Spec Inference with Embedding Model.* If you want to run the DAInfer+ to use embedding models for retrieving the data-flow specifications for APIs, you need to run the below command:
+
+```commandline
+cd src
+python run.py --source-sink
+```
+
+*Run Alias Spec Inference with Embedding Model.* 
+Next, you can run DAInfer+ with the following command to retrieve only data-flow facts with embedding models for our data-flow dataset:
+
+```commandline
+cd src
+python run.py 1 1 0.7 0.7 --embed
+```
+
+*Run Data-Flow Spec Inference with Embedding Model.* If you want to run the DAInfer+ to use LLMs for retrieving the data-flow specifications for APIs, you should run the below command:
+
+```commandline
+cd src
+python run.py 1 1 0.7 0.7 --llm-dataflow
+```
+
+If you want to apply the self-consistency to the one or two-staged prompting and adjust the temperatures, you can change the four arguments passed to `main.py`. Currently, our tool only supports this for setting the temprature of GPT models. 
+For example, if you want to set K = 5 for both the two stages and the temperatures are both set to 1.0, you can execute the following command:
+
+```commandline
+cd src
+python run.py 5 5 1.0 1.0 --lazy // or
+python run.py 5 5 1.0 1.0 -llm-dataflow
+```
 
 ### Dataset
-We parse the documentations of Java classes used for the evaluation and provide the documentation model in the directory `data/javadoc/benchmark`. All the analyzed Java classes are listed in the json file `data/javadoc/evalSubject.json`. All the methods and their semantic descriptions are summarized in the json file `benchmark_fullMethodDoc.json`.
+We parse the documentations of Java classes used for the evaluation and provide the documentation model in the directory `data/javadoc/benchmark-dainfer+`. All the analyzed Java classes are listed in the json file `data/javadoc/evalSubject.json`. All the methods and their semantic descriptions are summarized in the json file `benchmark_fullMethodDoc.json` for our first paper DAInfer. For DAInfer+, we used a larger set of Android and Java classes for our experiment. The semantic descriptions of this set are available in the json file `benchmark_fullMethodDoc-android.json`.
 
-We provide `docParser.py` in the directory `src`. You can utilize it to extract the documentation of the Java library you focus on and run DAInfer to infer the API aliasing specifications for the library.
+We provide `docParser.py` in the directory `src`. You can utilize it to extract the documentation of the Java library you focus on and run DAInfer to infer the API data-flow aliasing specifications for the library.
 
 ### Oracle
 
-The directory `oracle` contains the three sources of oracles, including the ones specified in FlowDroid and USpec and the manually specified ones. The generated models of atlas is stored in `baseline/atlas/models`. We referred to all the other oracles when we manually specified ours, which is stored in the directory `oracle/ManualOracle`.
+The directory `oracle` contains the three sources of oracles, including the ones specified in FlowDroid and USpec and the manually specified ones. The generated models of atlas is stored in `baseline/atlas/models`. We referred to all the other oracles when we manually specified ours, which is stored in the directory `oracle/ManualOracle` for either alias or data-flow inference.
 
 ### Output
 
