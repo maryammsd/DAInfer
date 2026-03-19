@@ -2,11 +2,11 @@
 
 This is the official GitHub repository for the following paper:
 
-DAInfer+: Neurosymbolic Inference of API Specifications from Documentation via Embedding Models. 
+**DAInfer+: Neurosymbolic Inference of API Specifications from Documentation via Embedding Models.**
 
 This paper is a journal extension of the following paper, that uses Embedding Models to retrieve data-flow specifications for Android and Java APIs:
 
-DAInfer: Inferring API Aliasing Specifications from Library Documentation via Neurosymbolic Optimization (FSE 2024)
+**DAInfer: Inferring API Aliasing Specifications from Library Documentation via Neurosymbolic Optimization (FSE 2024).**
 
 
 ## Quick Start
@@ -63,7 +63,7 @@ optional arguments:
 You can configure your desired LLM model and embedding model in the `config.py` by modifying the variables `LLM` and `EMBEDDING_MODEL`. Currently, our tool only suppoerts E5 and SentenceBert models as well as GPT, Qwen, DeppSeek Coder and DeepSeek V2. We used `ollama` and locally built the open-sourced LLM models on our machine. You need to do the same to be able to use these models. To use GPT, you only need to set the OpenAI key in the variable `openai_key_baseline` in the `config.py` file. 
 
 
-*Run Alias Spec Inference with LLM.* If you want to run the DAInfer with the default setting to use LLM for retrieving the alias specifications for APIs, you can simply execute the following command:
+**Run Alias Spec Inference with two-staged prompting with LLMs.** If you want to run the DAInfer with the default setting to use LLM for retrieving the alias specifications for APIs, you can simply execute the following command:
 
 ```commandline
 cd src
@@ -79,14 +79,14 @@ python run.py 1 1 0.7 0.7 --eager
 
 ATTENTION: The eager mode would invoke OpenAI API for a large number of methods in the library documentation, which may cost a lot of money. We recommend you to use the lazy mode to avoid the high cost.
 
-*Run Data-Flow Spec Inference with Embedding Model.* If you want to run the DAInfer+ to use embedding models for retrieving the data-flow specifications for APIs, you need to run the below command:
+**Run Data-Flow Spec Inference with Embedding Model.** If you want to run the DAInfer+ to use embedding models for retrieving the data-flow specifications for APIs, you need to run the below command:
 
 ```commandline
 cd src
 python run.py --source-sink
 ```
 
-*Run Alias Spec Inference with Embedding Model.* 
+**Run Alias Spec Inference with Embedding Model.**
 Next, you can run DAInfer+ with the following command to retrieve only data-flow facts with embedding models for our data-flow dataset:
 
 ```commandline
@@ -94,7 +94,7 @@ cd src
 python run.py 1 1 0.7 0.7 --embed
 ```
 
-*Run Data-Flow Spec Inference with Embedding Model.* If you want to run the DAInfer+ to use LLMs for retrieving the data-flow specifications for APIs, you should run the below command:
+**Run Data-Flow Spec Inference with one-staged prompt with LLMs.** If you want to run the DAInfer+ to use LLMs for retrieving the data-flow specifications for APIs, you should run the below command:
 
 ```commandline
 cd src
