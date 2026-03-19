@@ -1,4 +1,4 @@
-# DAInfer
+# DAInfer+
 
 This is the official GitHub repository for the following paper:
 
