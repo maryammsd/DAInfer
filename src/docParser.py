@@ -28,6 +28,21 @@ def pageParser(filePath: str, projectName: str):
     else:
         return defaultParse(filePath)
 
+def save_to_file(class_name: str, message: str):
+    """
+    Save a message to a log file named after the class.
+    Args:
+        class_name: The name of the class
+        message: The message to be saved
+    """
+    log_filename = f"{class_name}_log.txt"
+    path_to_save = "./logs"
+    if os.path.exists(path_to_save) == False:
+        os.makedirs(path_to_save)
+    log_filename = os.path.join(path_to_save, log_filename)
+    with open(log_filename, "a") as log_file:
+        log_file.write(message + "\n")
+
 
 def defaultParse(filePath: str):
     """
@@ -572,12 +587,21 @@ def parseProject(javadocPath: str, projectName: str):
     # Print the list of HTML files
     for filePath in html_files:
         print(filePath)
+        filename = filePath.split("/")[-1]
+        filename = filename.replace(".html", "")
+        print("Processing file:", filename)
         package_name, classInfo = pageParser(filePath, projectName)
         if package_name is not None and classInfo is not None:
             methods.append(classInfo)
             if package_name not in methodDoc:
                 methodDoc[package_name] = {}
             methodDoc[package_name][classInfo["class"]] = classInfo
+            path_to_save = outputPath
+            if os.path.exists(path_to_save) == False:
+                os.makedirs(path_to_save)
+            with open(os.path.join(path_to_save, filename + ".json"), "w") as f:
+                print("Writing to file:", filename + ".json")
+                json.dump(classInfo, f, indent=4)
 
     total_size = sum(len(lst) for lst in methodDoc.values())
     print(total_size, " classes obtained")
