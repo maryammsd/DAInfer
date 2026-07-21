@@ -1,5 +1,5 @@
 memoryOperation = (
-    "In Java programs, the typical examples of memory are as follows. You can determine which kinds of memory operations are conducted by a method call according to"
+    "In Java programs, the typical examples over memory are as follows. You can determine which kinds of memory operations conducted by a method call according to"
     "the method name and its specification description. A method might induce multiple operations.\n"
 )
 
@@ -14,27 +14,66 @@ memoryOpExamples = [
     "synonyms, the method would insert data to inner storage.\n",
 ]
 
-memoryTypeQuestion_manualPrompt = "Please determine whether the method conducts the operation: memory read, memory write, deletion from memory, and insertion into memory. Give four yes/no answers in order. Do not need to give a more concrete explanation. Here is the example of output: Yes, No, Yes, Yes. Make sure that the answers are in one line and are seperated by comma.\n"
+memoryTypeQuestion_manualPrompt = "Please determine whether the method conducts the operation : memory read, memory write, deletion upon memory, and insertion upon memory. Give four yes/no in order as the answers. Do not need give more concrete explanation. Here is the example of output: Yes, No, Yes, Yes. Make sure that the answers are in one line and are seperated by comma.\n"
 
-memoryTypeQuestion_autoPrompt_TwoTypes = "Please determine whether the method conducts the operation : memory read, memory write. Give two yes/no answers in order as the answer. Do not need to give a more concrete explanation. Here is the example of output: Yes, No. Make sure that the answers are in one line and are seperated by comma.\n"
+memoryTypeQuestion_autoPrompt_TwoTypes = "Please determine whether the method conducts the operation : memory read, memory write. Give two yes/no in order as the answer. Do not need give more concrete explanation. Here is the example of output: Yes, No. Make sure that the answers are in one line and are seperated by comma.\n"
 
-memoryTypeQuestion_autoPrompt_FourTypes = "Please determine whether the method conducts the operation : memory read, memory write, deletion upon memory, insertion upon memory. Give four yes/no answers in order. Do not need to give a more concrete explanation. Here is the example of output: Yes, No, Yes, Yes. Make sure that the answers are in one line and are seperated by comma.\n"
+memoryTypeQuestion_autoPrompt_FourTypes = "Please determine whether the method conducts the operation : memory read, memory write, deletion upon memory, insertion upon memory. Give four yes/no in order as the answers. Do not need give more concrete explanation. Here is the example of output: Yes, No, Yes, Yes. Make sure that the answers are in one line and are seperated by comma.\n"
 
-writeMagicWordQuestion = "Assume that you are developing a Java method for a Java class. The method stores its parameter in the fields of the Java class. Please list several of the most commonly used verbs that can be used in the method name. Remember that the listed words should be valid verbs in the English dictionary. List the verbs separated by a comma. Do not add other sentences. The verbs should be sorted according to your preference. The first one should be the best.\n"
+writeMagicWordQuestion = "Assume that you are developing a Java method for a Java class. The method stores its parameter to the fields of the Java class. Please list several most-commonly used verbs that can be used in the method name. Remember that the listed words should be valid verbs in the English dictionary. List the verbs seperated by comma. Do not add other sentences. The verbs should be sorted according to your preference. The first one should be the best.\n"
 
-readMagicWordQuestion = "Assume that you are developing a Java method for a Java class. The method loads a value from a class field and returns it. Please list several of the most commonly used verbs that can be used in the method name. Remember that the listed words should be valid verbs in the English dictionary. List the verbs separated by a comma. Do not add other sentences. The verbs should be sorted according to your preference. The first one should be the best.\n"
+readMagicWordQuestion = "Assume that you are developing a Java method for a Java class. The method loads a value stored in a class field and returns it as the return value. Please list several most-commonly used verbs that can be used in the method name. Remember that the listed words should be valid verbs in the English dictionary. List the verbs seperated by comma. Do not add other sentences. The verbs should be sorted according to your preference. The first one should be the best.\n"
 
-insertMagicWordQuestion = "Assume that you are developing a Java method for a Java class. The method inserts its parameter into the fields of the Java class. Please list several of the most commonly used verbs that can be used in the method name. Remember that the listed words should be valid verbs in the English dictionary. List the verbs separated by a comma. Do not add other sentences. The verbs should be sorted according to your preference. The first one should be the best.\n"
+insertMagicWordQuestion = "Assume that you are developing a Java method for a Java class. The method inserts its parameter to the fields of the Java class. Please list several most-commonly used verbs that can be used in the method name. Remember that the listed words should be valid verbs in the English dictionary. List the verbs seperated by comma. Do not add other sentences. The verbs should be sorted according to your preference. The first one should be the best.\n"
 
-deleteMagicWordQuestion = "Assume that you are developing a Java method for a Java class. The method deletes a value from a class field. Please list several of the most commonly used verbs that can be used in the method name. Remember that the listed words should be valid verbs in the English dictionary. List the verbs separated by a comma. Do not add other sentences. The verbs should be sorted according to your preference. The first one should be the best.\n"
+deleteMagicWordQuestion = "Assume that you are developing a Java method for a Java class. The method deletes a value from in a class field. Please list several most-commonly used verbs that can be used in the method name. Remember that the listed words should be valid verbs in the English dictionary. List the verbs seperated by comma. Do not add other sentences. The verbs should be sorted according to your preference. The first one should be the best.\n"
 
-#### Added by Maryam - two-methods-dataflow-specification inference with LLM
+#### Added by Maryam - two-methods-dataflow-specification inference with LLM and one few-shot example for retrieving alias between parameters and return value of two methods given the whole class specification
 # ------------------------------------------------------------------ Start
+alias_relation_class_role_question = (
+    "You are a formal program analysis engine. Your task is to analyze a Java class and its method descriptions to output potential object aliasing data-flows. An alias relation exists if an object reference passed into a parameter of a 'store/write' method flows into and is retrieved by a subsequent 'load/read' method. Do not map primitive scalar types (like int, boolean) as aliases. Focus strictly on tracking the data-flow of object instances through the class's internal storage graph. Format your output mapping parameter data-flow to return value indexes.\n"
+    "### ANALYSIS RULES\n"
+    "1. Pair a 'Store/Write' method (Method A) with a subsequent 'Load/Read' method (Method B).\n"
+    "2. Look for object references passed into Method A that flow into internal storage and are later retrieved by Method B.\n"
+    "3. Exclude primitive types from being the main aliased object.\n"
+    "4. Format your output exactly as a comma-separated list of: alias(<Method A>, <Method B>) = {[Preconditions]-->Postconditions}\n"
+    "### SYNTAX KEY\n"
+    "- Coordinates use the format (Method_Argument_Index, Target_Slot_Index).\n"
+    "- [Preconditions]: Maps matching lookup criteria. `[(1, 1)]` means the 1st parameter of Method A must match the 1st parameter of Method B for the data-flow to execute. For a postcondition, the return value is considered with value 0. The parameters also starts from index 1.\n"
+    "- Postconditions: `-->(2, 0)` means the 2nd parameter of Method A flows into the return value of Method B. If you want to refer the return value here, you should use 0. Indexing parameters start from 1.\n"
+)
+
+alias_class_few_shots = (
+    "Example 1:\n"
+    "Class: DataManager\n"
+    "Method A: <void setData(Data data, int loc)> with description <The setData(Data data, int loc) method stores the provided Data object into the class's internal storage at the specified location.>\n"
+    "Method B: <Data fetchData(int index)> with description <The fetchData(int index) method returns the Data object stored at the specified index in the class's internal storage.>\n"
+    "Method C: <String toString()> with description <The toString() method returns a string representation of the DataManager object.>\n"
+    "Method D: <void clearData()> with description <The clearData() method removes all data from the class's internal storage.>\n"
+    "Method E: <boolean isEmpty()> with description <The isEmpty() method checks if the class's internal storage is empty and returns true if it is, false otherwise.>\n"
+    "Answers: alias(<void setData(Data data, int loc)>, <Data fetchData(int index)>) = {[(2, 1)]-->(1, 0)}\n"
+    "Example 2:\n"
+    "Class: ImageCache\n"
+    "Method A: <void putImage(String key, Bitmap bitmap)> with description <The putImage(String key, Bitmap bitmap) method saves the given Bitmap reference into the memory cache mapping it to the specified string key.>\n"
+    "Method B: <Bitmap getImage(String key)> with description <The getImage(String key) method searches the cache for the associated key and returns the active Bitmap reference if found.>\n"
+    "Method C: <void evictImage(String key)> with description <The evictImage(String key) method looks up the specified key, extracts the object reference from the cache structure to safely recycle it, and then unbinds it.>\n"
+    "Method D: <int size()> with description <The size() method returns the current count of cached images.>\n"
+    "Answers: alias(<void putImage(String key, Bitmap bitmap)>, <Bitmap getImage(String key)>) = {[(1, 1)]-->(2, 0)}\n"
+    "Example 3:\n"
+    "Class: java.util.Map\n"
+    "Method A: <V put(K key, V value)> with description <The put(K key, V value) method associates the specified value with the specified key in this map, saving the object reference into internal storage.>\n"
+    "Method B: <V get(Object key)> with description <The get(Object key) method returns the value object to which the specified key is mapped, or null if this map contains no mapping for the key.>\n"
+    "Method C: <V remove(Object key)> with description <The remove(Object key) method looks up the mapping for a key, reads the associated object reference out of the map to return it, and removes the mapping.>\n"
+    "Answers: alias(<V put(K key, V value)>, <V get(Object key)>) = {[(1, 1)]-->(2, 0)}, alias(<V put(K key, V value)>, <V remove(Object key)>) = {[(1, 1)]-->(2, 0)}\n"
+
+)
+
+
 dataflow_methods_role_question = (
     "You are an expert Java programmer. Your task is to analyze Java method descriptions and determine potential data-flow relationships between method parameters and return values to extract data-flow specifications. Our main goal is to see if the consecutive call of two methods has any flows of data between them. The form of data-flow specification is (s, t, {i_1, ... , i_k}), indicating that: when we invoke the method t after method s upon the same object, the value of i_m_th parameter of method s flows to the return value of the method t, while m>= 1 and m<=n for a method s with n parameters. It should be noticed that the index of the parameter starts from 1, while 0 is the index of the return value. \n"
 )
 
-#### Added by Maryam - data-flow between the former method's argument with the return value of the latter method inference with LLM
+#### Added by Maryam - data-flow between the former method's argument with return value of the later method inference with LLM
 dataflow_methods_few_shot = """
 Example 1: We have two methods for java.util.ArrayList:
 - "void add(int index, E element)": "Inserts the specified element at the specified position in this list."
@@ -45,7 +84,7 @@ Example 2: We have two methods for java.util.ArrayList:
 - "boolean add(E e)": "Appends the specified element to the end of this list."
 - "E get(int index)": "Returns the element at the specified position in this list."
 Then we have the data-flow specification: ("void add(E element)", "E get(int ind
-ex)", {1}), indicating that the return value of "E get(int index)" may be the same as the first parameter of "void add(E element)" if the method get is invoked after the method add.
+ex)", {1}), indicating that the return value of "E get(int index)" may be same with the first parameter of "void add(E element)" if the method get is invoked after the method add.
 
 Example 3: We have two methods for com.google.common.util.concurrent.ForwardingBlockingQueue:
 - "boolean offer(E e, long timeout, TimeUnit unit)": "Inserts the specified element into this queue, waiting up to the specified wait time if necessary for space to become available."
@@ -54,10 +93,10 @@ Then we have the data-flow specification: ("offer(E e, long timeout, TimeUnit un
 
 Example 4: We have two methods for javax.swing.JComponent:
 - "void setActionMap(ActionMap am)": "Sets the ActionMap to am."
-- "ActionMap getActionMap()": "Returns the ActionMap used to determine what Action to fire for a particular KeyStroke binding."
-Then we have the data-flow specification: ("void setActionMap(ActionMap am)", "ActionMap getActionMap()", {1}), indicating that the return value of "ActionMap getActionMap()" may be the same as the first parameter of "void setActionMap(ActionMap am)" if the method getActionMap is invoked after the method setActionMap.
+- "ActionMap getActionMap()": "Returns the ActionMap used to determine what Action to fire for particular KeyStroke binding."
+Then we have the data-flow specification: ("void setActionMap(ActionMap am)", "ActionMap getActionMap()", {1}), indicating that the return value of "ActionMap getActionMap()" may be same with the first parameter of "void setActionMap(ActionMap am)" if the method getActionMap is invoked after the method setActionMap.
 
-Now I will present the two methods for a given Java class, along with their descriptions. Please list all the data-flow specification (s, t, {i_1, ..., i_k}) in which i_m represents the position of the arguments in method s that is used to compute the return value of method t. You do not need to add any explanations. Remember to list the correct specifications for the two methods.
+Now I will give you the two methods for a given Java class with their descriptions. Please list all the data-flow specification (s, t, {i_1, ... , i_k}) in which i_m represent the position of the arguments in method s that is used to compute the return value of method t. You do not need to add any explanations. Remember to list the correct specifications for the two methods.
 """
 
 #### Added by Maryam - desired output for extracting the data-flow specification
@@ -155,6 +194,25 @@ def getDataFlowQuestionMethods(methodsignature1: str, methodsignature2: str, met
         return dataflow_prompt
     return "error setting"
 
+#### Added by Maryam - Data flow specification inference with LLM
+def getAliasQuestionClass(className: str, methodsList: list, descriptionsList: list, promptMode: str):
+    """
+    Get the question for alias inference between parameters and return value
+    Returns:
+        The question for alias inference
+    """
+    if "alias_class" in promptMode:
+        alias_prompt = (
+            alias_relation_class_role_question
+            + alias_class_few_shots
+            + "Here are the methods of class "
+            + className
+            + " and their descriptions:\n"
+        )
+        for i in range(len(methodsList)):
+            alias_prompt += "Method " + chr(65+i) + ": <" + methodsList[i] + "> with description <" + descriptionsList[i] + ">\n"
+        return alias_prompt
+    return "error setting"
 #### ------------------------------------------------------------------ End
 
 
