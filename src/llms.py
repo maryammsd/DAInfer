@@ -7,6 +7,7 @@ from ollama import Client
 from openai import AzureOpenAI, BadRequestError
 from openai import OpenAI
 import tiktoken
+import anthropic
 
 llm_model = config.LLM
 
@@ -21,10 +22,62 @@ def run_llm_model(prompt):
         return "Prompt is empty. Please provide a valid prompt."
     if "qwen" in llm_model:
         return interact_with_qwen(prompt)
-    elif "gpt" in llm_model or "gpt" in llm_model:
+    elif "gpt" in llm_model:
         return interact_with_gpt(prompt)
+    elif "codex" in llm_model:
+        return interact_with_codex(prompt)
     elif "deepseek" in llm_model or "codellama" in llm_model:
         return interact_with_deepseek(prompt)
+    elif "claude" in llm_model:
+        return interact_with_claude(prompt)
+
+
+def interact_with_codex(prompt):
+    # 1. Initialize the client for Poe's OpenAI-compatible endpoint
+    client = OpenAI(api_key=config.codex_api_key)
+
+    # 2. Call the Codex model (gpt-5.3-codex is the latest available)
+    response = client.chat.completions.create(
+        model="gpt-5.1-codex-mini",
+        messages=[{"role": "user", "content": prompt}],
+        max_completion_tokens=1024,
+        n=1
+    )
+    
+    output = response.choices[0].message.content.strip()
+
+    # codex-mini doesn't use tiktoken the same way, so approximate:
+    num_prompt_tokens = response.usage.prompt_tokens
+    num_response_tokens = response.usage.completion_tokens
+    
+    return output, num_prompt_tokens, num_response_tokens
+
+def interact_with_claude(prompt):
+    bot_name = "claude-sonnet-4-6"
+    client = anthropic.Anthropic(
+        api_key=config.claude_api_key 
+    )
+    
+    try:
+        response = client.messages.create(
+            model=bot_name,
+            max_tokens=1024,
+            messages=[{"role": "user", "content": prompt}]
+        )
+        
+        output = response.content[0].text.strip()
+        num_prompt_tokens = response.usage.input_tokens
+        num_response_tokens = response.usage.output_tokens
+        
+        print(f"Response: {output}")
+        print(f" tokens in prompt: {num_prompt_tokens}")
+        print(f" tokens in response: {num_response_tokens}")
+        
+        return output, num_prompt_tokens, num_response_tokens
+
+    except Exception as e:
+        print(f"An unexpected error occurred with Claude: {e}")
+        return "", 0, 0
 
 def set_local_port(port):
     global local_port
@@ -39,7 +92,7 @@ def interact_with_gpt(prompt):
 
     client = AzureOpenAI(
         api_key=config.global_openai_key,
-        api_version='2024-06-01', # gpt-4o-mini 2024-06-01
+        api_version='2024-06-01', # gpt-4o-mini 2024-06-01 , 2025-02-01-preview for o3 mini
         azure_endpoint='https://hkust.azure-api.net'
     )
     response = client.chat.completions.create(
