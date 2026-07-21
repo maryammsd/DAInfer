@@ -1,0 +1,100 @@
+# =============================================================================
+# Custom Sources & Sinks Specification for FlowDroid
+# =============================================================================
+# Format: <classname: returntype methodname(args)> -> _SINK_ | _SOURCE_
+# Lines starting with # are comments.
+# Each entry ends with -> _SINK_ or -> _SOURCE_ (optionally with taint categories).
+#
+# CATEGORIES (used for filtering & reporting):
+#   UNIQUE_IDENTIFIER, LOCATION, ACCOUNT, PHONE_CONNECTION, FILE, SMS, NETWORK,
+#   VOIP, CALENDAR, DATABASE, EMAIL, BROWSER, BLUETOOTH, AUDIO, SERIAL, NO_CATEGORY
+# =============================================================================
+
+[SOURCES]
+
+# ── Device identifiers ────────────────────────────────────────────────────────
+<android.telephony.TelephonyManager: java.lang.String getDeviceId()> -> _SOURCE_ UNIQUE_IDENTIFIER
+<android.telephony.TelephonyManager: java.lang.String getSubscriberId()> -> _SOURCE_ UNIQUE_IDENTIFIER
+<android.telephony.TelephonyManager: java.lang.String getSimSerialNumber()> -> _SOURCE_ UNIQUE_IDENTIFIER
+<android.telephony.TelephonyManager: java.lang.String getLine1Number()> -> _SOURCE_ PHONE_CONNECTION
+<android.provider.Settings$Secure: java.lang.String getString(android.content.ContentResolver,java.lang.String)> -> _SOURCE_ UNIQUE_IDENTIFIER
+<android.os.Build: java.lang.String SERIAL> -> _SOURCE_ UNIQUE_IDENTIFIER
+
+# ── Location ──────────────────────────────────────────────────────────────────
+<android.location.LocationManager: android.location.Location getLastKnownLocation(java.lang.String)> -> _SOURCE_ LOCATION
+<android.location.Location: double getLatitude()> -> _SOURCE_ LOCATION
+<android.location.Location: double getLongitude()> -> _SOURCE_ LOCATION
+<android.location.Location: float getAccuracy()> -> _SOURCE_ LOCATION
+
+# ── Contact / Account information ─────────────────────────────────────────────
+<android.accounts.AccountManager: android.accounts.Account[] getAccounts()> -> _SOURCE_ ACCOUNT
+<android.accounts.AccountManager: android.accounts.Account[] getAccountsByType(java.lang.String)> -> _SOURCE_ ACCOUNT
+
+# ── SMS / MMS ────────────────────────────────────────────────────────────────
+<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)> -> _SINK_ SMS
+<android.content.ContentResolver: android.database.Cursor query(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String)> -> _SOURCE_ SMS
+
+# ── Camera / Microphone ───────────────────────────────────────────────────────
+<android.hardware.Camera: void takePicture(android.hardware.Camera$ShutterCallback,android.hardware.Camera$PictureCallback,android.hardware.Camera$PictureCallback)> -> _SOURCE_ NO_CATEGORY
+<android.media.MediaRecorder: void start()> -> _SOURCE_ AUDIO
+<android.media.AudioRecord: int read(byte[],int,int)> -> _SOURCE_ AUDIO
+
+# ── Clipboard ────────────────────────────────────────────────────────────────
+<android.content.ClipboardManager: android.content.ClipData getPrimaryClip()> -> _SOURCE_ NO_CATEGORY
+
+# ── File system ───────────────────────────────────────────────────────────────
+<java.io.FileInputStream: int read(byte[])> -> _SOURCE_ FILE
+<java.io.FileInputStream: int read(byte[],int,int)> -> _SOURCE_ FILE
+<android.content.Context: java.io.FileInputStream openFileInput(java.lang.String)> -> _SOURCE_ FILE
+
+# ── Network information ───────────────────────────────────────────────────────
+<android.net.wifi.WifiManager: android.net.wifi.WifiInfo getConnectionInfo()> -> _SOURCE_ NETWORK
+<android.net.wifi.WifiInfo: java.lang.String getMacAddress()> -> _SOURCE_ UNIQUE_IDENTIFIER
+<android.net.wifi.WifiInfo: java.lang.String getSSID()> -> _SOURCE_ NETWORK
+
+# ── Browser history ───────────────────────────────────────────────────────────
+<android.provider.Browser: android.database.Cursor getAllBookmarks(android.content.ContentResolver)> -> _SOURCE_ BROWSER
+<android.provider.Browser: android.database.Cursor getAllVisitedUrls(android.content.ContentResolver)> -> _SOURCE_ BROWSER
+
+# ── Calendar ─────────────────────────────────────────────────────────────────
+<android.content.ContentResolver: android.database.Cursor query(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String)> -> _SOURCE_ CALENDAR
+
+
+[SINKS]
+
+# ── Network sinks ─────────────────────────────────────────────────────────────
+<java.net.URL: java.net.URLConnection openConnection()> -> _SINK_ NETWORK
+<java.net.HttpURLConnection: java.io.OutputStream getOutputStream()> -> _SINK_ NETWORK
+<okhttp3.OkHttpClient: okhttp3.Call newCall(okhttp3.Request)> -> _SINK_ NETWORK
+
+# ── Log sinks ────────────────────────────────────────────────────────────────
+<android.util.Log: int d(java.lang.String,java.lang.String)> -> _SINK_ NO_CATEGORY
+<android.util.Log: int i(java.lang.String,java.lang.String)> -> _SINK_ NO_CATEGORY
+<android.util.Log: int v(java.lang.String,java.lang.String)> -> _SINK_ NO_CATEGORY
+<android.util.Log: int e(java.lang.String,java.lang.String)> -> _SINK_ NO_CATEGORY
+<android.util.Log: int w(java.lang.String,java.lang.String)> -> _SINK_ NO_CATEGORY
+
+# ── File write sinks ──────────────────────────────────────────────────────────
+<java.io.FileOutputStream: void write(byte[])> -> _SINK_ FILE
+<java.io.FileOutputStream: void write(byte[],int,int)> -> _SINK_ FILE
+<java.io.FileWriter: void write(java.lang.String)> -> _SINK_ FILE
+<android.content.Context: java.io.FileOutputStream openFileOutput(java.lang.String,int)> -> _SINK_ FILE
+
+# ── SMS sending ───────────────────────────────────────────────────────────────
+<android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)> -> _SINK_ SMS
+<android.telephony.SmsManager: void sendMultipartTextMessage(java.lang.String,java.lang.String,java.util.ArrayList,java.util.ArrayList,java.util.ArrayList)> -> _SINK_ SMS
+
+# ── Shared preferences (can persist sensitive data) ───────────────────────────
+<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)> -> _SINK_ DATABASE
+<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putInt(java.lang.String,int)> -> _SINK_ DATABASE
+
+# ── Clipboard write ───────────────────────────────────────────────────────────
+<android.content.ClipboardManager: void setPrimaryClip(android.content.ClipData)> -> _SINK_ NO_CATEGORY
+
+# ── Intent / broadcast ────────────────────────────────────────────────────────
+<android.content.Context: void sendBroadcast(android.content.Intent)> -> _SINK_ NO_CATEGORY
+<android.content.Context: void startActivity(android.content.Intent)> -> _SINK_ NO_CATEGORY
+
+# ── Content provider write ────────────────────────────────────────────────────
+<android.content.ContentResolver: android.net.Uri insert(android.net.Uri,android.content.ContentValues)> -> _SINK_ DATABASE
+<android.content.ContentResolver: int update(android.net.Uri,android.content.ContentValues,java.lang.String,java.lang.String[])> -> _SINK_ DATABASE
