@@ -1,13 +1,19 @@
+from datetime import datetime
 import sys
+
 
 from helper import *
 from prompt import *
-from openai import OpenAI
+from openai import AzureOpenAI, OpenAI
 import nltk
 from collections import Counter
 import random
 import config
 import tiktoken
+import embedding
+import llms
+import os 
+import json
 
 response = None
 received = False
@@ -52,10 +58,21 @@ def retrieveMagicWords(promptMode, n, t1=1):
                         {"role": "user", "content": message},
                     ]
 
-                    client = OpenAI(api_key=config.global_openai_key)
+                    #client = OpenAI(api_key=config.global_openai_key)
+                    client = AzureOpenAI(
+                        api_key=config.global_openai_key,
+                        api_version='2024-06-01',
+                        azure_endpoint='https://hkust.azure-api.net'
+                    )
 
-                    response = client.chat.completions.create(
-                        model="gpt-3.5-turbo", messages=input, temperature=t1
+                    response = client.chat.completions.create(    
+                         messages=[
+                            {
+                                "role": "user",
+                                "content":  message,
+                            }
+                        ],                  
+                        model="gpt-4o-mini"
                     )
 
                     results[k] = response.choices[0].message.content
@@ -108,161 +125,6 @@ def retrieveMagicWords(promptMode, n, t1=1):
     return magicWords
 
 
-def retrieveMemoryOperationType(
-    className: str,
-    methodSig: str,
-    methodDoc: str,
-    magicWords: dict,
-    promptMode: str,
-    m,
-    t2=1.0,
-):
-    """
-    Retrieve memory operation types for the memory operation abstraction
-    Args:
-        className: The name of the class
-        methodSig: The type signature of the method
-        methodDoc: The semantic description of the method
-        magicWords: The magic words obtained from the first stage of prompting
-        promptMode: The mode of prompting. Manual or automatic.
-        m: The parameter of self-consistency
-        t2: The temperature of the second stage of prompting
-
-    Returns:
-        A dictionary of memory operation types
-    """
-
-    result = {}
-    encoding = tiktoken.encoding_for_model("gpt-3.5-turbo")
-
-    if "manualPrompt" in promptMode:
-        for memoryType in {
-            "memory read",
-            "memory write",
-            "deletion upon memory",
-            "insertion upon memory",
-        }:
-            result[memoryType] = []
-    elif "autoPrompt_FourTypes" in promptMode:
-        for memoryType in magicWords:
-            result[memoryType] = []
-
-    for i in range(m):
-        recieved = False
-        singleResult = {}
-        tryCnt = 0
-        while not recieved:
-            tryCnt += 1
-            try:
-                message = (
-                    "Now we provide the specification description of the method "
-                    + methodSig
-                    + " in the class "
-                    + className
-                    + " as follows:\n"
-                )
-                message += methodDoc + "\n"
-                message += getQuestion(promptMode)
-                answerLength = None
-                typeList = None
-
-                if "manualPrompt" in promptMode:
-                    systemContent = getInitialPromptForMemoryOperationType(promptMode)
-                    answerLength = 4
-                    typeList = [
-                        "memory read",
-                        "memory write",
-                        "deletion upon memory",
-                        "insertion upon memory",
-                    ]
-                elif "autoPrompt_FourTypes" in promptMode:
-                    systemContent = getInitialPromptForMemoryOperationType(
-                        promptMode, magicWords
-                    )
-                    answerLength = 4
-                    typeList = [
-                        "memory read",
-                        "memory write",
-                        "deletion upon memory",
-                        "insertion upon memory",
-                    ]
-                else:
-                    print("wrong setting")
-                    exit(0)
-
-                input = [
-                    {"role": "system", "content": systemContent},
-                    # {"role": "system", "content": ""},
-                    {"role": "user", "content": message},
-                ]
-
-                client = OpenAI(api_key=config.global_openai_key)
-
-                response = client.chat.completions.create(
-                    model="gpt-3.5-turbo", messages=input, temperature=t2
-                )
-                output = response.choices[0].message.content
-
-                print(
-                    "OUITPUT:",
-                    len(encoding.encode(systemContent)) + len(encoding.encode(message)),
-                )
-                config.LLMTokenCnt += len(encoding.encode(systemContent)) + len(
-                    encoding.encode(message)
-                )
-
-                print("--------------------------------------------------------")
-                print(
-                    (
-                        config.global_m,
-                        config.global_n,
-                        config.global_t1,
-                        config.global_t2,
-                    )
-                )
-                print(message)
-                print(output)
-                print("--------------------------------------------------------")
-                outputs = output.split(",")
-                if len(outputs) != answerLength:
-                    recieved = False
-                    if tryCnt > 10:
-                        for memoryType in typeList:
-                            singleResult[memoryType] = False
-                        break
-                    continue
-
-                recieved = True
-                i = 0
-                for memoryType in typeList:
-                    if "no" in outputs[i] or "No" in outputs[i]:
-                        singleResult[memoryType] = False
-                    elif "yes" in outputs[i] or "Yes" in outputs[i]:
-                        singleResult[memoryType] = True
-                    else:
-                        singleResult[memoryType] = None
-                        recieved = False
-                    i += 1
-            except:
-                error = sys.exc_info()[0]
-                print("API error:", sys.exc_info())
-                recieved = False
-                if tryCnt > 10:
-                    for memoryType in typeList:
-                        singleResult[memoryType] = False
-                        break
-        for memoryType in singleResult:
-            result[memoryType].append(singleResult[memoryType])
-
-    for memoryType in result:
-        result[memoryType] = Counter(result[memoryType]).most_common()
-        if len(result[memoryType]) == 1:
-            result[memoryType] = result[memoryType][0][0]
-        else:
-            result[memoryType] = random.choice(result[memoryType])[0]
-    return result
-
-
 #### Added By Maryam
 def retrieveAliasRelationwithLLM(
         className: str,
@@ -284,16 +146,16 @@ def retrieveAliasRelationwithLLM(
         m: The parameter of self-consistency
         t2: The temperature of the second stage of prompting
     Returns:
-        A set of alias parameters with the return values and scores
+        A set of alias parameters with the return values with scores
     """
     result = {}
 
     if promptMode not in ["alias_zero", "alias_few", "alias_score_zero", "alias_score_few"]:
         print("wrong setting")
         exit(0)
-    received = False
+    recieved = False
     tryCnt = 8
-    while not received:
+    while not recieved:
         try:
             message = getAliasQuestion(
                 methodSig1,
@@ -302,7 +164,7 @@ def retrieveAliasRelationwithLLM(
                 methodDesc2,
                 promptMode,
            )
-            message += f" Above methods are in the same class {className}."
+            message += f"Above methods are in the same class {className}."
             print("Message:", message)
             input = [
                 {"role": "user", "content": message},
@@ -331,13 +193,13 @@ def retrieveAliasRelationwithLLM(
             print("--------------------------------------------------------")
             tryCnt+=1
                 
-            #### output processing, which is in the form of sets of alias parameters, that can be an empty set or a set of parameters with/without scores
+            #### output processing which is in form of sets of alias parameters, that can be empty set or a set of parameters with/without scores
             # 
             # # Regular expression to match content inside ( and )
             match = re.search(r"\{.*?\}", output)
             if match:
                 outputs = match.group()[1:-1]  # Remove the curly braces                    
-                received = True
+                recieved = True
                 outputs = outputs.split("(")
                 if len(outputs) == 0:
                     if outputs == ['']:
@@ -349,16 +211,16 @@ def retrieveAliasRelationwithLLM(
                     out = out.strip()
                     print("Out:", out)
                     params = out.split(":")
-                    # no results found, and can be considered as no alias relation
+                    # no results found and can be considered as no alias relation
                     if len(params) == 0:
                         break;
-                    # There exist some alias relations
+                    # there exists some alias relations
                     if promptMode in ["alias_zero", "alias_few"]:
                         for param in params:
                             first_param, second_param = getParameterNamesFromAliasOutput(param)
                             if first_param is not None and second_param is not None:
                                 result[(first_param, second_param)] = True
-                            elif first_param is not None and second_param is "":
+                            elif first_param is not None and second_param == "":
                                 result[(first_param, )] = True
                     elif promptMode in ["alias_score_zero", "alias_score_few"]:
                         for param in params:
@@ -369,7 +231,7 @@ def retrieveAliasRelationwithLLM(
                                 result[(first_param, )] = score
             else:
                 config.discarded_alias_queries += 1
-                received = False
+                recieved = False
                 if tryCnt > 10:
                     break
                 continue
@@ -391,7 +253,7 @@ def retrieveAliasRelationwithLLM(
         except:
             error = sys.exc_info()[0]
             print("API error:", sys.exc_info())
-            received = False
+            recieved = False
             if tryCnt > 10:
                 break
 
@@ -413,7 +275,7 @@ def source_vs_sink(arg1: str, arg2: str):
     return "None"
 
 
-#### Added by Maryam - a method to parse data-flow inference output
+#### Added By Maryam - a method to parse data-flow inference output
 def parseDataFlowInferenceOutput(answer: str):
     """ Parse the output of data flow inference
     """
@@ -456,24 +318,147 @@ def parseDataFlowInferenceOutput(answer: str):
                     labels.append(source_vs_sink(arg1.strip(), arg2.strip()))
                   
     return labels
-
-#### Added by Maryam - a method to parse data-flow inference output
-def parseDataFlowInferenceTwoMethodsOutput(answer: str, methodname1: str, methodname2: str):
-    """ Parse the output of data flow inference
+#### Added By Maryam - a method to parse alias relations inference output
+def parseAliasRelationsResponse(answer: str):
     """
-    if answer.startswith("(") and answer.endswith(")"):  
-        answer = answer[1:-1]  # Remove the parentheses
-        parts = answer[1:-1].split(",")
-        if len(parts) >= 3:
-            indices = parts[-1].strip()
-            if indices.strip("{}").strip():  # Check if there's anything inside the braces
-                indices = set(map(int, indices.strip("{}").split(",")))
-            else:
-                indices = set()  # Default to an empty set if no valid indices are found
-            return indices
-    return set()
+    Parse alias relation inference output and return a set of parsed alias relations.
 
-#### Added by Maryam - a method to get data-flow questions and perform data-flow specification inference with LLM
+    The function attempts to reuse the parsing logic implemented in
+    parseDataFlowInferenceTwoMethodsOutput by calling it and then converting
+    the returned structured results into a set of tuples for downstream use.
+
+    Returned set elements have the form:
+      (method_src, method_dst, inputs_tuple, outputs_tuple)
+
+    If parsing fails, an empty set is returned and the error is printed.
+    """
+    result = set()
+    try:
+        # parseDataFlowInferenceTwoMethodsOutput is defined below and returns a list
+        # of dicts with keys: "method_src", "method_dst", "mappings"
+        parsed = parseDataFlowInferenceTwoMethodsOutput(answer)
+        for method_src,method_dst,mappings in parsed:
+            result.add((method_src, method_dst, 1.0, 1.0, mappings))
+    except Exception as e:
+        print("parseAliasRelationsResponse error:", e)
+    #for item in result:
+        #print("Parsed Alias Relation:", item)
+    return result
+
+#### Added By Maryam - a method to parse data-flow inference output
+def parseDataFlowInferenceTwoMethodsOutput(answer: str):
+    # Regex to capture the method signatures and their respective alias dictionaries
+    # Matches: alias(<method1>, <method2>) = {contents}
+    pair_pattern = re.compile(
+        r"alias\s*\(\s*<([^>]+)>\s*,\s*<([^>]+)>\s*\)\s*=\s*\{([^}]+)\}"
+    )
+
+    parsed_results = []
+
+    # Find all alias relations in the text
+    matches = pair_pattern.findall(answer)
+
+    for method_a, method_b, mappings_str in matches:
+        relations = []
+        parsed_results.append((method_a.strip(), method_b.strip(), mappings_str.strip()))
+
+    return parsed_results
+
+
+#### Added By Maryam - a method to parse alias relation inference output with class name and method lists --- added for Major revision
+def retrieveAliasRelationsLLMClass(className: str, methodList:list, methodDoc: list, resultPath: str):
+    """ Parse the output of alias relation inference and log the results in a file for analysis
+    Args:
+        className: The name of the class
+        methodList: The list of methods in the class
+        methodDoc: The list of method descriptions in the class
+        resultPath: The path to store the results
+    Returns:
+        A set of alias parameters with the return values with scores
+    """
+    result = set()
+    m = 5  # self-consistency parameter set to 5 for the whole analysis
+    responses = []
+    for i in range(m):
+        received = False
+        singleResult = set()
+        tryCnt = 0
+        while not received:
+            tryCnt += 1
+            try:
+                message = getAliasQuestionClass(
+                    className,
+                    methodList,
+                    methodDoc,
+                    "alias_class"
+                )
+                #essage += f"Above method is in class {className}."
+                print(f" Prompt is {message}")
+                
+                before = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+                response, token_prompt, token_response = llms.run_llm_model(message)
+                after_infer = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+                duration = datetime.strptime(after_infer, "%Y-%m-%d_%H-%M-%S") - datetime.strptime(before, "%Y-%m-%d_%H-%M-%S")
+                
+                # update the time taken for LLM inference
+                config.LLMTime += duration.total_seconds()
+
+                if type(token_prompt) is list:
+                    token_prompt = len(token_prompt)
+                else:   
+                    token_prompt = int(token_prompt)
+                if type(token_response) is list:
+                    token_response = len(token_response)
+                else:
+                    token_response = int(token_response)
+
+                # update the number of tokens and also the number of prompts already done
+                config.LLMTokenCnt += token_prompt + token_response
+                config.LLMInputTokenCnt += token_prompt
+                config.LLMOutputTokenCnt += token_response
+
+                if response is not None:
+                    responses.append(response)
+                    if len(response) > 0:
+                        answer = response
+                        if answer:
+                            print("--------- Alias Inference is found ---------")
+                            #print(answer)
+                            #print("----------------- Alias Inference Output -----------------")
+                            config.global_num_queries[className] = config.global_num_queries.get(className, 0) + 1
+                            config.global_num_tokens[className] = config.global_num_tokens.get(className, 0) + token_prompt + token_response
+                            singleResult = parseAliasRelationsResponse(answer)
+                            received = True
+                            #print("Single Result:", singleResult)
+                    else:
+                        print(f"Empty response received for {message}")
+                if received:
+                    if singleResult:
+                        result = result.union(singleResult)
+                        #print("Updated Result:", result)
+            except Exception as e:
+                print("Error:", e)
+                received = False
+                if tryCnt > 5:
+                    break
+
+    # log the response for analysis
+    os.makedirs(os.path.join(resultPath, className), exist_ok=True)
+    # append the found results for a method to a file, and if not file exists, create one
+    with open(os.path.join(resultPath, className, "alias_result_prompts.json"), "a") as f:
+        print("Writing dataflow results to file...")
+        print("Final Result:", result)
+        object_to_dump = {
+            "className": className,
+            "methodSig": methodList,
+            "methodDoc": methodDoc,
+            "aliasResult": list(result),
+            "response": str(responses),
+        }
+        json.dump(object_to_dump, f, indent=4)
+    return result
+
+#### Added By Maryam - a method to get data-flow question and perform data-flow specification inference with LLM
 def retrieve_dataflow_with_LLM(
     className: str,
     methodSig: str,
@@ -495,7 +480,7 @@ def retrieve_dataflow_with_LLM(
                     methodDoc,
                     config.promptMode
                 )
-                message += f" Above method is in class {className}."
+                message += f"Above method is in class {className}."
                 
                 before = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
                 response, token_prompt, token_response = llms.run_llm_model(message)
@@ -560,7 +545,7 @@ def retrieve_dataflow_with_LLM(
         json.dump(object_to_dump, f, indent=4)
     return result
 
-#### Added by Maryam - a method to get the similarity of verbs with memory operations
+#### Added By Maryam - a method to get similarity of verbs with memory operations
 def retrieveVerbMemoryOperationWithEmbeddings(
     model, 
     className: str,
@@ -572,8 +557,8 @@ def retrieveVerbMemoryOperationWithEmbeddings(
 ):
     
     target_operations = {
-            "set": "sets the value of something.",
-            "get": "gets the value of something.",
+            "set": "sets value of something.",
+            "get": "gets value of something.",
             "insert": "inserts something into a collection.",
             "remove": "removes something from a collection.",
         }
@@ -587,7 +572,7 @@ def retrieveVerbMemoryOperationWithEmbeddings(
             tryCnt += 1
             try:
                 input = f"{methodDoc}"
-                print("Input to Embedding Model:", input)
+                print("Input to SentenceBERT:", input)
                 all_verbs_new = embedding.get_verb_similarity_scores(model,total_verbs=all_verbs, target_operations=target_operations, description=methodDoc)
                 if all_verbs_new is None:
                     print("No verbs found")
@@ -623,12 +608,15 @@ def retrieveMemoryOperationWithEmbeddings(
             "remove": "delete item from a collection.",
         }
     target_operations = {
-            "set": "sets the value of something.",
-            "get": "gets the value of something.",
+            "set": "sets value of something.",
+            "get": "gets value of something.",
             "insert": "inserts something into a collection.",
             "remove": "removes something from a collection.",
         }
-  
+
+
+    # Load codebert tokenizer and model
+    #tokenizer, model = sentencebert.load_model()   
     operation_score = None
     result = {} 
     m = 1
@@ -642,7 +630,7 @@ def retrieveMemoryOperationWithEmbeddings(
             try:
                 #input = f"Method {methodSig} in class {className} has the following description: {methodDoc}. "
                 input = f"{methodDoc}"
-                print("Input to Embedding Model:", input)
+                print("Input to SentenceBERT:", input)
                 
                 operation_score = embedding.predict_operation_sentencebert(model, input, target_operations)
                 if operation_score is None:
@@ -700,6 +688,163 @@ def retrieveMemoryOperationWithEmbeddings(
             if result[memoryType]:
                 print(f"Random Memory Operation Type for {memoryType}: {result[memoryType]}")
     
+    return result
+
+def retrieveMemoryOperationType(
+    className: str,
+    methodSig: str,
+    methodDoc: str,
+    magicWords: dict,
+    promptMode: str,
+    m,
+    t2=1.0,
+):
+    """
+    Retrieve memory operation types for the memory operation abstraction
+    Args:
+        className: The name of the class
+        methodSig: The type signature of the method
+        methodDoc: The semantic description of the method
+        magicWords: The magic words obtained from the first stage of prompting
+        promptMode: The mode of prompting. Manual or automatic.
+        m: The parameter of self-consistency
+        t2: The temperature of the second stage of prompting
+
+    Returns:
+        A dictionary of memory operation types
+    """
+
+    result = {}
+    encoding = tiktoken.encoding_for_model("gpt-3.5-turbo")
+
+    if "manualPrompt" in promptMode:
+        for memoryType in {
+            "memory read",
+            "memory write",
+            "deletion upon memory",
+            "insertion upon memory",
+        }:
+            result[memoryType] = []
+    elif "autoPrompt_FourTypes" in promptMode:
+        for memoryType in magicWords:
+            result[memoryType] = []
+
+    m = 10  # self-consistency parameter set to 10
+    for i in range(m):
+        received = False
+        singleResult = {}
+        tryCnt = 0
+        while not received:
+            tryCnt += 1
+            try:
+                message = (
+                    "Now we provide the specification description of the method "
+                    + methodSig
+                    + " in the class "
+                    + className
+                    + " as follows:\n"
+                )
+                message += methodDoc + "\n"
+                message += getQuestion(promptMode)
+                answerLength = None
+                typeList = None
+
+                if "manualPrompt" in promptMode:
+                    systemContent = getInitialPromptForMemoryOperationType(promptMode)
+                    answerLength = 4
+                    typeList = [
+                        "memory read",
+                        "memory write",
+                        "deletion upon memory",
+                        "insertion upon memory",
+                    ]
+                elif "autoPrompt_FourTypes" in promptMode:
+                    systemContent = getInitialPromptForMemoryOperationType(
+                        promptMode, magicWords
+                    )
+                    answerLength = 4
+                    typeList = [
+                        "memory read",
+                        "memory write",
+                        "deletion upon memory",
+                        "insertion upon memory",
+                    ]
+                else:
+                    print("wrong setting")
+                    exit(0)
+
+                input = [
+                    {"role": "system", "content": systemContent},
+                    # {"role": "system", "content": ""},
+                    {"role": "user", "content": message},
+                ]
+
+                #client = OpenAI(api_key=config.global_openai_key)
+
+                client = AzureOpenAI(
+                        api_key=config.global_openai_key,
+                        api_version='2024-06-01',
+                        azure_endpoint='https://hkust.azure-api.net'
+                )
+
+                response = client.chat.completions.create(    
+                        messages=input,                  
+                        model="gpt-4o-mini"
+                )
+                #response = client.chat.completions.create(
+                #     model="gpt-3.5-turbo", messages=input, temperature=t2
+                #)
+                output = response.choices[0].message.content
+
+                print(
+                    "OUITPUT:",
+                    len(encoding.encode(systemContent)) + len(encoding.encode(message)),
+                )
+                config.LLMTokenCnt += len(encoding.encode(systemContent)) + len(
+                    encoding.encode(message)
+                )
+
+                print("--------------------------------------------------------")
+                print(message)
+                print(output)
+                print("--------------------------------------------------------")
+                outputs = output.split(",")
+                if len(outputs) != answerLength:
+                    recieved = False
+                    if tryCnt > 10:
+                        for memoryType in typeList:
+                            singleResult[memoryType] = False
+                        break
+                    continue
+
+                recieved = True
+                i = 0
+                for memoryType in typeList:
+                    if "no" in outputs[i] or "No" in outputs[i]:
+                        singleResult[memoryType] = False
+                    elif "yes" in outputs[i] or "Yes" in outputs[i]:
+                        singleResult[memoryType] = True
+                    else:
+                        singleResult[memoryType] = None
+                        recieved = False
+                    i += 1
+            except:
+                error = sys.exc_info()[0]
+                print("API error:", sys.exc_info())
+                recieved = False
+                if tryCnt > 10:
+                    for memoryType in typeList:
+                        singleResult[memoryType] = False
+                        break
+        for memoryType in singleResult:
+            result[memoryType].append(singleResult[memoryType])
+
+    for memoryType in result:
+        result[memoryType] = Counter(result[memoryType]).most_common()
+        if len(result[memoryType]) == 1:
+            result[memoryType] = result[memoryType][0][0]
+        else:
+            result[memoryType] = random.choice(result[memoryType])[0]
     return result
 
 
