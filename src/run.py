@@ -1,6 +1,6 @@
 import sys
-
-from docParser import *
+import copy
+#from docParser import *
 from gpt import *
 from config import *
 from difflib import SequenceMatcher
@@ -10,6 +10,9 @@ from omt import *
 import concurrent.futures
 import os
 import json
+import embedding
+import datetime
+from datetime import datetime
 
 
 def obtainCHADic(methodDoc: dict):
@@ -24,9 +27,9 @@ def obtainCHADic(methodDoc: dict):
     CHADic = {}
     for package_name in methodDoc:
         for class_name in methodDoc[package_name]:
-            print(package_name)
+            #print(package_name)
             classInfo = methodDoc[package_name][class_name]
-            print(classInfo)
+            #print(classInfo)
             CHADic[class_name] = classInfo["super class"]
     return CHADic
 
@@ -159,6 +162,457 @@ def inferTypeConsistentSpecFromJavaDoc(
             cnt += len(allTypeConsistentSpec[package_name][className])
             method_cnt += len(allCriticalMethods[package_name][className])
     return allTypeConsistentSpec, allCriticalMethods, cnt, method_cnt
+
+
+### Added by Maryam - infer dataflow specs type with LLMs
+def inferAliasRelationsWithLLMPerClassMethods(
+    preacceptedmethods: set, 
+    methodDoc: dict,
+    labeled_methods: dict,
+    projectName: str,
+    methodInfoResult_path: str
+):
+    resultPath = methodInfoResult_path + projectName + "/"
+    aliasSpecs = {}
+    acceptedSpecs = []
+    
+
+    cacheAllParameters = []
+    history = set([])
+    NThreads = 12
+
+    print("Start LLM-based alias relations inference... ")
+
+    count_empty_desc = 0
+    count_all_desc = 0
+
+    for packageName in methodDoc:
+        for className in methodDoc[packageName]:
+            if className not in labeled_methods:
+                continue
+            methodList = set([])
+            descriptionList = set([])
+            if isinstance(methodList, set):
+                methodList = list(methodList)
+            if isinstance(descriptionList, set):
+                descriptionList = list(descriptionList)
+
+            for sig1 in methodDoc[packageName][className]["methods"].keys():
+                print("Processing method:", sig1)
+                if methodDoc[packageName][className]["methods"].get(sig1) is None:
+                    continue
+                if (packageName,className,sig1) not in preacceptedmethods:
+                    continue
+
+                isIn1 = False
+                description1 = methodDoc[packageName][className]["methods"][sig1]
+                if description1.strip() == "" or "deprecated" in description1.lower():
+                    continue
+                if sig1 not in methodList:
+                    methodList.append(sig1)
+                    descriptionList.append(description1)
+            if className in aliasSpecs:
+                isIn1 = True
+            if not isIn1:
+                if className not in aliasSpecs:
+                    aliasSpecs[className] = {}
+                    
+                methods_key = tuple(methodList)
+                descs_key = tuple(descriptionList)
+                key = (packageName, className, methods_key, descs_key)
+                if key not in history:
+                    history.add(key)
+                    cacheAllParameters.append(
+                        (
+                            packageName,
+                            className,
+                            list(methodList),
+                            list(descriptionList),
+                            len(cacheAllParameters)
+                        )
+                    )
+    def process_params(params):
+        print("Processing parameters:", params)
+        packageName,className, methodList, descriptionList, indx = params
+        # Ensure methodList / descriptionList are indexable lists (fixes 'set' not subscriptable)
+        if isinstance(methodList, set):
+            methodList = list(methodList)
+        else:
+            methodList = list(methodList)
+
+        if isinstance(descriptionList, set):
+            descriptionList = list(descriptionList)
+        else:
+            descriptionList = list(descriptionList)
+        return (
+            packageName,
+            className,
+            retrieveAliasRelationsLLMClass(
+                className, methodList, descriptionList, resultPath
+            ),
+        )
+
+    # Create a thread pool executor with 5 threads
+    with concurrent.futures.ThreadPoolExecutor(max_workers=NThreads) as executor:
+        # Submit tasks to the executor
+        futures = [
+            executor.submit(process_params, params) for params in cacheAllParameters
+        ]
+
+        # Retrieve results as they become available
+        for future in concurrent.futures.as_completed(futures):
+            result = future.result()
+            packageName,className, specs = result
+            for spec in specs:
+                method1,method2, optVal, conf, specStr = spec
+                acceptedSpecs.append(
+                    [packageName, className, method1, method2, optVal, conf, specStr]
+                )
+                print("Obtained alias relation:", method1, method2, "OptVal:", optVal, "Conf:", conf)
+    print("Total methods with at least one empty description:", count_empty_desc, "out of", count_all_desc)
+
+    return acceptedSpecs
+
+### Added by Maryam - infer dataflow specs type with LLMs
+def inferMemOpConsistentSpecWithLLM(
+    preacceptedmethods: set, 
+    methodDoc: dict,
+    labeled_methods: dict,
+    projectName: str,
+    methodInfoResult_path: str
+):
+    resultPath = methodInfoResult_path + projectName + "/"
+    memoryTypeFeature = {}
+    acceptedSpecs = []
+    
+
+    cacheAllParameters = []
+    history = set([])
+    NThreads = 12
+
+    print("Start LLM-based memory operation type inference... ")
+
+    count_empty_desc = 0
+    count_all_desc = 0
+
+    for packageName in methodDoc:
+        for className in methodDoc[packageName]:
+            if className not in labeled_methods:
+                continue
+            for sig1 in methodDoc[packageName][className]["methods"].keys():
+                print("Processing method:", sig1)
+                if methodDoc[packageName][className]["methods"].get(sig1) is None:
+                    continue
+                if (packageName,className,sig1) not in preacceptedmethods:
+                    continue
+
+                isIn1 = False
+                description1 = methodDoc[packageName][className]["methods"][sig1]
+                if description1.strip() == "" :
+                    continue
+                if className in memoryTypeFeature:
+                    if sig1 in memoryTypeFeature[className]:
+                        isIn1 = True
+                if not isIn1:
+                    if className not in memoryTypeFeature:
+                        memoryTypeFeature[className] = {}
+                    if (
+                        className,
+                        sig1,
+                        description1,
+                    ) not in history:
+                        history.add(
+                            (
+                                className,
+                                sig1,
+                                description1,
+                            )
+                        )
+                        cacheAllParameters.append(
+                            (
+                                className,
+                                sig1,
+                                description1,
+                                len(cacheAllParameters)
+                            )
+                        )
+    def process_params(params):
+        print("Processing parameters:", params)
+        className, sig1, description, indx = params
+
+        return (
+            className,
+            sig1,
+            retrieve_dataflow_with_LLM(
+                className, sig1, description, resultPath
+            ),
+        )
+
+    # Create a thread pool executor with 5 threads
+    with concurrent.futures.ThreadPoolExecutor(max_workers=NThreads) as executor:
+        # Submit tasks to the executor
+        futures = [
+            executor.submit(process_params, params) for params in cacheAllParameters
+        ]
+
+        # Retrieve results as they become available
+        for future in concurrent.futures.as_completed(futures):
+            result = future.result()
+            className, sig1, memoryOperationType = result
+            print("Obtained source-sink type:", sig1, "Data-flow type:", memoryOperationType)
+            memoryTypeFeature[className][sig1] = memoryOperationType
+            #responseLogs[(className, sig1)] = response
+
+    for (packageName,className,sig1) in preacceptedmethods:
+        if memoryTypeFeature.get(className) is None:
+            continue
+        if memoryTypeFeature[className].get(sig1) is None:
+            continue            
+        labels = memoryTypeFeature[className][sig1]
+        for label in labels:
+            if label != None and label.lower() != "none":
+                acceptedSpecs.append(
+                    [packageName, className, sig1, label]
+                )
+
+    print("Total methods with at least one empty description:", count_empty_desc, "out of", count_all_desc)
+
+    return acceptedSpecs
+
+### Added by Maryam - infer dataflow specs type with embedding models for each method independently
+def inferMemOpConsistentSpecWithEmbeddingsSourceSink(
+    preacceptedmethods: set, 
+    methodDoc: dict,
+    labeled_methods: dict,
+    projectName: str,
+    methodInfoResult_path: str,
+    m,
+    t2=1.0,
+):  
+    resultPath = methodInfoResult_path + projectName + "/"
+    memoryTypeFeature = {}
+    acceptedSpecs = []
+    
+    # Load the Sentence-BERT model
+    model = embedding.run_embedding_models()
+    if model is None:
+        print("Embedding model not found!")
+        print("Please check your configuration in config.py .")
+        exit(0)
+
+    
+    history = set([])
+
+    print("Start embedding-based memory operation type inference... ")
+
+    count_empty_desc = 0
+    count_all_desc = 0
+    for packageName in methodDoc:
+        for className in methodDoc[packageName]:
+            if className not in labeled_methods:
+                continue
+            for sig1 in methodDoc[packageName][className]["methods"].keys():
+                print("Processing method:", sig1)
+                if methodDoc[packageName][className]["methods"].get(sig1) is None:
+                    continue
+                if (packageName,className,sig1) not in preacceptedmethods:
+                    continue
+
+                isIn1 = False
+                description1 = methodDoc[packageName][className]["methods"][sig1]
+                if description1.strip() == "" :
+                    continue
+                if className in memoryTypeFeature:
+                    if sig1 in memoryTypeFeature[className]:
+                        isIn1 = True
+                if not isIn1:
+                    if className not in memoryTypeFeature:
+                        memoryTypeFeature[className] = {}
+                    if (packageName,
+                        className,
+                        sig1,
+                        description1,
+                    ) not in history:
+                        history.add(
+                            (packageName,
+                                className,
+                                sig1,
+                                description1,
+                            )
+                        )
+                        
+    
+    embedding.initialize_targets(model)
+
+    final_results, all_verbs, analysis_logs = embedding.batch_retrieve_memory_operations(model, history)
+    embedding.print_and_save_analysis(analysis_logs, resultPath)
+    for result in final_results:
+        for method_key in result:
+            # Split method_key if needed
+            packageName, className, sig1 = method_key
+            print("Processing result for method:", sig1, "with description:", result[method_key])
+            memoryOperationType = result[method_key]
+            print("Obtained memory operation type for method:", sig1, "Type:", memoryOperationType)
+            memoryTypeFeature[className][sig1] = memoryOperationType
+
+    print("Checking memory type consistency for pre-accepted specs in source sink identification...")
+    
+    for (packageName,className,sig1) in preacceptedmethods:
+        if memoryTypeFeature.get(className) is None:
+            print("Skipping method:", sig1, "as no memory type found for class:", className)
+            continue
+        if memoryTypeFeature[className].get(sig1) is None:
+            print("Skipping method:", sig1, "as no memory type found for method.")
+            continue
+        label = checkMemoryTypeEmbeddingSingleMethod(memoryTypeFeature[className][sig1])
+
+        if not sig1.startswith("void"):
+            if label == "sink":
+                label = "sink-source"
+            elif label == "none":
+                label = "source"
+        print(f"for method {sig1}, obtained label: {label} ")
+        if label != "none":
+            print(f"Adding method {sig1} with label {label} to accepted specs.")
+            acceptedSpecs.append(
+                [packageName, className, sig1, label]
+            )
+
+    for className in memoryTypeFeature: 
+        os.makedirs(os.path.join(resultPath, className), exist_ok=True)
+        with open(resultPath + className + "/dataflow_result_prompts.json", "a") as f:
+            json.dump(memoryTypeFeature[className], f, indent=4)
+    print("Total methods with at least one empty description:", count_empty_desc, "out of", count_all_desc)
+
+    return acceptedSpecs
+
+### Added by Maryam - infer memory type with Embeddings 
+def inferMemOpConsistentSpecWithEmbeddings(
+    preAcceptedSpecs, 
+    methodDoc: dict,
+    #allTypeConsistentSpec: dict,
+    #allCriticalMethods: dict,
+    CHADic: dict,
+    projectName: str,
+    methodInfoResult_path: str,
+    m,
+    t2=1.0,
+):  
+    resultPath = methodInfoResult_path + projectName + "/"
+    memoryTypeFeature = {}
+    acceptedSpecs = []
+    # specify target operations 
+    
+    # Load the Sentence-BERT model
+    model = embedding.load_sentencebert_model()
+
+    
+    history = set([])
+
+    print("Start embedding-based memory operation type inference... ")
+
+    count_empty_desc = 0
+    count_deprecated_desc = 0
+    count_all_desc = 0
+
+    for [packageName, className, sig1, sig2, opVal, conf, specStr] in preAcceptedSpecs:
+        isIn1 = False
+        isIn2 = False
+        description1 = methodDoc[packageName][className]["methods"][sig1]
+        description2 = methodDoc[packageName][className]["methods"][sig2]
+        ## handle empty and depricated descriptions
+        isEmpty1, isDeprecated1 = handleDescriptionCases(description1)
+        isEmpty2, isDeprecated2 = handleDescriptionCases(description2)
+
+        if isEmpty1 or isEmpty2:
+            count_empty_desc += 1
+            continue
+        
+        if isDeprecated1 or isDeprecated2:
+            count_deprecated_desc += 1
+            continue
+
+        count_all_desc += 1
+        if className in memoryTypeFeature:
+            if sig1 in memoryTypeFeature[className]:
+                isIn1 = True
+            if sig2 in memoryTypeFeature[className]:
+                isIn2 = True
+        if not isIn1:
+            if className not in memoryTypeFeature:
+                memoryTypeFeature[className] = {}
+            if (
+                packageName,
+                className,
+                sig1,
+                description1,
+            ) not in history:
+                history.add(
+                    (
+                        packageName,
+                        className,
+                        sig1,
+                        description1,
+                    )
+                )
+        if not isIn2:
+            if className not in memoryTypeFeature:
+                memoryTypeFeature[className] = {}
+            if (
+                packageName,
+                className,
+                sig2,
+                methodDoc[packageName][className]["methods"][sig2],
+            ) not in history:
+                history.add(
+                    (
+                        packageName,
+                        className,
+                        sig2,
+                        description2,
+                    )
+                )
+
+    
+    embedding.initialize_targets(model)
+    final_results, all_verbs, analysis_logs = embedding.batch_retrieve_memory_operations(model, history)
+    embedding.print_and_save_analysis(analysis_logs, resultPath)
+    # Create a thread pool executor with 5 threads
+    for result in final_results:
+        for method_key in result:
+            # Split method_key if needed
+            packageName, className, sig1 = method_key
+            print("Processing result for method:", sig1, "with description:", result[method_key])
+            memoryOperationType = result[method_key]
+            print("Obtained memory operation type for method:", sig1, "Type:", memoryOperationType)
+            memoryTypeFeature[className][sig1] = memoryOperationType
+    
+    print("Checking memory type consistency for pre-accepted specs...")
+
+    for [packageName, className, sig1, sig2, opVal, conf, specStr] in preAcceptedSpecs:
+        if sig1 not in memoryTypeFeature.get(className, {}):
+            print("Skipping method:", sig1, "as no memory type found.")
+            continue
+        if sig2 not in memoryTypeFeature.get(className, {}):
+            print("Skipping method:", sig2, "as no memory type found.")
+            continue
+        print("Checking memory type consistency for methods:", sig1, sig2,checkMemoryTypeEmbedding(memoryTypeFeature[className][sig1],memoryTypeFeature[className][sig2]))
+        if checkMemoryTypeEmbedding(
+            memoryTypeFeature[className][sig1],
+            memoryTypeFeature[className][sig2]
+        ):
+            acceptedSpecs.append(
+                [packageName, className, sig1, sig2, opVal, conf, specStr]
+            )
+
+    for className in memoryTypeFeature:
+        with open(resultPath + className + "/memoryTypeFeature_embedding_model.json", "w") as f:
+            json.dump(memoryTypeFeature[className], f, indent=4)
+    print("Total methods with at least one empty description:", count_empty_desc, "out of", count_all_desc)
+    print("Total methods with at least one deprecated description:", count_deprecated_desc)
+
+    return acceptedSpecs
+
 
 
 def inferMemOpConsistentSpecInLazyMode(
@@ -417,7 +871,7 @@ def inferMemOpConsistentSpecInEagerMode(
 
         def process_params(params):
             className, sig1, description, magicWords, promptMode, m, t2, indx = params
-
+ 
             return (
                 className,
                 sig1,
@@ -531,6 +985,54 @@ def inferMemOpConsistentSpecInEagerMode(
     return allMemOpConsistentSpec, memoryTypeFeature, cnt
 
 
+def checkMemTypes(memTypes):
+    if memTypes.get('insert') is None:
+        memTypes['insert'] = False
+    else:
+        memTypes['insert'] = True
+
+    if memTypes.get('get') is None:
+        memTypes['get'] = False
+    else:
+        memTypes['get'] = True
+
+    if memTypes.get('set') is None:
+        memTypes['set'] = False
+    else:
+        memTypes['set'] = True
+
+    if memTypes.get('remove') is None:
+        memTypes['remove'] = False
+    else:
+        memTypes['remove'] = True
+
+    return memTypes
+
+def checkMemoryTypeEmbedding(memTypes1, memTypes2):
+    memTypes1 = checkMemTypes(memTypes1)
+    memTypes2 = checkMemTypes(memTypes2)
+    check11 = ( memTypes1["insert"]) or (not memTypes1["remove"] and memTypes1["set"])
+    check12 = memTypes2["get"] or memTypes2["remove"]
+    return check11 and check12
+
+    
+def checkMemoryTypeEmbeddingSingleMethod(memTypes1):
+    # before 
+    #check11 = memTypes1["set"] or memTypes1["insert"] or memTypes1["remove"]
+    #check12 = memTypes1["get"] or memTypes1["remove"]
+    print("Checking memory type for method with features:", memTypes1)
+    memTypes1 = checkMemTypes(memTypes1)
+
+    check11 = memTypes1["insert"] or (memTypes1["set"] and not memTypes1["remove"])
+    check12 = memTypes1["get"] or memTypes1["remove"]
+    if check11 and not check12:
+        return "sink"
+    elif check12 and not check11:
+        return "source"
+    elif check11 and check12:
+        return "source-sink"
+    return "none"
+
 def checkMemoryType(memTypes1, memTypes2, promptMode):
     assert "manualPrompt" in promptMode or "autoPrompt_FourTypes" in promptMode
     check1 = memTypes1["insertion upon memory"] or (
@@ -578,14 +1080,15 @@ def inferRetArgSpecByOMTSolving(allMemoryValidSpecs: dict, NNSet: set, CHADic: d
     Maximal matching
     """
     specs = {}
+    print("Start OMT solving for memory valid specs")
     for packageName in allMemoryValidSpecs:
         for className in allMemoryValidSpecs[packageName]:
             for [sig1, sig2] in allMemoryValidSpecs[packageName][className]:
                 graph = constructSpecGraph([sig1, sig2])
                 ftype, fname = computeSimilarityInSpecGraph(graph, CHADic, NNSet)
                 specStr, optVal = maximizeMatchingWeight_CHA(graph, ftype, fname, NNSet)
+                print(f"{sig1} <-> {sig2} : {specStr} with optVal={optVal}")
                 fieldConfidence = 1
-
                 if specStr is not None and optVal is not None:
                     if packageName not in specs:
                         specs[packageName] = {}
@@ -595,6 +1098,18 @@ def inferRetArgSpecByOMTSolving(allMemoryValidSpecs: dict, NNSet: set, CHADic: d
                         [sig1, sig2, optVal, fieldConfidence, specStr]
                     )
     return specs
+
+def retrieveMethodsFromBaseline(fullMethodDoc: dict):
+    methods = set()
+    verb_dict = {}
+    for package_name in fullMethodDoc:
+        for className in fullMethodDoc[package_name]:
+            info = fullMethodDoc[package_name][className]
+            for sig in info["methods"]:
+                description = info["methods"][sig]
+                if description is not None and description.strip() != "":
+                    methods.add(sig)
+    return methods
 
 
 def sortOMTSpec(specs: dict):
@@ -669,6 +1184,37 @@ def trimAcceptedSpecs(acceptedSpecs: list, CHADic: dict):
                 (packageName, className, sig1, sig2, opVal, fieldConfidence, specStr)
             )
     return finalizedSpecs
+
+
+def trimAcceptedSpecsSourceSink(acceptedSpecs: list, CHADic: dict):
+    finalizedSpecs = []
+    for (
+        packageName,
+        className,
+        sig1,
+        label1
+    ) in acceptedSpecs:
+        superClasses = CHADic[className]
+        isFinal = True
+        for superClass in superClasses:
+            for (
+                packageNameTmp,
+                classNameTmp,
+                sigTmp1,
+                label2
+            ) in acceptedSpecs:
+                if (
+                    classNameTmp == superClass
+                    and sig1 == sigTmp1
+                ):
+                    isFinal = False
+                    break
+        if isFinal:
+            finalizedSpecs.append(
+                (packageName, className, sig1, label1)
+            )
+    return finalizedSpecs
+
 
 
 def extractNNDictionary(content_dict):
@@ -772,7 +1318,78 @@ def prepareBenchmark():
     return methodDoc
 
 
-def runBenchmark(promptMode, gptMode, n, m, isOptimizedMode=False, t1=0.7, t2=0.7):
+#### Added By Maryam
+def computeSimilarityMatrixLLM(graph, CHADict: dict,className: str, sig1: str, sig2: str, desc1: str, desc2: str, promptMode: str):
+    """
+    Compute the similarity matrix
+    """
+    (nodeList1, nodeList2) = graph    
+    result = retrieveAliasRelationwithLLM(className,sig1, sig2, desc1, desc2,promptMode)
+    ftype = {}
+    fname = {}
+    for i in range(len(nodeList1)):
+        for j in range(len(nodeList2)):
+            (type1, name1) = nodeList1[i]
+            (type2, name2) = nodeList2[j]
+            ftype[(i, j)] = getTypeSimilarity(type1, type2, CHADict)
+            if promptMode in ["alias_zero", "alias_few"]:
+                fname[(i, j)] = getNameSimilarityFromLLM(name1, name2, result,i,j)
+            else:
+                fname[(i, j)] = getNameSimilarityScoreFromLLM(name1, name2, result)
+    return ftype, fname
+
+
+#### Added by Maryam
+def getNameSimilarityFromLLM(name1: str, name2: str, result: dict, i: int, j: int):
+    """
+    Get name similarity from LLM result
+    """
+    for k, v in result.items():
+        if v != "":
+            if (k == name1 and v == name2) or (k == name2 and v == name1):
+                return 1
+        else:
+            if(k == name1 and j == 0) or (k == name2 and i == 0):
+                return 1
+    return 0
+
+#### Added by Maryam
+def getNameSimilarityScoreFromLLM(name1: str, name2: str, result: dict):
+    """
+    Get name similarity from LLM result
+    """
+    for i,j , value in result:
+        if (i == name1 and j == name2) or (i == name2 and j == name1):
+            return value
+    return 0
+
+
+#### Added by Maryam to infer the alias relation using LLM and compute the similarity matrix based on the inferred alias relation
+def inferAliasRelationWithLLM(methodDoc: dict, CHADic: dict, fullMethodDoc: dict   ):
+    """
+    Maximal matching
+    """
+    specs = {}
+    promptmode = config.promptMode
+    for packageName in methodDoc:
+        for className in methodDoc[packageName]:
+            for [sig1, sig2] in methodDoc[packageName][className]:
+                graph = constructSpecGraph([sig1, sig2])
+                ftype,fname = computeSimilarityMatrixLLM(graph, CHADic, className, sig1, sig2, fullMethodDoc[packageName][className]["methods"][sig1], fullMethodDoc[packageName][className]["methods"][sig2], promptmode
+                )
+                specStr, optVal = maximizeMatchingWeight_CHA_LLM(graph, ftype, fname)
+                fieldConfidence = 1
+                if specStr is not None and optVal is not None:
+                    if packageName not in specs:
+                        specs[packageName] = {}
+                    if className not in specs[packageName]:
+                        specs[packageName][className] = []
+                    specs[packageName][className].append(
+                        [sig1, sig2, optVal, fieldConfidence, specStr]
+                    )
+    return specs
+
+def runBenchmark(promptMode, gptMode, n, m, isOptimizedMode=False, isLLM=False, t1=0.7, t2=0.7):
     """
     Run the benchmark
     Args:
@@ -788,7 +1405,7 @@ def runBenchmark(promptMode, gptMode, n, m, isOptimizedMode=False, t1=0.7, t2=0.
     # Load Benchmark
     content_dict = {}
     dir_path = "../data/javadoc/benchmark/"
-    data_path = "../data/output/" + promptMode + "/"
+    data_path = "../data/output/alias-" + promptMode + "-" + config.EMBEDDING_MODEL + "/"
     if not os.path.exists(data_path):
         os.makedirs(data_path)
 
@@ -799,10 +1416,10 @@ def runBenchmark(promptMode, gptMode, n, m, isOptimizedMode=False, t1=0.7, t2=0.
     methodInfoResult_path = data_path + "methodInfo/"
     if not os.path.exists(methodInfoResult_path):
         os.makedirs(methodInfoResult_path)
-
-    prompt_path = data_path + "prompt/"
-    if not os.path.exists(prompt_path):
-        os.makedirs(prompt_path)
+    if isLLM:
+        prompt_path = data_path + "prompt/"
+        if not os.path.exists(prompt_path):
+            os.makedirs(prompt_path)
 
     # loop through each file in the directory
     for file_name in os.listdir(dir_path):
@@ -819,10 +1436,12 @@ def runBenchmark(promptMode, gptMode, n, m, isOptimizedMode=False, t1=0.7, t2=0.
             with open(file_path, "r") as f:
                 content_dict[packageName] = {className: json.load(f)}
 
+
     ## Extract named entities
-    NNSet = extractNNDictionary(content_dict)
-    with open(inferResult_path + "benchmark_NNSet.json", "w") as f:
-        json.dump({"dic": list(NNSet)}, f, indent=4)
+    if isOptimizedMode or not isLLM or not isEmbeddings:
+        NNSet = extractNNDictionary(content_dict)
+        with open(inferResult_path + "benchmark_NNSet.json", "w") as f:
+            json.dump({"dic": list(NNSet)}, f, indent=4)
 
     ## Global CHA analysis
     CHADic = obtainCHADic(content_dict)
@@ -835,15 +1454,126 @@ def runBenchmark(promptMode, gptMode, n, m, isOptimizedMode=False, t1=0.7, t2=0.
         json.dump(fullMethodDoc, f, indent=4)
 
     ## Type analysis
-    allTypeConsistentSpec, allCriticalMethods, cnt, method_cnt = (
-        inferTypeConsistentSpecFromJavaDoc(
-            fullMethodDoc, CHADic, "benchmark", methodInfoResult_path
+    if not isEmbeddingSourceSink:
+        allTypeConsistentSpec, allCriticalMethods, cnt, method_cnt = (
+            inferTypeConsistentSpecFromJavaDoc(
+                fullMethodDoc, CHADic, "benchmark", methodInfoResult_path
+            )
         )
-    )
-    print("#allTypeConsistentSpec:", cnt)
-    print("#Critical Methods:", method_cnt)
+        print("#allTypeConsistentSpec:", cnt)
+        print("#Critical Methods:", method_cnt)
 
-    if not isOptimizedMode:
+    ### There are five modes:
+    ### 1. LLM + Dataflow  => handled separately
+    ### 2. LLM + Alias
+    ### 3. Non-optimized + LLM = lazy
+    ### 4. Optimized + LLM = eager
+    ### 5. Embedding models => handled separately
+
+    completed = False
+    
+    ### 2. LLM-based alias relation inference
+    if isLLM:
+        classCnt = 0
+        for package_name in fullMethodDoc:
+            classCnt += len(fullMethodDoc[package_name])
+        print(classCnt)
+        retArgSpecs = {}
+        retArgSpecs = inferAliasRelationWithLLM(allTypeConsistentSpec, CHADic, fullMethodDoc) 
+            
+        sortedRetArgSpecs, acceptedSpecs = sortOMTSpec(retArgSpecs)
+        finalizedSpecs = trimAcceptedSpecs(acceptedSpecs, CHADic)
+        completed = True
+
+        # save the datat about tokens in a file
+        with open(inferResult_path + "benchmark_LLM_token_usage.txt", "w") as f:
+            f.write(f"Total LLM Tokens: {config.LLMTokenCnt}\n")
+            f.write(f"#Total Queries: {sum(config.global_num_queries.values())}\n")
+            f.write(f"#Dataflow Mode: {config.promptMode}\n")
+            f.write(f"#Total Input vs. Output Tokens: {config.LLMInputTokenCnt} : {config.LLMOutputTokenCnt}\n")
+            f.write(f"#Discarded Prompts {config.discarded_alias_queries}\n")
+            sum = 0
+            max = 0
+            min = 1e9
+            for key in config.global_num_queries:
+                f.write(f"#Queries of {key}: {config.global_num_queries[key]}\n")
+                if config.global_num_queries[key] > max:
+                    max = config.global_num_queries[key]
+                if min == 1e9 or config.global_num_queries[key] < min:
+                    min = config.global_num_queries[key]
+                sum += config.global_num_queries[key]
+            f.write(f"#Max Queries: {max}\n")
+            f.write(f"#Min Queries: {min}\n")
+            f.write(f"#Sum Queries: {sum}\n")
+            f.write(f"#Discarded Prompts: {config.discarded_alias_queries}\n")
+            f.write(f"#Average Tokens per Query: {config.LLMTokenCnt / sum}\n")
+            sum = 0
+            for key in config.global_num_tokens:
+                f.write(f"#Tokens of {key}: {config.global_num_tokens[key]}\n")
+                sum += config.global_num_tokens[key]
+            f.write(f"#Sum Tokens: {sum}\n")
+        completed = True
+    
+        ### Embedding-based memory operation type inference
+    
+    if isEmbeddings and not completed:
+        classCnt = 0
+        for package_name in fullMethodDoc:
+            classCnt += len(fullMethodDoc[package_name])
+        print(classCnt)
+
+
+        before_tag = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")        
+
+        retArgSpecs = inferRetArgSpecByOMTSolving(allTypeConsistentSpec, NNSet, CHADic)
+
+        after_tag = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+
+        config.tagging_time = datetime.strptime(after_tag, "%Y-%m-%d_%H-%M-%S") - datetime.strptime(before_tag, "%Y-%m-%d_%H-%M-%S")
+
+        before_solving = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        sortedRetArgSpecs, preacceptedSpecs = sortOMTSpec(retArgSpecs)
+        after_solving = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        config.solving_time = datetime.strptime(after_solving, "%Y-%m-%d_%H-%M-%S") - datetime.strptime(before_solving, "%Y-%m-%d_%H-%M-%S")
+
+        before = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        ## Embedding-based memory operation specifications
+        acceptedSpecs = inferMemOpConsistentSpecWithEmbeddings(
+            preacceptedSpecs,
+            fullMethodDoc,
+            #allTypeConsistentSpec,
+            #allCriticalMethods,
+            CHADic,
+            "benchmark",
+            methodInfoResult_path,
+            m,
+            t2,
+        )
+  
+
+        finalizedSpecs = trimAcceptedSpecs(acceptedSpecs, CHADic)
+        completed = True
+        
+
+        after_infer = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        duration = datetime.strptime(after_infer, "%Y-%m-%d_%H-%M-%S") - datetime.strptime(before, "%Y-%m-%d_%H-%M-%S")
+         # Save time usage data in a file
+        with open(inferResult_path + "benchmark_embedding_usage.txt", "w") as f:
+            f.write(f"LLM Inference Start Time: {before}\n")
+            f.write(f"LLM Inference End Time: {after_infer}\n")
+            f.write(f"LLM Inference Duration: {duration}\n")
+            f.write(f"Embedding models: {config.EMBEDDING_MODEL}\n")
+            f.write(f"#Total memory latency: {config.memory_latency}\n")        
+            f.write(f"#Total memory usage (MB): {config.memory_usage_mb}\n")
+            f.write(f"#Total Time: {config.time_embedding_model}\n")
+            f.write(f"#Total Embedding calls: {config.count_embedding_model}\n")
+            f.write(f" Tagging time (before OMT solving): {config.tagging_time}\n")
+            f.write(f" OMT Solving time: {config.solving_time}\n")
+            f.write(f" Memory operation specification inference time: {config.SENTENCEE_PROCESSING_TIME}\n")
+            f.write(f" NNumber of sentences: {config.number_of_sentences}\n")
+
+
+    if not isOptimizedMode and not completed:
         classCnt = 0
         for package_name in fullMethodDoc:
             classCnt += len(fullMethodDoc[package_name])
@@ -875,7 +1605,8 @@ def runBenchmark(promptMode, gptMode, n, m, isOptimizedMode=False, t1=0.7, t2=0.
         sortedRetArgSpecs, acceptedSpecs = sortOMTSpec(retArgSpecs)
 
         finalizedSpecs = trimAcceptedSpecs(acceptedSpecs, CHADic)
-    else:
+        completed = True
+    elif not completed and isOptimizedMode:
         classCnt = 0
         for package_name in fullMethodDoc:
             classCnt += len(fullMethodDoc[package_name])
@@ -906,33 +1637,808 @@ def runBenchmark(promptMode, gptMode, n, m, isOptimizedMode=False, t1=0.7, t2=0.
 
         print("\n")
         finalizedSpecs = trimAcceptedSpecs(acceptedSpecs, CHADic)
+        completed = True
 
-    with open(inferResult_path + "benchmark_retArgSpecCandidate.json", "w") as f:
-        json.dump({"retArgSpecCandidate": sortedRetArgSpecs}, f, indent=4)
+    if isLLM and completed:
+        print(f"#Discarded Prompts {config.discarded_alias_queries}")
+        sum = 0
+        max = 0
+        min = 1e9
+        for key in config.global_num_queries:
+            print(f"#Queries of {key}: {config.global_num_queries[key]}")
+            if config.global_num_queries[key] > max:
+                max = config.global_num_queries[key]
+            if min == 1e9 or config.global_num_queries[key] < min:
+                min = config.global_num_queries[key]
+            sum += config.global_num_queries[key]
+        print(f"#Max Queries: {max}")
+        print(f"#Min Queries: {min}")
+        print(f"#Sum Queries: {sum}")
+        print(f"#Discarded Prompts: {config.discarded_alias_queries}")
+        print(f"#Average Tokens per Query: {config.LLMTokenCnt / sum}")
+        sum = 0
+        for key in config.global_num_tokens:
+            print(f"#Tokens of {key}: {config.global_num_tokens[key]}")
+            sum += config.global_num_tokens[key]
+        print(f"#Sum Tokens: {sum}")
+        print(f"#Total LLM Tokens: {config.LLMTokenCnt}")
 
-    outlineDic = {}
-    for spec in sortedRetArgSpecs:
-        (package, className, sig1, sig2, opVal, fieldConf, specStr) = spec
-        if className not in outlineDic:
-            outlineDic[className] = []
-        outlineDic[className].append([sig1, sig2, opVal, fieldConf, specStr])
-    with open(inferResult_path + "benchmark_routlineDic.json", "w") as f:
-        json.dump({"retArgSpecCandidate": outlineDic}, f, indent=4)
+    if not isEmbeddingSourceSink:
+        with open(inferResult_path + "benchmark_retArgSpecCandidate.json", "w") as f:
+            json.dump({"retArgSpecCandidate": sortedRetArgSpecs}, f, indent=4)
 
-    with open(inferResult_path + "benchmark_inferredSpecs.json", "w") as f:
-        json.dump({"retArgSpec": acceptedSpecs}, f, indent=4)
+        outlineDic = {}
+        for spec in sortedRetArgSpecs:
+            (package, className, sig1, sig2, opVal, fieldConf, specStr) = spec
+            if className not in outlineDic:
+                outlineDic[className] = []
+            outlineDic[className].append([sig1, sig2, opVal, fieldConf, specStr])
+        with open(inferResult_path + "benchmark_routlineDic.json", "w") as f:
+            json.dump({"retArgSpecCandidate": outlineDic}, f, indent=4)
 
-    with open(inferResult_path + "benchmark_finalizedSpecs.json", "w") as f:
-        json.dump({"retArgSpec": finalizedSpecs}, f, indent=4)
+        with open(inferResult_path + "benchmark_inferredSpecs.json", "w") as f:
+            json.dump({"retArgSpec": acceptedSpecs}, f, indent=4)
 
-    print("#typeConsistent:", cnt)
+        with open(inferResult_path + "benchmark_finalizedSpecs.json", "w") as f:
+            json.dump({"retArgSpec": finalizedSpecs}, f, indent=4)
+
+        print("#typeConsistent:", cnt)
+        print("#accepted specs: ", len(acceptedSpecs))
+        print("#finalized specs: ", len(finalizedSpecs))
+        print("#class: ", classCnt)
+    else:
+        with open(inferResult_path + "benchmark_inferredSourceSinkSpecs.json", "w") as f:
+            json.dump({"sourceSinkSpec": acceptedSpecs}, f, indent=4)
+
+        with open(inferResult_path + "benchmark_finalizedSourceSinkSpecs.json", "w") as f:
+            json.dump({"sourceSinkSpec": finalizedSpecs}, f, indent=4)
+
+        print("#accepted specs: ", len(acceptedSpecs))
+        print("#finalized specs: ", len(finalizedSpecs))
+        print("#class: ", classCnt)
+
+def getLabelledMethodsForClass(labeled_methods: dict, className: str):
+    method_list = []
+    current_list = labeled_methods.get(className, [])
+    for method_signature,label in current_list:
+        init_string = method_signature.split(" ")
+        if len(init_string) < 1:
+            continue
+        return_type_all = init_string[0]
+        if "." in return_type_all:
+            return_type = return_type_all.split(".")[-1]
+        else:
+            return_type = return_type_all
+        rest_signature = " ".join(init_string[1:])
+        method_signature = return_type + " " + rest_signature
+        # keep only the type after the last dot in the method name
+        method_list.append((method_signature, label))
+    return method_list
+
+def splitMethodFromLabelledData(signature: str):
+    # fomrat is like: java.lang.String getDeviceId(java.object.Object)
+    init_string = signature.split(" ")
+    if len(init_string) < 1:
+        return None, None, None
+    return_type_all = init_string[0]
+    if "." in return_type_all:
+        return_type = return_type_all.split(".")[-1]
+    else:
+        return_type = return_type_all
+    rest_signature = " ".join(init_string[1:])
+    method_name = rest_signature[0 : rest_signature.find("(")]
+    para_list_str = rest_signature[rest_signature.find("(") + 1 : rest_signature.find(")")]
+    para_list = []
+    if para_list_str.strip() != "":
+        para_list_tmp = para_list_str.split(",")
+        for para in para_list_tmp:
+            para = para.strip()
+            if "." in para:
+                para_type = para.split(".")[-1]
+            else:
+                para_type = para
+            para_list.append(para_type)
+    if return_type == "T":
+        return_type = "Object"
+    return return_type, method_name, para_list
+
+
+def exists_signature_in_list(signature: str, signature_list: list):
+    return_type1, methodName1, paraList1, paraNames = splitMethodSignatureFromJavaDoc(signature)
+    count = 0
+    matches = []
+    for sig,label in signature_list:
+        return_type2, methodName2, paraList2 = splitMethodFromLabelledData(sig)
+        if return_type1 is None or return_type2 is None:
+            continue
+        if return_type1.lower() != return_type2.lower():
+            continue
+        if methodName1.lower() != methodName2.lower():
+            continue
+        if len(paraList1) != len(paraList2):
+            continue
+        match = True
+        for i in range(len(paraList1)):
+            if paraList1[i].lower() != paraList2[i].lower():
+                match = False
+                break
+        if match:
+            count += 1
+            matches.append((sig, label))
+    if len(matches) > 0:
+        return True, count
+    return False,count
+
+### Added by Maryam to run the benchmark for source-sink detection using LLM-based prompting
+def runBenchmarkDataflowSourceSinkLLM(mode, n, m, LLMModel,promptMode):
+    """
+    Run the benchmark
+    Args:
+        mode: The mode of source-sink detection
+        n: The self-consistency parameter in the first stage of prompting
+        m: The self-consistency parameter in the second stage of prompting
+    """
+
+    # Load Benchmark
+    content_dict = {}
+    dir_path = "../data/javadoc/benchmark-dainfer+/"
+    data_path = "../data/output/LLM-"+ LLMModel + "-" + mode + "-source-sink-" + str(m) + "-" + str(n) + "/"
+    labeled_classes_path = "../data/oracle/ManualOracle/labeledClassesDataflow.json"
+    labeled_methods_path = "../data/oracle/ManualOracle/labeledOracleDataflowSpecs.json"
+    if not os.path.exists(data_path):
+        os.makedirs(data_path)
+    
+    # retrieve labeled classes list
+    if not os.path.exists(labeled_classes_path):
+        print("[Error] Labeled classes file not found!")
+        return
+    labeled_classes = []
+    with open(labeled_classes_path, "r") as f:
+        labeled_classes_content = json.load(f)
+        # get all classes names under the "labeledClasses" key
+        if "labeledClasses" in labeled_classes_content:
+            labeled_classes_content = labeled_classes_content["labeledClasses"]
+            for class_name in labeled_classes_content:
+                labeled_classes.append(class_name)
+        else:
+            print("[Error] No labeled classes found!")
+            return
+    
+    # retrieve labeled methods list
+    if not os.path.exists(labeled_methods_path):
+        print("[Error] Labeled methods file not found!")
+        return
+    labeled_methods = {}
+    method_count = 0
+    with open(labeled_methods_path, "r") as f:
+        labeled_methods_content = json.load(f)
+        # get all the ones in [] 
+        # the data format is like this: [  [class_name1, method_signature1, label1], [class_name2, method_signature2, label2] ,  ...   ],
+        for item in labeled_methods_content:
+            class_name = item[0]
+            method_signature = item[1]
+            #print("Labeled Method Item:", item)
+            label = item[2]
+            if class_name not in labeled_methods:
+                labeled_methods[class_name] = []
+            labeled_methods[class_name].append((method_signature,label))
+        for class_name in labeled_methods:
+            print("--------------------------------------------------")
+            print(f"Labeled Class {class_name} has {len(labeled_methods[class_name])} labeled methods.")
+            for method_signature, label in labeled_methods[class_name]:
+                print(f"  Labeled Method: {method_signature} with label {label}")
+
+
+    # Create output directories
+    inferResult_path = data_path + "inferResult/"
+    if not os.path.exists(inferResult_path):
+        os.makedirs(inferResult_path)
+
+    methodInfoResult_path = data_path + "methodInfo/"
+    if not os.path.exists(methodInfoResult_path):
+        os.makedirs(methodInfoResult_path)
+    methodPrompt_path = data_path + "methodPrompt/"
+    if not os.path.exists(methodPrompt_path):
+        os.makedirs(methodPrompt_path)
+    
+
+    skipped_classes = 0
+    all_classes = 0
+
+    # loop through each file in the directory
+    for file_name in os.listdir(dir_path):
+        # get the full file path
+        file_path = os.path.join(dir_path, file_name)
+        all_classes += 1
+
+        # check if the file is a JSON file
+        if file_name.endswith(".json"):
+            fullClassName = file_name[0:-5]
+            if fullClassName not in labeled_classes:
+                skipped_classes += 1
+                #print("Skipping unlabeled class:", fullClassName)
+                continue
+            #print(f"Found Class File for {fullClassName} ")
+            # open the file and load the JSON content to a dictionary
+            packageName = fullClassName
+            className = fullClassName
+            with open(file_path, "r") as f:
+                content_dict[packageName] = {className: json.load(f)}
+
+
+
+    ## Global CHA analysis
+    CHADic = obtainCHADic(content_dict)
+
+    with open(inferResult_path + "benchmark_CHADic.json", "w") as f:
+        json.dump(CHADic, f, indent=4)
+
+    fullMethodDoc = constructFullMethodDic(content_dict, CHADic)
+    with open(inferResult_path + "benchmark_fullMethodDoc.json", "w") as f:
+        json.dump(fullMethodDoc, f, indent=4)
+
+    
+    count_desc = 0
+    count_all_desc = 0
+    count_all_existing_methods = 0
+    count_deprecated = 0    
+    count_specs = 0
+    print("Total labeled classes to process:", len(labeled_classes))
+    print("Let's see how many we can read with descriptions ... ")
+    preacceptedmethods = set()
+    for package_name in fullMethodDoc:
+        print("------------------------------------------------------------------")
+        for className in fullMethodDoc[package_name]:
+            method_for_class = getLabelledMethodsForClass(labeled_methods, className) #labeled_methods.get(className, [])
+            if len(method_for_class) == 0:
+                continue
+            info = fullMethodDoc[package_name][className]
+            collected_methods = 0
+            for sig in info["methods"]:
+                exist_is, count = exists_signature_in_list(sig, method_for_class)
+                if exist_is is False:
+                #if sig not in method_for_class:
+                #if not findMethodInLabelledMethods(labeled_methods, className, sig):
+                    #print("Skipping unlabeled method:", sig, " in class ", className)
+                    continue
+                method_count += 1
+                if not (package_name,className,sig) in preacceptedmethods:
+                    count_all_existing_methods += 1
+                    count_all_desc += 1
+                description = info["methods"][sig]
+                #print("Processing labeled method:", sig, " in class ", className, " with description ",description)
+                isEmpty, isDeprecated = handleDescriptionCases(description)
+                if not isEmpty and not isDeprecated:
+                    count_specs += count
+                    if (package_name,className,sig) in preacceptedmethods:
+                        print("Already pre-accepted method:", sig, " in class ", className)
+                    else:
+                        count_desc += 1
+                        preacceptedmethods.add((package_name, className, sig))
+                        collected_methods += 1
+                elif not isEmpty and isDeprecated:
+                    count_deprecated += 1
+                else:
+                    print("No description found for labeled method:", sig, " in class ", className)
+        if collected_methods != len(method_for_class):
+            print(f"Processing Class: {className} with {len(method_for_class)} labeled methods and {len(info['methods'])} documented methods.")
+            print("Collected methods so far for class:", className, " are ", collected_methods)
+
+    print("Total labeled classes:", len(labeled_classes))
+    print("Total classes processed:", len(content_dict))
+    print("Total classes skipped:", skipped_classes)
+    print("Total classes under benchmark path:", all_classes)
+    print("Total labeled for methods:", method_count)
+    print("Total labeled specs with descriptions:", count_specs)
+    print("Total existing labeled methods in the documentation:", count_all_existing_methods)
+    print("Total labeled methods with descriptions:", count_desc)
+    print("Total labeled methods with deprecated descriptions:", count_deprecated)
+    print("Description coverage:", count_desc, "/", count_all_desc)
+    acceptedSpecs = {}
+    before = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    acceptedSpecs = inferMemOpConsistentSpecWithLLM(
+        preacceptedmethods,
+        fullMethodDoc,
+        labeled_methods,
+        "benchmark-llm-method",
+        methodInfoResult_path
+    )
+
+    after_infer = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    duration = datetime.strptime(after_infer, "%Y-%m-%d_%H-%M-%S") - datetime.strptime(before, "%Y-%m-%d_%H-%M-%S")
+    finalizedSpecs = trimAcceptedSpecsSourceSink(acceptedSpecs, CHADic)
+    
+    # Save LLM and time usage data in a file
+    with open(inferResult_path + "benchmark_LLM_token_usage.txt", "w") as f:
+        f.write(f"LLM Inference Start Time: {before}\n")
+        f.write(f"LLM Inference End Time: {after_infer}\n")
+        f.write(f"LLM Inference Duration: {duration}\n")
+        f.write(f"Total LLM Tokens: {config.LLMTokenCnt}\n")
+        ###f.write(f"#Total Queries: {sum(config.global_num_queries.values())}\n")
+        f.write(f"#Dataflow Mode: {config.promptMode}\n")
+        f.write(f"#Total Input vs. Output Tokens: {config.LLMInputTokenCnt} : {config.LLMOutputTokenCnt}\n")
+        f.write(f"#Discarded Prompts {config.discarded_alias_queries}\n")
+        sum = 0
+        max = 0
+        min = 1e9
+        for key in config.global_num_queries:
+            f.write(f"#Queries of {key}: {config.global_num_queries[key]}\n")
+            if config.global_num_queries[key] > max:
+                max = config.global_num_queries[key]
+            if min == 1e9 or config.global_num_queries[key] < min:
+                min = config.global_num_queries[key]
+            sum += config.global_num_queries[key]
+        f.write(f"#Max Queries: {max}\n")
+        f.write(f"#Min Queries: {min}\n")
+        f.write(f"#Sum Queries: {sum}\n")
+        f.write(f"#Average Tokens per Query: {config.LLMTokenCnt / sum}\n")
+        sum = 0
+        for key in config.global_num_tokens:
+            f.write(f"#Tokens of {key}: {config.global_num_tokens[key]}\n")
+            sum += config.global_num_tokens[key]
+        f.write(f"#Sum Tokens: {sum}\n")
+
+    # Save results and print the statistics
+    with open(inferResult_path + "benchmark_inferredDataflowSpec.json", "w") as f:
+        json.dump({"dataflowSpec": acceptedSpecs}, f, indent=4)
+
+    with open(inferResult_path + "benchmark_finalizedDataflowSpecs.json", "w") as f:
+        json.dump({"dataflowSpec": finalizedSpecs}, f, indent=4)
+
     print("#accepted specs: ", len(acceptedSpecs))
     print("#finalized specs: ", len(finalizedSpecs))
-    print("#class: ", classCnt)
 
+
+### Added by Maryam to run the benchmark for source-sink detection using LLM-based prompting
+def runAliasSpecWithLLM(mode, n, m, LLMModel,promptMode):
+    """
+    Run the benchmark
+    Args:
+        mode: The mode of source-sink detection
+        n: The self-consistency parameter in the first stage of prompting
+        m: The self-consistency parameter in the second stage of prompting
+    """
+
+    # Load Benchmark
+    content_dict = {}
+    dir_path = "../data/javadoc/benchmark-dainfer+/"
+    data_path = "../data/output/LLM-"+ LLMModel + "-" + mode + "-alias-" + str(m) + "-" + str(n) + "/"
+    labeled_classes_path = "../data/oracle/ManualOracle/labeledClasses.json"
+    labeled_methods_path = "../data/oracle/ManualOracle/labeledOracleSpecs.json"
+    if not os.path.exists(data_path):
+        os.makedirs(data_path)
+    
+    # retrieve labeled classes list
+    if not os.path.exists(labeled_classes_path):
+        print("[Error] Labeled classes file not found!")
+        return
+    labeled_classes = []
+    with open(labeled_classes_path, "r") as f:
+        labeled_classes_content = json.load(f)
+        # get all classes names under the "labeledClasses" key
+        if "labeledClasses" in labeled_classes_content:
+            labeled_classes_content = labeled_classes_content["labeledClasses"]
+            for class_name in labeled_classes_content:
+                labeled_classes.append(class_name)
+        else:
+            print("[Error] No labeled classes found!")
+            return
+    
+    # retrieve labeled methods list
+    if not os.path.exists(labeled_methods_path):
+        print("[Error] Labeled methods file not found!")
+        return
+    labeled_methods = {}
+    method_count = 0
+    with open(labeled_methods_path, "r") as f:
+        labeled_methods_content = json.load(f)
+        # get all the ones in [] 
+        # the data format is like this: [  [class_name1, method_signature1, label1], [class_name2, method_signature2, label2] ,  ...   ],
+        for item in labeled_methods_content["labeledCorrectSpecs"]:
+            class_name = item[0]
+            method_signature1 = item[1]
+            method_signature2 = item[2]
+            print("Labeled Method Item:", item)
+            if class_name not in labeled_methods:
+                labeled_methods[class_name] = []
+            if method_signature1 not in labeled_methods[class_name]:
+                labeled_methods[class_name].append(method_signature1)
+            if method_signature2 not in labeled_methods[class_name]:
+                labeled_methods[class_name].append(method_signature2)
+        for class_name in labeled_methods:
+            print("--------------------------------------------------")
+            print(f"Labeled Class {class_name} has {len(labeled_methods[class_name])} labeled methods.")
+            for method_signature1 in labeled_methods[class_name]:
+                print(f"  Labeled Method 1: {method_signature1}")
+
+
+    # Create output directories
+    inferResult_path = data_path + "inferResult/"
+    if not os.path.exists(inferResult_path):
+        os.makedirs(inferResult_path)
+
+    methodInfoResult_path = data_path + "methodInfo/"
+    if not os.path.exists(methodInfoResult_path):
+        os.makedirs(methodInfoResult_path)
+    methodPrompt_path = data_path + "methodPrompt/"
+    if not os.path.exists(methodPrompt_path):
+        os.makedirs(methodPrompt_path)
+    
+
+    skipped_classes = 0
+    all_classes = 0
+
+    # loop through each file in the directory
+    for file_name in os.listdir(dir_path):
+        # get the full file path
+        file_path = os.path.join(dir_path, file_name)
+        all_classes += 1
+
+        # check if the file is a JSON file
+        if file_name.endswith(".json"):
+            fullClassName = file_name[0:-5]
+            if fullClassName not in labeled_classes:
+                skipped_classes += 1
+                #print("Skipping unlabeled class:", fullClassName)
+                continue
+            #print(f"Found Class File for {fullClassName} ")
+            # open the file and load the JSON content to a dictionary
+            packageName = fullClassName
+            className = fullClassName
+            with open(file_path, "r") as f:
+                content_dict[packageName] = {className: json.load(f)}
+
+
+
+    ## Global CHA analysis
+    CHADic = obtainCHADic(content_dict)
+
+    with open(inferResult_path + "benchmark_CHADic.json", "w") as f:
+        json.dump(CHADic, f, indent=4)
+
+    fullMethodDoc = constructFullMethodDic(content_dict, CHADic)
+    with open(inferResult_path + "benchmark_fullMethodDoc.json", "w") as f:
+        json.dump(fullMethodDoc, f, indent=4)
+
+    
+    count_desc = 0
+    count_all_desc = 0
+    count_all_existing_methods = 0
+    count_deprecated = 0    
+    count_specs = 0
+    print("Total labeled classes to process:", len(labeled_classes))
+    print("Let's see how many we can read with descriptions ... ")
+    preacceptedmethods = set()
+    for package_name in fullMethodDoc:
+        print("------------------------------------------------------------------")
+        for className in fullMethodDoc[package_name]:
+            method_for_class = labeled_methods.get(className, [])
+            if len(method_for_class) == 0:
+                continue
+            info = fullMethodDoc[package_name][className]
+            collected_methods = 0
+            for sig in info["methods"]:
+                exist_is = True if sig in method_for_class else False
+                if exist_is is False:
+                #if sig not in method_for_class:
+                #if not findMethodInLabelledMethods(labeled_methods, className, sig):
+                    #print("Skipping unlabeled method:", sig, " in class ", className)
+                    continue
+                method_count += 1
+                if not (package_name,className,sig) in preacceptedmethods:
+                    count_all_existing_methods += 1
+                    count_all_desc += 1
+                description = info["methods"][sig]
+                #print("Processing labeled method:", sig, " in class ", className, " with description ",description)
+                isEmpty, isDeprecated = handleDescriptionCases(description)
+                if not isEmpty and not isDeprecated:
+                    count_specs += 1
+                    if (package_name,className,sig) in preacceptedmethods:
+                        print("Already pre-accepted method:", sig, " in class ", className)
+                    else:
+                        count_desc += 1
+                        preacceptedmethods.add((package_name, className, sig))
+                        collected_methods += 1
+                elif not isEmpty and isDeprecated:
+                    count_deprecated += 1
+                else:
+                    print("No description found for labeled method:", sig, " in class ", className)
+            #if collected_methods != len(method_for_class):
+            #    print(f"Processing Class: {className} with {len(method_for_class)} labeled methods and {len(info['methods'])} documented methods.")
+            #    print("Collected methods so far for class:", className, " are ", collected_methods)
+
+    print("Total labeled classes:", len(labeled_classes))
+    print("Total classes processed:", len(content_dict))
+    print("Total classes skipped:", skipped_classes)
+    print("Total classes under benchmark path:", all_classes)
+    print("Total labeled for methods:", method_count)
+    print("Total labeled specs with descriptions:", count_specs)
+    print("Total existing labeled methods in the documentation:", count_all_existing_methods)
+    print("Total labeled methods with descriptions:", count_desc)
+    print("Total labeled methods with deprecated descriptions:", count_deprecated)
+    print("Description coverage:", count_desc, "/", count_all_desc)
+    acceptedSpecs = {}
+    before = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    acceptedSpecs = inferAliasRelationsWithLLMPerClassMethods(
+        preacceptedmethods,
+        fullMethodDoc,
+        labeled_methods,
+        "benchmark-llm-method",
+        methodInfoResult_path
+    )
+
+    after_infer = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    duration = datetime.strptime(after_infer, "%Y-%m-%d_%H-%M-%S") - datetime.strptime(before, "%Y-%m-%d_%H-%M-%S")
+    finalizedSpecs = trimAcceptedSpecs(acceptedSpecs, CHADic)
+    
+    # Save LLM and time usage data in a file
+    with open(inferResult_path + "alias_benchmark_LLM_token_usage.txt", "w") as f:
+        f.write(f"LLM Inference Start Time: {before}\n")
+        f.write(f"LLM Inference End Time: {after_infer}\n")
+        f.write(f"LLM Inference Duration: {duration}\n")
+        f.write(f"Total LLM Tokens: {config.LLMTokenCnt}\n")
+        ###f.write(f"#Total Queries: {sum(config.global_num_queries.values())}\n")
+        f.write(f"#Dataflow Mode: {config.promptMode}\n")
+        f.write(f"#Total Input vs. Output Tokens: {config.LLMInputTokenCnt} : {config.LLMOutputTokenCnt}\n")
+        f.write(f"#Discarded Prompts {config.discarded_alias_queries}\n")
+        sum = 0
+        max = 0
+        min = 1e9
+        for key in config.global_num_queries:
+            f.write(f"#Queries of {key}: {config.global_num_queries[key]}\n")
+            if config.global_num_queries[key] > max:
+                max = config.global_num_queries[key]
+            if min == 1e9 or config.global_num_queries[key] < min:
+                min = config.global_num_queries[key]
+            sum += config.global_num_queries[key]
+        f.write(f"#Max Queries: {max}\n")
+        f.write(f"#Min Queries: {min}\n")
+        f.write(f"#Sum Queries: {sum}\n")
+        f.write(f"#Average Tokens per Query: {config.LLMTokenCnt / sum}\n")
+        sum = 0
+        for key in config.global_num_tokens:
+            f.write(f"#Tokens of {key}: {config.global_num_tokens[key]}\n")
+            sum += config.global_num_tokens[key]
+        f.write(f"#Sum Tokens: {sum}\n")
+
+    # Save results and print the statistics
+    with open(inferResult_path + "benchmark_inferredAliasSpec.json", "w") as f:
+        json.dump({"dataflowSpec": acceptedSpecs}, f, indent=4)
+
+    with open(inferResult_path + "benchmark_finalizedAliasSpecs.json", "w") as f:
+        json.dump({"dataflowSpec": finalizedSpecs}, f, indent=4)
+
+    print("#accepted specs: ", len(acceptedSpecs))
+    print("#finalized specs: ", len(finalizedSpecs))
+
+### Added by Maryam to handle the cases of descriptions in the benchmark, such as empty description, deprecated description, etc.
+def handleDescriptionCases(description: str):
+    isEmpty = False
+    isDeprecated = False
+    if description is None:
+        isEmpty = True
+        return isEmpty, isDeprecated
+    desc = description.strip()
+    if desc == "" or len(desc) < 25 or desc.lower().startswith("same as ") or desc.lower().startswith("see "): # if the description is empty or too short, we consider it as no description, the threshold of 25 is determined based on the observation of the benchmark data, which shows that many descriptions with less than 25 characters are not informative enough to be considered as valid descriptions.
+        isEmpty = True
+    # replace new line characters with space
+    desc = desc.replace("\n", " ")
+    desc = desc.replace("\r", " ")
+    # replace multiple spaces with single space
+    desc = re.sub(' +', ' ', desc)
+    if "deprecated" in desc.lower():
+        isDeprecated = True
+
+    return isEmpty, isDeprecated
+
+### Added by Maryam to run the benchmark for source-sink detection using embedding-based prompting
+def runBenchmarkDataflowSourceSinkEmbedding(mode, n, m):
+    """
+    Run the benchmark
+    Args:
+        mode: The mode of source-sink detection
+        n: The self-consistency parameter in the first stage of prompting
+        m: The self-consistency parameter in the second stage of prompting
+    """
+
+    # Load Benchmark
+    content_dict = {}
+    dir_path = "../data/javadoc/benchmark-dainfer+/"
+    data_path = "../data/output/" + config.EMBEDDING_MODEL + "-source-sink-" + str(m) + "-" + str(n) + "/"
+    labeled_classes_path = "../data/oracle/ManualOracle/labeledClassesDataflow.json"
+    labeled_methods_path = "../data/oracle/ManualOracle/labeledOracleDataflowSpecs.json"
+    if not os.path.exists(data_path):
+        os.makedirs(data_path)
+    
+    # retrieve labeled classes list
+    if not os.path.exists(labeled_classes_path):
+        print("[Error] Labeled classes file not found!")
+        return
+    labeled_classes = []
+    with open(labeled_classes_path, "r") as f:
+        labeled_classes_content = json.load(f)
+        # get all classes names under the "labeledClasses" key
+        if "labeledClasses" in labeled_classes_content:
+            labeled_classes_content = labeled_classes_content["labeledClasses"]
+            for class_name in labeled_classes_content:
+                labeled_classes.append(class_name)
+        else:
+            print("[Error] No labeled classes found!")
+            return
+    
+    # retrieve labeled methods list
+    if not os.path.exists(labeled_methods_path):
+        print("[Error] Labeled methods file not found!")
+        return
+    
+    labeled_methods = {}
+
+    method_count = 0
+    with open(labeled_methods_path, "r") as f:
+        labeled_methods_content = json.load(f)
+        # get all the ones in [] 
+        # the data format is like this: [  [class_name1, method_signature1, label1], [class_name2, method_signature2, label2] ,  ...   ],
+        for item in labeled_methods_content:
+            class_name = item[0]
+            method_signature = item[1]
+            #print("Labeled Method Item:", item)
+            label = item[2]
+            if class_name not in labeled_methods:
+                labeled_methods[class_name] = []
+            labeled_methods[class_name].append((method_signature,label))
+            method_count += 1
+        for class_name in labeled_methods:
+            print("--------------------------------------------------")
+            print(f"Labeled Class {class_name} has {len(labeled_methods[class_name])} labeled methods.")
+            for method_signature, label in labeled_methods[class_name]:
+                print(f"  Labeled Method: {method_signature} with label {label}")
+
+    # Create output directories
+    inferResult_path = data_path + "inferResult/"
+    if not os.path.exists(inferResult_path):
+        os.makedirs(inferResult_path)
+
+    methodInfoResult_path = data_path + "methodInfo/"
+    if not os.path.exists(methodInfoResult_path):
+        os.makedirs(methodInfoResult_path)
+
+    skipped_classes = 0
+    all_classes = 0
+    # loop through each file in the directory
+    for file_name in os.listdir(dir_path):
+        # get the full file path
+        file_path = os.path.join(dir_path, file_name)
+        all_classes += 1
+
+        # check if the file is a JSON file
+        if file_name.endswith(".json"):
+            fullClassName = file_name[0:-5]
+            if fullClassName not in labeled_classes:
+                skipped_classes += 1
+                #print("Skipping unlabeled class:", fullClassName)
+                continue
+            #print(f"Found Class File for {fullClassName} ")
+            # open the file and load the JSON content to a dictionary
+            packageName = fullClassName
+            className = fullClassName
+            with open(file_path, "r") as f:
+                content_dict[packageName] = {className: json.load(f)}
+
+
+
+    ## Global CHA analysis
+    CHADic = obtainCHADic(content_dict)
+
+    with open(inferResult_path + "benchmark_CHADic.json", "w") as f:
+        json.dump(CHADic, f, indent=4)
+
+    fullMethodDoc = constructFullMethodDic(content_dict, CHADic)
+    with open(inferResult_path + "benchmark_fullMethodDoc.json", "w") as f:
+        json.dump(fullMethodDoc, f, indent=4)
+
+    
+    count_desc = 0
+    count_all_desc = 0
+    count_all_existing_methods = 0
+    count_deprecated = 0    
+    count_specs = 0
+    verb_dict = {}
+
+    print("Total labeled classes to process:", len(labeled_classes))
+    print("Let's see how many we can read with descriptions ... ")
+    preacceptedmethods = set()
+    for package_name in fullMethodDoc:
+        print("------------------------------------------------------------------")
+        for className in fullMethodDoc[package_name]:
+            method_for_class = getLabelledMethodsForClass(labeled_methods, className) #labeled_methods.get(className, [])
+            if len(method_for_class) == 0:
+                continue
+            info = fullMethodDoc[package_name][className]
+            collected_methods = 0
+            for sig in info["methods"]:
+                exist_is, count = exists_signature_in_list(sig, method_for_class)
+                if exist_is is False:
+                #if sig not in method_for_class:
+                #if not findMethodInLabelledMethods(labeled_methods, className, sig):
+                    print("Skipping unlabeled method:", sig, " in class ", className)
+                    continue
+                if not (package_name,className,sig) in preacceptedmethods:
+                    count_all_existing_methods += 1
+                    count_all_desc += 1
+                description = info["methods"][sig]
+                isEmpty, isDeprecated = handleDescriptionCases(description)
+                if not isEmpty and not isDeprecated:
+                    count_specs += count
+                    if (package_name,className,sig) in preacceptedmethods:
+                        print("Already pre-accepted method:", sig, " in class ", className)
+                    else:
+                        count_desc += 1
+                        preacceptedmethods.add((package_name, className, sig))
+                        collected_methods += 1
+                elif not isEmpty and isDeprecated:
+                    count_deprecated += 1
+                else:
+                    print("No description found for labeled method:", sig, " in class ", className)
+        if collected_methods != len(method_for_class):
+            print(f"Processing Class: {className} with {len(method_for_class)} labeled methods and {len(info['methods'])} documented methods.")
+            print("Collected methods so far for class:", className, " are ", collected_methods)
+
+
+    print("Total labeled classes:", len(labeled_classes))
+    print("Total classes processed:", len(content_dict))
+    print("Total classes skipped:", skipped_classes)
+    print("Total classes under benchmark path:", all_classes)
+    print("Total labeled for methods:", method_count)
+    print("Total labeled specs with descriptions:", count_desc)
+    print("Total existing labeled methods in the documentation:", count_all_existing_methods)
+    print("Description coverage:", count_desc, "/", count_all_desc)
+    print("Deprecated methods:", count_deprecated)
+    
+    before = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    acceptedSpecs = inferMemOpConsistentSpecWithEmbeddingsSourceSink(
+        preacceptedmethods,
+        fullMethodDoc,
+        labeled_methods,
+        "benchmark-single-method",
+        methodInfoResult_path,
+        m,
+        t2,
+    )
+     
+    after_infer = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    duration = datetime.strptime(after_infer, "%Y-%m-%d_%H-%M-%S") - datetime.strptime(before, "%Y-%m-%d_%H-%M-%S")
+  
+
+    finalizedSpecs = trimAcceptedSpecsSourceSink(acceptedSpecs, CHADic)
+    
+
+    # Save results and print the statistics
+    with open(inferResult_path + "benchmark_inferredSourceSinkSpecs.json", "w") as f:
+        json.dump({"sourceSinkSpec": acceptedSpecs}, f, indent=4)
+
+    with open(inferResult_path + "benchmark_finalizedSourceSinkSpecs.json", "w") as f:
+        json.dump({"sourceSinkSpec": finalizedSpecs}, f, indent=4)
+
+        
+    # Save time usage data in a file
+    with open(inferResult_path + "benchmark_embedding_usage.txt", "w") as f:
+        f.write(f"Embedding Inference Start Time: {before}\n")
+        f.write(f"Embedding Inference End Time: {after_infer}\n")
+        f.write(f"Embedding Inference Duration: {duration}\n")
+        f.write(f"Embedding analysis time {config.EMBEDTime}")
+        f.write(f"Embedding models: {config.EMBEDDING_MODEL}\n")
+        f.write(f"#Total memory latency: {config.memory_latency}\n")        
+        f.write(f"#Total memory usage (MB): {config.memory_usage_mb}\n")
+        f.write(f"#Total Time: {config.time_embedding_model}\n")
+        f.write(f"#Total Embedding calls: {config.count_embedding_model}\n")
+        f.write(f"Sentence processing time for embedding: {config.SENTENCEE_PROCESSING_TIME}\n")
+        f.write(f" Number of sentences: {config.number_of_sentences}\n")
+
+    print("#accepted specs: ", len(acceptedSpecs))
+    print("#finalized specs: ", len(finalizedSpecs))
 
 def construct():
-    directory = "../data/javadoc/benchmark"  # Specify the directory name
+    directory = "../data/javadoc/benchmark-dainfer+/"  # Specify the directory name
 
     # Get all the files in the directory
     files = os.listdir(directory)
@@ -961,13 +2467,47 @@ if __name__ == "__main__":
     t2 = float(sys.argv[4])
 
     isOptimizedMode = False
+    isLLM = False
+    check_verbs = False
+    isDataflow = False
+    isEmbeddings = False
+    isEmbeddingSourceSink = False
     if sys.argv[5] == "--lazy":
         isOptimizedMode = True
+    elif sys.argv[5] == "--eager":
+        isOptimizedMode = False
+    elif sys.argv[5] == "--llm":
+        isLLM = True
+    elif sys.argv[5] == "--llm-dataflow":
+        isLLM = True
+        isDataflow = True
+        # promptMode can be 1) dataflow_zero 2) dataflow_few
+        promptMode = config.promptMode
+        runBenchmarkDataflowSourceSinkLLM("non-cache", n, m,config.LLM,  promptMode=promptMode)
+        exit(0)
+    elif sys.argv[5] == "--embed":
+        isEmbeddings = True
+    elif sys.argv[5] == "--sink-source":
+        isEmbeddingSourceSink = True
+        print("=========================================")
+        print("Running Source-Sink Embedding Model...")
+        runBenchmarkDataflowSourceSinkEmbedding("non-cache", m, n)
+        exit(0)
+    elif sys.argv[5] == "--alias-llm":
+        isLLM = True
+        print("=========================================")
+        print("Running Alias Relation LLM Model...")
+        runAliasSpecWithLLM("non-cache", n, m, config.LLM, promptMode="")
+        exit(0)
+    else:
+        print("Wrong Argument!")
+        exit(0)
+
 
     (config.global_m, config.global_n, config.global_t1, config.global_t2) = (m, n, t1, t2)
 
     promptMode = (
-        "autoPrompt_FourTypes_" + str(m) + "_" + str(n) + "_" + str(t1) + "_" + str(t2)
+        "llm_autoPrompt_FourTypes_" + str(m) + "_" + str(n) + "_" + str(t1) + "_" + str(t2)
     )
-
-    runBenchmark(promptMode, "non-cache", m, n, isOptimizedMode, t1, t2)
+    runBenchmark(promptMode, "non-cache", m, n, isOptimizedMode, isLLM, t1, t2)
+    exit(0)
