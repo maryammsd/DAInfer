@@ -1,3 +1,4 @@
+from multiprocessing import util
 import spacy
 import re
 
@@ -13,7 +14,7 @@ conjunction_groups = {
     }
 
 #---------------------------------------------------
-# Check the location of the conjunction in the sentence
+# Check location of conjunction in the sentence
 #---------------------------------------------------
 def check_conjunction_location(doc, start_index, conj_token):
     if conj_token.i == start_index:
@@ -28,10 +29,28 @@ def check_conjunction_location(doc, start_index, conj_token):
 # Check if a sentence is a simple sentence
 #--------------------------------------------------
 def is_simple_sentence(doc):
-    """ Check if a clause is a simple sentence."""
-    has_cc = any(token.dep_ == "cc" for token in doc)  # Check for coordinating conjunctions
-    has_mark = any(token.dep_ == "mark" for token in doc)  # Check for subordinating conjunctions
-    return not has_cc and not has_mark  # Simple sentence has no cc or mark
+    """
+    True when no coordinating conjunctions/conjuncts and no subordinate/clausal dependencies.
+    """
+    tokens = _tokens_from_doclike(doc)
+    has_cc = any(t.dep_ == "cc" for t in tokens)
+    has_conj = any(t.dep_ == "conj" for t in tokens)
+    has_subord = any(t.dep_ in ("mark", "relcl", "advcl", "ccomp", "xcomp", "acl") for t in tokens)
+    return not (has_cc or has_conj or has_subord)
+
+def is_complex_sentence(doc):
+    """
+    True when there is any subordinating marker / clausal dependency.
+    """
+    tokens = _tokens_from_doclike(doc)
+    return any(t.dep_ in ("mark", "relcl", "advcl", "ccomp", "xcomp", "acl") for t in tokens)
+
+def is_compound_sentence(doc):
+    """
+    True when there is a coordinating conjunction or a conjunct token.
+    """
+    tokens = _tokens_from_doclike(doc)
+    return any(t.dep_ in ("cc", "conj") for t in tokens)
 
 def remove_parentheses(span):
     """Remove parentheses and their content from a span."""
@@ -132,68 +151,178 @@ def split_by_semicolon(sentence):
     parts = sentence.split(";")
     return [p.strip() for p in parts if p.strip()]
 
+def clause_starts_with_verb(clause_text, nlp):
+    if not clause_text:
+        return False
+    doc = nlp(clause_text)
+    if len(doc) == 0:
+        return False
+    first = doc[0]
+    # primary check: POS or tag indicates verb
+    if first.pos_ == "VERB" or first.tag_.startswith("VB") or first.pos_ == "AUX":
+        return True
+    # fallback: lowercase first token and reparse (helps "Returns ..." fragments)
+    if first.text and first.text[0].isupper():
+        cand = first.text.lower() + ((" " + " ".join([t.text for t in doc[1:]])) if len(doc) > 1 else "")
+        doc2 = nlp(cand)
+        if len(doc2) > 0 and (doc2[0].pos_ == "VERB" or doc2[0].tag_.startswith("VB") or doc2[0].pos_ == "AUX"):
+            return True
+    return False
+
+def remove_parentheses_and_null(text):
+    """
+    Remove all parentheses (including nested) and their contents, normalize spaces,
+    and return an empty string when the remaining text is empty or only 'null'.
+    """
+    if not text:
+        return ""
+    s = str(text)
+
+    # remove nested parentheses by repeating until none left
+    while re.search(r'\([^()]*\)', s):
+        s = re.sub(r'\([^()]*\)', '', s)
+
+    # collapse whitespace and trim
+    s = re.sub(r'\s+', ' ', s).strip()
+
+    # strip leading/trailing punctuation common in descriptions
+    s = re.sub(r'^[\-\–\—\:\;\,\.]+\s*', '', s)
+    s = re.sub(r'\s*[\-\–\—\:\;\,\.]+$', '', s)
+
+    # if remaining is empty or just "null" (case-insensitive) return empty
+    if not s or s.lower() == "null":
+        return ""
+
+    return s
 
 def process_sentence_for_independent(sent):
     """
     Process a single sentence to extract only independent clauses.
-    
-    Args:
-        sent (spacy.tokens.Span): A spaCy Span object representing a sentence.
-    
-    Returns:
-        list: A list of independent simple sentences.
+    Returns (split_clauses, verbs_per_clause).
+    Ensures fragments like "Returns the value" yield clause "return the value"
+    and verbs_per_clause contains ["return"].
     """
-    nlp = spacy.load("en_core_web_sm")
-    independent_sentences = []
-    verbs = []
+    # ensure nlp is available
+    nlp = globals().get("nlp")
+    if nlp is None:
+        nlp = spacy.load("en_core_web_sm")
+        globals()["nlp"] = nlp
 
-    # Remove parentheses and their content
-    sent_text = sent.text
-    sent_text = re.sub(r'\([^)]*\)', '', sent_text)  # Remove ( ... )
+    # get text
+    sent_text = sent.text if hasattr(sent, "text") else str(sent)
+
+    # clean noise if helpers exist
+    if "remove_parentheses_and_null" in globals():
+        sent_text = remove_parentheses_and_null(sent_text)
+    if "strip_leading_method_noise" in globals():
+        sent_text = strip_leading_method_noise(sent_text)
     sent_text = sent_text.strip()
-    doc = nlp(sent.text) # Create a new doc from cleaned text
+    if not sent_text:
+        return [], []
 
-    # Track tokens that are part of dependent clauses
+    doc = nlp(sent_text)
+
+    # mark dependent clause token indices (mark, relcl)
     dependent_token_indices = set()
-
-    # Step 1: Find all mark tokens and their dependent clause tokens
     for token in doc:
         if token.dep_ in ("mark", "relcl"):
-            # Get the subtree of the clause head
-            # For 'mark', the clause head is usually a verb
-            # if the clause head does not have a verb, we consider the head itself
             target_node = token.head if token.dep_ == "mark" else token
             if not any(t.pos_ == "VERB" for t in target_node.subtree):
                 target_node = token.head
-
             for t in target_node.subtree:
                 dependent_token_indices.add(t.i)
 
-    # Step 2: Extract independent tokens (not part of any dependent clause)
     independent_tokens = [t for t in doc if t.i not in dependent_token_indices]
+    independent_clause = " ".join(t.text for t in independent_tokens).strip()
 
-    # Step 3: Build the independent clause
-    independent_clause = " ".join([t.text for t in independent_tokens]).strip()
+    # cleanup clause
+    if "clean_clause" in globals():
+        independent_clause = clean_clause(independent_clause)
+    else:
+        import re
+        independent_clause = re.sub(r'\s+', ' ', independent_clause).strip()
 
-    # Step 4: Clean up punctuation and extra spaces
-    independent_clause = clean_clause(independent_clause)
+    if not independent_clause:
+        return [], []
 
-    # Step 5: Split by cc tokens (coordinating conjunctions)
-    if independent_clause:
+    # split by coordinating conjunctions if helper exists
+    if "split_by_cc" in globals():
         split_clauses = split_by_cc(independent_clause)
-        verbs = retrieve_verbs_from_clauses(split_clauses)
-        independent_sentences.extend(split_clauses)
+    else:
+        split_clauses = [independent_clause]
 
-    return independent_sentences, verbs
+    verbs_per_clause = []
+    common_verbs = {"return", "get", "set", "insert", "remove", "read", "write", "put", "add", "create", "convert"}
+
+    for idx, clause in enumerate(split_clauses):
+        clause = clause.strip()
+        clause_doc = nlp(clause)
+        verbs = [t.lemma_ for t in clause_doc if t.pos_ in ("VERB", "AUX")]
+
+        # fallback: reparse with lowercased first token (handles "Returns ..." fragments)
+        if not verbs and len(clause_doc) > 0:
+            first = clause_doc[0].text
+            rest = " ".join([t.text for t in clause_doc[1:]]) if len(clause_doc) > 1 else ""
+            cand = first.lower() + (" " + rest if rest else "")
+            doc2 = nlp(cand)
+            verbs = [t.lemma_ for t in doc2 if t.pos_ in ("VERB", "AUX")]
+            if verbs:
+                split_clauses[idx] = cand
+                clause_doc = doc2
+
+        # fallback: accept VB* tags
+        if not verbs:
+            verbs = [t.lemma_ for t in clause_doc if getattr(t, "tag_", "").startswith("VB")]
+
+        # heuristic: handle "returns"/"gets" etc. even if spaCy failed
+        if not verbs and len(clause_doc) > 0:
+            tok0 = clause_doc[0].text.lower()
+            tok0_base = tok0.rstrip("s")
+            if tok0_base in common_verbs:
+                verbs = [tok0_base]
+                rest = " ".join([t.text for t in clause_doc[1:]]) if len(clause_doc) > 1 else ""
+                split_clauses[idx] = tok0_base + (" " + rest if rest else "")
+
+        verbs_per_clause.append(verbs)
+
+    return split_clauses, verbs_per_clause
+
 
 def retrieve_verbs_from_clauses(clauses):
     verbs = []
     for clause in clauses:
         doc = nlp(clause)
         for token in doc:
-            if token.pos_ == "VERB":
+            # return the root verb of the clause
+            if token.dep_ == "ROOT" and token.pos_ == "VERB":
                 verbs.append(token.lemma_)
+            # return all verbs 
+            #if token.pos_ == "VERB":
+            #    verbs.append(token.lemma_)
     return verbs
+
+def is_passive(sentence):
+    doc = nlp(sentence)
+    return any(token.dep_ in ("auxpass", "nsubjpass") for token in doc)
+
+def get_root_verb(sentence):
+    doc = nlp(sentence)
+    for token in doc:
+        if token.dep_ == "ROOT" and token.pos_ == "VERB":
+            return token.lemma_
+    return None
+
+def get_other_verbs(sentence):
+    doc = nlp(sentence)
+    return [token.lemma_ for token in doc if token.pos_ == "VERB" and token.dep_ != "ROOT"]
+
+def get_similarity(verb1, verb2, model):
+    emb1 = model.encode([verb1])[0]
+    emb2 = model.encode([verb2])[0]
+    emb1 = emb1.reshape(1, -1)
+    emb2 = emb2.reshape(1, -1)
+    return float(util.cos_sim(emb1, emb2))
+    
 
 def split_by_cc(sentence):
     """
