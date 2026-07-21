@@ -26,6 +26,7 @@ LLMInputTokenCnt = 0
 LLMOutputTokenCnt = 0
 LLMTime = 0.0
 promptMode = "dataflow_few" # dataflow_zero or dataflow_few
+discarded_alias_queries = 0
 global_num_queries = {}
 global_num_tokens = {}
 global_num_descriptions_queried = {}
